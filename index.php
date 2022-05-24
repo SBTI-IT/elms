@@ -141,7 +141,7 @@ else{
 
                 </ul>
           <div class="footer">
-                    <p class="copyright"><a href="http://www.code-projects.org/">Code-Projects </a>©</p>
+                    <p class="copyright"><a href="http://www.softstartbti.co.za/"> SoftstartBTI </a> © 2022</p>
 
                 </div>
                 </div>
@@ -169,7 +169,7 @@ else{
                                                </div>
                                                <div class="col s12 right-align m-t-sm">
 
-                                                   <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn teal">
+                                                   <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                            </form>
                                       </div>
