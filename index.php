@@ -120,7 +120,7 @@ else{
                             </a>
                         </section>
                         <div class="header-title col s3">
-                            <span class="chapter-title">ELMS | Employee Leave Management System</span>
+                            <span class="chapter-title">SoftstartBTI | Leave Management System</span>
                         </div>
                         </form>
                     </div>
@@ -140,10 +140,9 @@ else{
                        <li class="no-padding"><a class="waves-effect waves-grey" href="admin/"><i class="material-icons">account_box</i>Admin Login</a></li>
 
                 </ul>
-          <div class="footer">
-                    <p class="copyright"><a href="http://www.softstartbti.co.za/"> SoftstartBTI </a> © 2022</p>
-
-                </div>
+                    <div class="footer">
+                        <p class="copyright"><a href="http://www.softstartbti.co.za/"> SoftstartBTI </a> © 2022</p>
+                    </div>
                 </div>
             </aside>
             <main class="mn-inner">
