@@ -2,8 +2,18 @@
 
 ## v1.0
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
-<br><br>The system allows the supervisor to manage the system this includes; viewing, accepting or rejecting an employee’s leave application, 
-adding and removing an employee, adding and removing departments. The employee(user) is be able to apply for a leave. 
+<br><br>The system allows the supervisor to manage the categories of the system:
+
+### Leave
+* viewing, accepting or rejecting an employee’s leave application 
+
+### Employee
+* adding and removing an employee
+
+### Departments
+* adding and removing departments
+
+The employee(user) is able to apply for a leave. 
 
 ### Admin Login form
 
