@@ -15,13 +15,11 @@ Leave Management System allows employees to apply for a leave based on the numbe
 
 The employee(user) is able to apply for a leave. 
 
-### Admin Login form
+### Login form
 
+![_index php](https://user-images.githubusercontent.com/48829302/170836566-4d0d14ad-d7d4-46f3-944f-db4d48297468.png)
 
-![lg-page](https://user-images.githubusercontent.com/48829302/170053568-d1d3e016-44c3-420d-84de-3f8febb9a242.PNG)
 
 ### Admin Dashboard
 
-
-![admin-dashb](https://user-images.githubusercontent.com/48829302/170053652-7948899d-9fea-4902-8952-7f242353666c.PNG)
-
+![admin_dashboard php](https://user-images.githubusercontent.com/48829302/170836575-6ed4b004-72c2-43ad-874d-0ab3698e1e1d.png)
