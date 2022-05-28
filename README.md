@@ -16,7 +16,7 @@ The system allows the supervisor to manage the categories of the system:
 
 The employee(user) is able to apply for a leave. 
 
-## v1.0-Beta
+## v1.0.0-Beta
 A few UI changes have been made to the template
 
 ### Login form
