@@ -19,13 +19,13 @@ The employee(user) is able to apply for a leave.
 ## v2.0
 A few UI changes have been made to the template
 
-### * Login form
+### Login form
 
 ![_index php](https://user-images.githubusercontent.com/48829302/170836566-4d0d14ad-d7d4-46f3-944f-db4d48297468.png)
 
 In this version, the Admin and Employee login pages have been merged into a single page.
 
-### * Leave Management
+### Leave Management
 
 ![admin_leavemanagement php](https://user-images.githubusercontent.com/48829302/170838634-54faa4e0-bd2a-46ef-86dd-4a0d3fa45c86.png)
 
