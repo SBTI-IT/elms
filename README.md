@@ -1,8 +1,9 @@
 # SoftstartBTI Employee Leave Management System
 
-## v1.0
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
-<br><br>The system allows the supervisor to manage the categories of the system:
+
+## v1.0
+The system allows the supervisor to manage the categories of the system:
 
 ### Leave
 * viewing, accepting or rejecting an employee’s leave application 
