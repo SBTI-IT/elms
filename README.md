@@ -2,7 +2,7 @@
 
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
-## v1.0
+## v0.9.0-Alpha
 The system allows the supervisor to manage the categories of the system:
 
 ### Leave
@@ -16,7 +16,7 @@ The system allows the supervisor to manage the categories of the system:
 
 The employee(user) is able to apply for a leave. 
 
-## v2.0
+## v1.0-Beta
 A few UI changes have been made to the template
 
 ### Login form
