@@ -1,4 +1,4 @@
-     <aside id="slide-out" class="side-nav white fixed">
+<aside id="slide-out" class="side-nav white fixed">
                 <div class="side-nav-wrapper">
                     <div class="sidebar-profile">
                         <div class="sidebar-profile-image">
@@ -16,7 +16,7 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{               ?>
+{              >
                                 <p><?php echo htmlentities($result->FirstName." ".$result->LastName);?></p>
                                 <span><?php echo htmlentities($result->EmpId)?></span>
                          <?php }} ?>

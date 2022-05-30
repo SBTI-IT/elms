@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
@@ -39,8 +39,7 @@ else
 $error="Something went wrong. Please try again";
 }
 
-}
-
+} */
     ?>
 
 <!DOCTYPE html>
@@ -85,9 +84,9 @@ $error="Something went wrong. Please try again";
 
     </head>
     <body>
-  <?php include('includes/header.php');?>
+  <?php //include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php //include('includes/sidebar.php');?>
    <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -104,14 +103,14 @@ $error="Something went wrong. Please try again";
                                                 <div class="row">
                                                     <div class="col m12">
                                                         <div class="row">
-     <?php if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+     <?php //if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php //echo htmlentities($error); ?> </div><?php //} 
+               // else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php //echo htmlentities($msg); ?> </div><?php //}?>
 
 
  <div class="input-field col  s12">
 <select  name="leavetype" autocomplete="off">
 <option value="">Select leave type...</option>
-<?php $sql = "SELECT  LeaveType from tblleavetype";
+<?php /*$sql = "SELECT  LeaveType from tblleavetype";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -119,9 +118,9 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{   ?>                                            
-<option value="<?php echo htmlentities($result->LeaveType);?>"><?php echo htmlentities($result->LeaveType);?></option>
-<?php }} ?>
+{   */?>                                            
+<option value="<?php //echo htmlentities($result->LeaveType);?>"><?php //echo htmlentities($result->LeaveType);?></option>
+<?php //}} ?>
 </select>
 </div>
 
@@ -169,4 +168,4 @@ foreach($results as $result)
                 <script src="assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     </body>
 </html>
-<?php } ?> 
+<?php //} ?> 

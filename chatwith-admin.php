@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
@@ -8,7 +8,7 @@ header('location:index.php');
 }
 else{
 
- ?>
+ */?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,9 +52,9 @@ else{
         </style>
     </head>
     <body>
-       <?php include('includes/header.php');?>
+       <?php //include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php //include('includes/sidebar.php');?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -65,13 +65,13 @@ else{
                         <div class="card">
                             <div class="card-content">
                            
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <?php //if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php //echo htmlentities($msg); ?> </div><?php //}?>
     <aside>
                 <p class="sidebar-chat-name">Tom Simpson<a href="#" data-activates="chat-messages" class="chat-message-link"><i class="material-icons">keyboard_arrow_right</i></a></p>
                 <div class="messages-container">
 
                     <?php 
-$eid=$_SESSION['emplogin'];
+/*$eid=$_SESSION['emplogin'];
 $sql = "SELECT * from  tblchating where empid=:eid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':eid',$eid, PDO::PARAM_STR);
@@ -81,7 +81,7 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{               ?> 
+{             */  ?> 
                     <div class="message-wrapper them">
                         <div >Me fgfdgdfgfd</div>
                         <div class="text-wrapper"><?php echo htmlentities($result->chat);?></div>
@@ -102,7 +102,7 @@ foreach($results as $result)
                         <input placeholder="Write message" id="message_compose" type="text">
                     </div>
                 </div>
-                <?php }} ?>
+                <?php //}} ?>
             </aside>
                             </div>
                         </div>
@@ -124,4 +124,4 @@ foreach($results as $result)
         
     </body>
 </html>
-<?php } ?>
+<?php //} ?>

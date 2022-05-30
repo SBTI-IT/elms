@@ -1,12 +1,12 @@
 <?php
-session_start();
+/*session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
 }
-else{
+else{ */
 
  ?>
 <!DOCTYPE html>
@@ -52,9 +52,9 @@ else{
         </style>
     </head>
     <body>
-       <?php include('includes/header.php');?>
+       <?php //include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php //include('includes/sidebar.php');?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -65,7 +65,7 @@ else{
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title">Leave History</span>
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <?php //if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php //echo htmlentities($msg); ?> </div><?php //}?>
                                 <table id="example" class="display responsive-table ">
                                     <thead>
                                         <tr>
@@ -82,7 +82,7 @@ else{
                                  
                                     <tbody>
 <?php 
-$eid=$_SESSION['eid'];
+/*$eid=$_SESSION['eid'];
 $sql = "SELECT LeaveType,ToDate,FromDate,Description,PostingDate,AdminRemarkDate,AdminRemark,Status from tblleaves where empid=:eid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
@@ -92,7 +92,7 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{               ?>  
+{      */         ?>  
                                         <tr>
                                             <td> <?php echo htmlentities($cnt);?></td>
                                             <td><?php echo htmlentities($result->LeaveType);?></td>
@@ -100,7 +100,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->FromDate);?></td>
                                            <td><?php echo htmlentities($result->Description);?></td>
                                             <td><?php echo htmlentities($result->PostingDate);?></td>
-                                            <td><?php if($result->AdminRemark=="")
+                                            <td><?php /*if($result->AdminRemark=="")
                                             {
 echo htmlentities('waiting for approval');
                                             } else
@@ -109,21 +109,21 @@ echo htmlentities('waiting for approval');
  echo htmlentities(($result->AdminRemark)." "."at"." ".$result->AdminRemarkDate);
 }
 
-                                            ?></td>
+                                           */ ?></td>
                                                                                  <td><?php $stats=$result->Status;
-if($stats==1){
+//if($stats==1){
                                              ?>
                                                  <span style="color: green">Approved</span>
-                                                 <?php } if($stats==2)  { ?>
+                                                 <?php //} if($stats==2)  { ?>
                                                 <span style="color: red">Not Approved</span>
-                                                 <?php } if($stats==0)  { ?>
+                                                 <?php //} if($stats==0)  { ?>
  <span style="color: blue">waiting for approval</span>
- <?php } ?>
+ <?php //} ?>
 
                                              </td>
           
                                         </tr>
-                                         <?php $cnt++;} }?>
+                                         <?php// $cnt++;} }?>
                                     </tbody>
                                 </table>
                             </div>
@@ -146,4 +146,4 @@ if($stats==1){
         
     </body>
 </html>
-<?php } ?>
+<?php //} ?>

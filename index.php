@@ -1,6 +1,6 @@
 
 <?php
-session_start();
+/*session_start();
 error_reporting(0);
 include('includes/config.php');
 if(isset($_POST['signin']))
@@ -33,7 +33,7 @@ else{
 
 }
 
-}
+} */
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -155,15 +155,15 @@ else{
 
                                   <div class="card-content ">
                                       <span class="card-title" style="font-size:20px;">Employee Login</span>
-                                         <?php if($msg){?><div class="errorWrap"><strong>Error</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                         <?php //if($msg){?><div class="errorWrap"><strong>Error</strong> : <?php //echo htmlentities($msg); ?> </div><?php //}?>
                                        <div class="row">
-                                           <form class="col s12" name="signin" method="post">
+                                           <form class="col s12" action="emp-changepassword.php" name="signin" method="post">
                                                <div class="input-field col s12">
-                                                   <input id="username" type="text" name="username" class="validate" autocomplete="off" required >
+                                                   <input id="username" type="text" name="username" class="validate" autocomplete="off" >
                                                    <label for="email">Email Id</label>
                                                </div>
                                                <div class="input-field col s12">
-                                                   <input id="password" type="password" class="validate" name="password" autocomplete="off" required>
+                                                   <input id="password" type="password" class="validate" name="password" autocomplete="off">
                                                    <label for="password">Password</label>
                                                </div>
                                                <div class="col s12 right-align m-t-sm">

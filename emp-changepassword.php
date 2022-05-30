@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
@@ -31,7 +31,7 @@ $msg="Your Password succesfully changed";
 else {
 $error="Your current password is wrong";    
 }
-}
+} */
 ?>
 
 <!DOCTYPE html>
@@ -73,9 +73,9 @@ $error="Your current password is wrong";
         </style>
     </head>
     <body>
-  <?php include('includes/header.php');?>
+  <?php //include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php //include('includes/sidebar.php');?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -87,8 +87,8 @@ $error="Your current password is wrong";
                               
                                 <div class="row">
                                     <form class="col s12" name="chngpwd" method="post">
-                                          <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+                                          <?php //if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php //echo htmlentities($error); ?> </div><?php //} 
+                //else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php //echo htmlentities($msg); ?> </div><?php //}?>
                                         <div class="row">
                                             <div class="input-field col s12">
 <input id="password" type="password"  class="validate" autocomplete="off" name="password"  required>
@@ -141,4 +141,4 @@ $error="Your current password is wrong";
         
     </body>
 </html>
-<?php } ?> 
+<?php //} ?> 
