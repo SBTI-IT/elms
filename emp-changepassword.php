@@ -73,7 +73,7 @@ $error="Your current password is wrong";
         </style>
     </head>
     <body>
-  <?php include('includes/header.php');?>
+  
             
        <?php include('includes/sidebar.php');?>
             <main class="mn-inner">
@@ -107,7 +107,7 @@ $error="Your current password is wrong";
 
 
 <div class="input-field col s12">
-<button type="submit" name="change" class="waves-effect waves-light btn indigo m-b-xs" onclick="return valid();">Change</button>
+<button type="submit" name="change" class="waves-effect waves-light btn orange m-b-xs" onclick="return valid();">Change</button>
 
 </div>
 

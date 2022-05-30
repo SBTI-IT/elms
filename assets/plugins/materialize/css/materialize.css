@@ -5200,7 +5200,7 @@ button.btn-floating {
 }
 
 .waves-effect.waves-light .waves-ripple {
-  background-color: rgba(255, 255, 255, 0.45);
+  background-color: #ff9800;
 }
 
 .waves-effect.waves-red .waves-ripple {
@@ -5208,23 +5208,23 @@ button.btn-floating {
 }
 
 .waves-effect.waves-yellow .waves-ripple {
-  background-color: rgba(255, 235, 59, 0.7);
+  background-color: #ff9800;
 }
 
 .waves-effect.waves-orange .waves-ripple {
-  background-color: rgba(255, 152, 0, 0.7);
+  background-color: #ff9800;
 }
 
 .waves-effect.waves-purple .waves-ripple {
-  background-color: rgba(156, 39, 176, 0.7);
+  background-color: #ff9800;
 }
 
 .waves-effect.waves-green .waves-ripple {
-  background-color: rgba(76, 175, 80, 0.7);
+  background-color: #ff9800;
 }
 
 .waves-effect.waves-teal .waves-ripple {
-  background-color: rgba(0, 150, 136, 0.7);
+  background-color: #ff9800;
 }
 
 .waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {
@@ -7090,27 +7090,27 @@ input[type=range]:focus::-ms-fill-upper {
   width: 100%;
   height: 100%;
   opacity: 0;
-  border-color: #26a69a;
+  border-color: orange;
 }
 
 .spinner-blue,
 .spinner-blue-only {
-  border-color: #4285f4;
+  border-color: orange;
 }
 
 .spinner-red,
 .spinner-red-only {
-  border-color: #db4437;
+  border-color: orange;
 }
 
 .spinner-yellow,
 .spinner-yellow-only {
-  border-color: #f4b400;
+  border-color: orange;
 }
 
 .spinner-green,
 .spinner-green-only {
-  border-color: #0f9d58;
+  border-color: orange;
 }
 
 /**
