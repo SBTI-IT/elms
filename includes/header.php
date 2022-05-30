@@ -1,7 +1,9 @@
+        <html>
+            <body>
         <div class="loader-bg"></div>
         <div class="loader">
             <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue">
+                <div class="spinner-layer spinner-orange">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -10,7 +12,7 @@
                     <div class="circle"></div>
                     </div>
                 </div>
-                <div class="spinner-layer spinner-spinner-teal lighten-1">
+                <div class="spinner-layer spinner-spinner-orange lighten-1">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -19,7 +21,7 @@
                     <div class="circle"></div>
                     </div>
                 </div>
-                <div class="spinner-layer spinner-yellow">
+                <div class="spinner-layer spinner-orange">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -28,7 +30,7 @@
                     <div class="circle"></div>
                     </div>
                 </div>
-                <div class="spinner-layer spinner-green">
+                <div class="spinner-layer spinner-orange">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -54,3 +56,5 @@
                     </div>
                 </nav>
             </header>
+    </body>
+            </html>

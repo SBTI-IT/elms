@@ -18,7 +18,7 @@ body {
 }
 
 a {
-    color: #0277bb;
+    color: #f2f6f8;
 }
 
 text {
@@ -51,15 +51,15 @@ a:focus {
 }
 
 .btn-flat.waves-purple {
-    color: #9c27b0;
+    color: orange;
 }
 
 .btn-flat.waves-green {
-    color: #4caf50;
+    color: orange;
 }
 
 .btn-flat.waves-blue {
-    color: #2196f3;
+    color: orange;
 }
 
 .btn-flat.waves-orange {
@@ -103,11 +103,11 @@ a:focus {
 }
 
 .waves-effect.waves-blue .waves-ripple {
-    background-color: rgba(33, 150, 243, 0.2);
+    background-color: #ff9800;
 }
 
 .waves-effect.waves-teal .waves-ripple {
-    background-color: rgba(0, 150, 136, 0.2);
+    background-color: #ff9800);
 }
 
 .collection a.collection-item {
@@ -3612,17 +3612,17 @@ body.search-app .search-input input:-ms-input-placeholder {
 .signin-page {
     height: 100%;
     width: 100%;
-    background: url('../images/mountains2.jpg') no-repeat;
-    background-size: cover;
+    background-color: rgb(246, 231, 197);
+    
 }
 
 .signup-page {
-    background: url('../images/mountains3.png') no-repeat;
+    background-color: rgb(246, 231, 197);
     background-size: cover;
 }
 
 .pattern-lock-screen {
-    background: url('../images/mountains5.png') no-repeat;
+    background-color: rgb(246, 231, 197);
     background-size: cover;
 }
 

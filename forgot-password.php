@@ -63,7 +63,7 @@ $msg="Your Password succesfully changed";
         <div class="loader-bg"></div>
         <div class="loader">
             <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue">
+                <div class="spinner-layer spinner-orange">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -72,7 +72,7 @@ $msg="Your Password succesfully changed";
                     <div class="circle"></div>
                     </div>
                 </div>
-                <div class="spinner-layer spinner-spinner-teal lighten-1">
+                <div class="spinner-layer spinner-spinner-orange lighten-1">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div><div class="gap-patch">
@@ -103,7 +103,7 @@ $msg="Your Password succesfully changed";
         </div>
         <div class="mn-content fixed-sidebar">
             <header class="mn-header navbar-fixed">
-                <nav class="cyan darken-1">
+                <nav class="orange darken-1">
                     <div class="nav-wrapper row">
                         <section class="material-design-hamburger navigation-toggle">
                             <a href="#" data-activates="slide-out" class="button-collapse show-on-large material-design-hamburger__icon">
@@ -135,10 +135,9 @@ $msg="Your Password succesfully changed";
                        <li class="no-padding"><a class="waves-effect waves-grey" href="admin/"><i class="material-icons">account_box</i>Admin Login</a></li>
                 
                 </ul>
-          <div class="footer">
-                    <p class="copyright"><a href="http://phpgurukul.com/">PHPGURUKUL </a>©</p>
-                
-                </div>
+                <div class="footer">
+                        <p class="copyright"><a href="http://www.softstartbti.co.za/"> SoftstartBTI </a> © 2022</p>
+                    </div>
                 </div>
             </aside>
             <main class="mn-inner">
@@ -164,7 +163,7 @@ $msg="Your Password succesfully changed";
                                                </div>
                                                <div class="col s12 right-align m-t-sm">
                                                 
-                                                   <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn teal">
+                                                   <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                            </form>
                                       </div>

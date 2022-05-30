@@ -45,19 +45,19 @@ echo "<script type='text/javascript'> document.location = 'changepassword.php'; 
         <link href="../assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/css/custom.css" rel="stylesheet" type="text/css"/>
     </head>
+    
     <body class="signin-page">
-
         <div class="mn-content valign-wrapper">
 
             <main class="mn-inner container">
-  <h4 align="center"><a href="../index.php">Employee Leave Management System | Admin Login</a></h4>
+  
                 <div class="valign">
                       <div class="row">
 
                           <div class="col s12 m6 l4 offset-l4 offset-m3">
                               <div class="card white darken-1">
                                   <div class="card-content ">
-                                      <span class="card-title">Sign In</span>
+                                      <span class="card-title"><img src="../assets/images/softstart.jpg" alt="SIGN IN" style="width:100%"></span>
                                        <div class="row">
                                            <form class="col s12" name="signin" method="post">
                                                <div class="input-field col s12">
@@ -70,7 +70,7 @@ echo "<script type='text/javascript'> document.location = 'changepassword.php'; 
                                                </div>
                                                <div class="col s12 right-align m-t-sm">
                                                 
-                                                   <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn teal">
+                                                   <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                            </form>
                                       </div>
