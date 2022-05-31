@@ -71,11 +71,11 @@ else{
                                        <div class="row">
                                            <form class="col s12" name="signin" method="post">
                                                <div class="input-field col s12">
-                                                   <input id="username" type="text" name="username" class="validate" autocomplete="off" required >
+                                                   <input id="username" type="text" name="username" class="validate" autocomplete="on" required >
                                                    <label for="email">Username</label>
                                                </div>
                                                <div class="input-field col s12">
-                                                   <input id="password" type="password" class="validate" name="password" autocomplete="off" required>
+                                                   <input id="password" type="password" class="validate" name="password" autocomplete="on" required>
                                                    <label for="password">Password</label>
                                                </div>
                                                <a class="col s12 center-align" href="emp-changepassword.php">Forgot password?</a>
