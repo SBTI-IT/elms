@@ -1,6 +1,6 @@
 
 <?php
-/*session_start();
+session_start();
 error_reporting(0);
 include('includes/config.php');
 // Code for change password 
@@ -15,7 +15,7 @@ $chngpwd1-> bindParam(':empid', $empid, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
 $msg="Your Password succesfully changed";
-} */
+} 
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -151,7 +151,7 @@ $msg="Your Password succesfully changed";
 
                                   <div class="card-content ">
                                       <span class="card-title" style="font-size:20px;">Employee details</span>
-                                         <?php //if($msg){?><div class="succWrap"><strong>Success </strong> : <?php //echo htmlentities($msg); ?> </div><?php //}?>
+                                         <?php if($msg){?><div class="succWrap"><strong>Success </strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
                                        <div class="row">
                                            <form class="col s12" name="signin" method="post">
                                                <div class="input-field col s12">
@@ -169,7 +169,7 @@ $msg="Your Password succesfully changed";
                                            </form>
                                       </div>
                                   </div>
-<?php /*if(isset($_POST['submit']))
+<?php if(isset($_POST['submit']))
 {
 $empid=$_POST['empid'];
 $email=$_POST['emailid'];
@@ -183,7 +183,7 @@ if($query->rowCount() > 0)
 {
 foreach ($results as $result) {
     $_SESSION['empid']=$result->id;
-  } */
+  } 
     ?>
 
  <div class="row">
@@ -206,11 +206,11 @@ foreach ($results as $result) {
 </div>
 </div>
 </form>
-<?php /*} else{ ?>
+<?php } else{ ?>
 <div class="errorWrap" style="margin-left: 2%; font-size:22px;">
  <strong>ERROR</strong> : <?php echo htmlentities("Invalid details");
 }?></div>
-<?php } */?>
+<?php } ?>
 
 
 

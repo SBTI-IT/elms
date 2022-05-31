@@ -1,5 +1,5 @@
 <?php
-/*session_start();
+session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
@@ -31,7 +31,7 @@ $msg="Your Password succesfully changed";
 else {
 $error="Your current password is wrong";    
 }
-} */
+} 
 ?>
 
 <!DOCTYPE html>

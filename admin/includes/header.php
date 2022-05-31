@@ -41,6 +41,7 @@
         </div>
         <div class="mn-content fixed-sidebar">
             <header class="mn-header navbar-fixed">
+          
                 <nav class="cyan darken-1">
                     <div class="nav-wrapper row">
                         <section class="material-design-hamburger navigation-toggle">
@@ -49,7 +50,7 @@
                             </a>
                         </section>
                         <div class="header-title col s3">      
-                            <span class="chapter-title">ELMS | Admin</span>
+                            <span class="chapter-title">SoftstartBTI| Admin</span>
                         </div>
                       
                         <ul class="right col s9 m3 nav-right-menu">

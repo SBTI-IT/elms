@@ -18,7 +18,7 @@ body {
 }
 
 a {
-    color: #0277bb;
+    color:#0004ff;
 }
 
 text {
@@ -59,7 +59,7 @@ a:focus {
 }
 
 .btn-flat.waves-blue {
-    color: #2196f3;
+    color: #0066ff;
 }
 
 .btn-flat.waves-orange {
@@ -118,6 +118,7 @@ a:focus {
 
 .fixed-action-btn {
     z-index: 996;
+    color: #ff9800;
 }
 
 

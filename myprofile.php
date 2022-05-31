@@ -1,5 +1,5 @@
 <?php
-/*session_start();
+session_start();
 error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
@@ -34,7 +34,7 @@ $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();
 $msg="Employee record updated Successfully";
-} */
+} 
 
     ?>
 
@@ -104,7 +104,7 @@ $msg="Employee record updated Successfully";
                                                     <div class="col m6">
                                                         <div class="row">
 <?php 
-/*$eid=$_SESSION['emplogin'];
+$eid=$_SESSION['emplogin'];
 $sql = "SELECT * from  tblemployees where EmailId=:eid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':eid',$eid, PDO::PARAM_STR);
@@ -114,7 +114,7 @@ $cnt=1;
 if($query->rowCount() > 0)
 {
 foreach($results as $result)
-{           */    ?> 
+{              ?> 
  <div class="input-field col  s12">
 <label for="empcode">Employee Code</label>
 <input  name="empcode" id="empcode" value="<?php //echo htmlentities($result->EmpId);?>" type="text" autocomplete="off" readonly required>

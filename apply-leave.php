@@ -1,6 +1,6 @@
 <?php
-/*session_start();
-error_reporting(0);
+//session_start();
+//error_reporting(0);
 include('includes/config.php');
 if(strlen($_SESSION['emplogin'])==0)
     {   
@@ -39,7 +39,7 @@ else
 $error="Something went wrong. Please try again";
 }
 
-} */
+} 
     ?>
 
 <!DOCTYPE html>
