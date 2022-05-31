@@ -206,7 +206,7 @@ if($stats==0)
                                         <p><textarea id="textarea1" name="description" class="materialize-textarea" name="description" placeholder="Description" length="500" maxlength="500" required></textarea></p>
     </div>
     <div class="modal-footer" style="width:90%">
-       <input type="submit" class="waves-effect waves-light btn blue m-b-xs" name="update" value="Submit">
+       <input type="submit" class="waves-effect waves-light btn orange m-b-xs" name="update" value="Submit">
     </div>
 
 </div>   

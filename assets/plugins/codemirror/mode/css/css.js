@@ -567,7 +567,7 @@ CodeMirror.defineMode("css", function(config, parserConfig) {
     "deeppink", "deepskyblue", "dimgray", "dodgerblue", "firebrick",
     "floralwhite", "forestgreen", "fuchsia", "gainsboro", "ghostwhite",
     "gold", "goldenrod", "gray", "grey", "green", "greenyellow", "honeydew",
-    "hotpink", "indianred", "indigo", "ivory", "khaki", "lavender",
+    "hotpink", "indianred", "orange", "ivory", "khaki", "lavender",
     "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral",
     "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgreen", "lightpink",
     "lightsalmon", "lightseagreen", "lightskyblue", "lightslategray",

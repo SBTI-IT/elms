@@ -75,7 +75,9 @@ $error="Your current password is wrong";
     <body>
   
             
-       <?php include('includes/sidebar.php');?>
+       <?php include('includes/header.php');
+       include('includes/sidebar.php');   
+       ?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">

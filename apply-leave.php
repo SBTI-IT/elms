@@ -140,7 +140,7 @@ foreach($results as $result)
 <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
 </div>
 </div>
-      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn indigo m-b-xs">Apply</button>                                             
+      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
 
                                                 </div>
                                             </div>

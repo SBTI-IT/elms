@@ -1824,7 +1824,7 @@
     honeydew: 15794160,
     hotpink: 16738740,
     indianred: 13458524,
-    indigo: 4915330,
+    orange: 4915330,
     ivory: 16777200,
     khaki: 15787660,
     lavender: 15132410,

@@ -46,7 +46,7 @@ else{
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Totle Regd Employee</span>
+                                <span class="card-title">Total Regd Employee</span>
                                 <span class="stats-counter">
 <?php
 $sql = "SELECT id from tblemployees";
@@ -149,7 +149,7 @@ if($stats==1){
                                              </td>
 
           <td>
-           <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn blue m-b-xs"  > View Details</a></td>
+           <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>
                                     </tbody>

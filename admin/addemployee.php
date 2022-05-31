@@ -255,7 +255,7 @@ foreach($results as $result)
 
                                                         
 <div class="input-field col s12">
-<button type="submit" name="add" onclick="return valid();" id="add" class="waves-effect waves-light btn indigo m-b-xs">ADD</button>
+<button type="submit" name="add" onclick="return valid();" id="add" class="waves-effect waves-light btn orange m-b-xs">ADD</button>
 
 </div>
 

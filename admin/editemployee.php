@@ -201,7 +201,7 @@ foreach($results as $resultt)
 <?php }}?>
                                                         
 <div class="input-field col s12">
-<button type="submit" name="update"  id="update" class="waves-effect waves-light btn indigo m-b-xs">UPDATE</button>
+<button type="submit" name="update"  id="update" class="waves-effect waves-light btn orange m-b-xs">UPDATE</button>
 
 </div>
 

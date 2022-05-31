@@ -47,7 +47,7 @@ Main Components
   position: relative;
   padding: 2px;
   border-radius: 50em;
-  border: 1px solid #607d8b;
+  border: 1px solid #ffa500;
 }
 .cd-pricing-switcher input[type="radio"] + label:before,
 .cd-pricing-switcher input[type="radio"] + label:after {
@@ -85,7 +85,7 @@ Main Components
   left: 2px;
   height: 40px;
   width: 90px;
-  background-color: #607d8b;
+  background-color: #ffa500;
   border-radius: 50em;
   -webkit-transition: -webkit-transform 0.5s;
   -moz-transition: -moz-transform 0.5s;
@@ -274,7 +274,7 @@ Main Components
     display: none;
   }
   .cd-popular .cd-pricing-wrapper > li {
-    box-shadow: inset 0 0 0 3px #607d8b;
+    box-shadow: inset 0 0 0 3px #ffa500;
   }
   .cd-has-margins .cd-pricing-wrapper > li, .cd-has-margins .cd-popular .cd-pricing-wrapper > li {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -285,7 +285,7 @@ Main Components
     background: linear-gradient(to top, #0BA0BB, #20BEDA);
   }
   .cd-secondary-theme .cd-popular .cd-pricing-wrapper > li {
-    background: #607d8b;
+    background: #ffa500;
     background: -webkit-linear-gradient( bottom , #1DA890, #32C6AD);
     background: linear-gradient(to top, #1DA890, #32C6AD);
     box-shadow: none;
@@ -343,7 +343,7 @@ Main Components
   text-transform: uppercase;
 }
 .cd-popular .cd-pricing-header {
-  background-color: #607d8b;
+  background-color: #ffa500;
 }
 @media only screen and (min-width: 768px) {
   .cd-pricing-header {
@@ -355,7 +355,7 @@ Main Components
     background-color: transparent;
   }
   .cd-popular .cd-pricing-header {
-    color: #607d8b;
+    color: #ffa500;
     background-color: transparent;
   }
   .cd-secondary-theme .cd-pricing-header {
@@ -393,7 +393,7 @@ Main Components
   text-transform: uppercase;
 }
 .cd-popular .cd-duration {
-  color: #607d8b;
+  color: #ffa500;
 }
 .cd-duration::before {
   content: '/';
@@ -410,7 +410,7 @@ Main Components
     color: rgba(23, 61, 80, 0.4);
   }
   .cd-popular .cd-currency, .cd-popular .cd-duration {
-    color: #607d8b;
+    color: #ffa500;
   }
   .cd-secondary-theme .cd-currency, .cd-secondary-theme .cd-duration {
     color: #0BA0BB;
@@ -575,7 +575,7 @@ Main Components
     opacity: 0.8;
   }
   .cd-popular .cd-select {
-    background-color: #607d8b;
+    background-color: #ffa500;
   }
   .cd-secondary-theme .cd-popular .cd-select {
     background-color: #0c1f28;
