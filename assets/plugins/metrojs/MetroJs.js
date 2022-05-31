@@ -2490,7 +2490,7 @@ jQuery.fn.metrojs.theme = {
 		baseTheme: 'dark',                                      // the default theme color. options are dark, light
 		accentColors: [
              'amber', 'blue', 'brown', 'cobalt', 'crimson', 'cyan',
-             'magenta', 'lime', 'indigo', 'green', 'emerald',
+             'magenta', 'lime', 'orange', 'green', 'emerald',
              'mango', 'mauve', 'olive', 'orange', 'pink', 'red',
              'sienna', 'steel', 'teal', 'violet', 'yellow'
 		],

@@ -68,8 +68,8 @@ echo "<script type='text/javascript'> document.location = 'changepassword.php'; 
                                                    <input id="password" type="password" class="validate" name="password" autocomplete="off" required>
                                                    <label for="password">Password</label>
                                                </div>
-                                               <div class="col s12 right-align m-t-sm">
-                                                
+                                               <a class="col s12 center-align" href="changepassword.php">Forgot password?</a>
+                                               <div class="col s12 center-align m-t-sm">
                                                    <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                            </form>

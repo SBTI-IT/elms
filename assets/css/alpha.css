@@ -107,7 +107,7 @@ a:focus {
 }
 
 .waves-effect.waves-teal .waves-ripple {
-    background-color: #ff9800);
+    background-color: #ff9800;
 }
 
 .collection a.collection-item {
@@ -646,7 +646,7 @@ nav .nav-wrapper ul li span.badge {
 .dynamic-color .pink,
 .dynamic-color .purple,
 .dynamic-color .deep-purple, 
-.dynamic-color .indigo, 
+.dynamic-color .orange, 
 .dynamic-color .blue, 
 .dynamic-color .light-blue, 
 .dynamic-color .cyan, 
@@ -769,7 +769,7 @@ nav .nav-wrapper ul li span.badge {
 
 .secondary-link {
     font-size: 13px;
-    color: #2196f3;
+    color: #f6b743;
     font-weight: bold;
 }
 
@@ -1571,7 +1571,7 @@ li.active .nav-drop-icon {
 }
 
 .footer a {
-    color: #0277bb!important;
+    color: #f8aa19!important;
     display: inline-block!important;
     font-size: 13px;
     height: auto;
@@ -1858,7 +1858,7 @@ code:after {
 /* Shadow */
 
 .shadow-demo {
-    background-color: #607d8b;
+    background-color: #ffa500;
     width: 100px;
     height: 100px;
     margin: 20px auto!important;
@@ -1868,7 +1868,7 @@ code:after {
 /* Blockquote */
 
 blockquote {
-    border-left: 5px solid #607d8b;
+    border-left: 5px solid #ffa500;
 }
 
 
@@ -2045,7 +2045,7 @@ blockquote {
 }
 
 .sidebar-notifications .notifications-list .notifications-load-more a { 
-    color: #0277bb;
+    color: #f11212;
     font-size: 13px;
 }
 
@@ -2210,14 +2210,14 @@ blockquote {
 }
 
 .message-wrapper.them .circle-wrapper, .message-wrapper.them .text-wrapper {
-    background: #607d8b;
+    background: #ffa500;
     float: left;
     color: #ffffff;
 }
 
 .message-wrapper.them .text-wrapper:before {
     border-width: 0 10px 10px 0;
-    border-color: transparent #607d8b transparent transparent;
+    border-color: transparent #ffa500 transparent transparent;
     position: absolute;
     top: 0;
     left: -9px;
@@ -2459,13 +2459,13 @@ blockquote {
 }
 
 .stats-card-progress {
-    background: #b2ebf2;
+    background: #eec882;
     border-bottom-left-radius: 2px!important;
     border-bottom-right-radius: 2px!important;
 }
 
 .stats-card-progress .determinate {
-    background: #26c6da;
+    background: #ffa500;
     border-bottom-left-radius: 2px;
 }
 
@@ -2701,7 +2701,7 @@ input.expand-search[type=text]:focus:not([readonly]), input.expand-search[type=p
 /* Slider */
 
 .slider .indicators .indicator-item.active {
-    background-color: #607d8b;
+    background-color: #ffa500;
 }
 
 
@@ -2712,7 +2712,7 @@ input.expand-search[type=text]:focus:not([readonly]), input.expand-search[type=p
 }
 
 .tabs .tab a {
-    color: #26a69a;
+    color: #ffa500;
 }
 
 .tabs .tab a:hover {
@@ -2725,7 +2725,7 @@ input.expand-search[type=text]:focus:not([readonly]), input.expand-search[type=p
 }
 
 .tabs .indicator {
-    background-color: #26a69a;
+    background-color: #ffa500;
 }
 
 
@@ -2736,16 +2736,16 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 }
 
 input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #26a69a;
-    box-shadow: 0 1px 0 0 #26a69a;
+    border-bottom: 1px solid #ffa500;
+    box-shadow: 0 1px 0 0 #ffa500;
 }
 
 input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([readonly])+label, input[type=email]:focus:not([readonly])+label, input[type=url]:focus:not([readonly])+label, input[type=time]:focus:not([readonly])+label, input[type=date]:focus:not([readonly])+label, input[type=datetime-local]:focus:not([readonly])+label, input[type=tel]:focus:not([readonly])+label, input[type=number]:focus:not([readonly])+label, input[type=search]:focus:not([readonly])+label, textarea.materialize-textarea:focus:not([readonly])+label {
-    color: #26a69a;
+    color: #ffa500;
 }
  
 .input-field .prefix.active {
-    color: #26a69a;
+    color: #ffa500;
 }
 
 .input-field label.error {
@@ -2773,47 +2773,47 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([re
 }
 
 [type="radio"]:checked+label:after {
-    border: 2px solid #26a69a;
-    background-color: #26a69a;
+    border: 2px solid #ffa500;
+    background-color: #ffa500;
 }
 
 [type="radio"].with-gap:checked+label:before {
-    border: 2px solid #26a69a;
+    border: 2px solid #ffa500;
 }
 
 [type="radio"].with-gap:checked+label:after {
-    border: 2px solid #26a69a;
-    background-color: #26a69a;
+    border: 2px solid #ffa500;
+    background-color: #ffa500;
 }
 
 .switch label input[type=checkbox]:checked+.lever {
-    background-color: #80cbc4;
+    background-color: #f5d46a;
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
-    background-color: #26a69a;
+    background-color: #ffa500;
 }
 
 [type="checkbox"]:checked+label:before {
-    border-right: 2px solid #26a69a;
-    border-bottom: 2px solid #26a69a;
+    border-right: 2px solid #ffa500;
+    border-bottom: 2px solid #ffa500;
 }
 
 [type="checkbox"].filled-in:checked+label:after {
-    border: 2px solid #26a69a;
-    background-color: #26a69a;
+    border: 2px solid #ffa500;
+    background-color: #ffa500;
 }
 
 .picker__date-display {
-    background-color: #26a69a;
+    background-color: #ffa500;
 }
 
 .picker__weekday-display {
-    background-color: #00796b;
+    background-color: #ffa500;
 }
 
 .picker__day.picker__day--today {
-    color: #26a69a ;
+    color: #ffa500 ;
 }
 
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
@@ -2826,35 +2826,35 @@ input[type=text]:focus:not([readonly])+label, input[type=password]:focus:not([re
 }
 
 .picker__close, .picker__today {
-    color: #26a69a;
+    color: #ffa500;
 }
 
 button.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {
-    background-color: #b2dfdb;
+    background-color: #f4cd85;
 }
 
 .picker__nav--prev:hover, .picker__nav--next:hover {
-    background: #80cbc4;
+    background: #f4ce53;
 }
 
 input[type=range]+.thumb {
-    background-color: #26a69a;
+    background-color: #ffa500;
 }
 
 input[type=range] + .thumb .value {
-  color: #26a69a;
+  color: #ffa500;
 }
 
 input[type=range]::-webkit-slider-thumb {
-    background-color: #26a69a;
+    background-color: #ffa500;
 }
 
 input[type=range]::-moz-range-thumb {
-    background: #26a69a;
+    background: #ffa500;
 }
 
 input[type=range]::-ms-thumb {
-    background: #26a69a;
+    background: #ffa500;
 }
 
 /* Wizard */
@@ -3009,7 +3009,7 @@ table.dataTable.display tbody td {
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:focus,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:active  {
-    background: #607d8b;
+    background: #ffa500;
     border: 0;
     color: #fff!important;
     box-shadow: none;
@@ -3177,7 +3177,7 @@ table.bordered>tbody > tr {
     -o-transition: all .3s;
     transition: all .3s;
 }
-.dd-handle:hover { color: #2ea8e5; 
+.dd-handle:hover { color: #f6b130; 
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 
  0 3px 1px -2px rgba(0, 0, 0, 0.08), 
  0 1px 5px 0 rgba(0, 0, 0, 0.08);}
@@ -3235,7 +3235,7 @@ table.bordered>tbody > tr {
 
 }
 
-.dd-hover > .dd-handle { background: #2ea8e5 !important; }
+.dd-hover > .dd-handle { background: #eba729 !important; }
 
 /**
  * Nestable Draggable Handles
@@ -3250,7 +3250,7 @@ table.bordered>tbody > tr {
             border-radius: 3px;
     box-sizing: border-box; -moz-box-sizing: border-box;
 }
-.dd3-content:hover { color: #2ea8e5; background: #fff; }
+.dd3-content:hover { color: #eba729; background: #fff; }
 
 .dd-dragel > .dd3-item > .dd3-content { margin: 0; }
 
@@ -3433,19 +3433,19 @@ table.bordered>tbody > tr {
 /* Search */
 
 body.search-app .search-input input::-webkit-input-placeholder {
-    color: #b3e5fc!important;
+    color: #f0ce8f!important;
 }
  
 body.search-app .search-input input:-moz-placeholder {
-    color: #b3e5fc!important;
+    color: #f0ce8f!important;
 }
  
 body.search-app .search-input input::-moz-placeholder {
-    color: #b3e5fc!important;
+    color: #f0ce8f!important;
 }
  
 body.search-app .search-input input:-ms-input-placeholder {
-    color: #b3e5fc!important;
+    color: #f0ce8f!important;
 }
 
 .search-app .mn-content:not(.fixed-sidebar) .mn-inner,
@@ -3479,7 +3479,7 @@ body.search-app .search-input input:-ms-input-placeholder {
 }
 
 .search-input input[type=text]:focus:not([readonly]), .search-input input[type=password]:focus:not([readonly]), .search-input input[type=email]:focus:not([readonly]), .search-input input[type=url]:focus:not([readonly]), .search-input input[type=time]:focus:not([readonly]), .search-input input[type=date]:focus:not([readonly]), .search-input input[type=datetime-local]:focus:not([readonly]), .search-input input[type=tel]:focus:not([readonly]), .search-input input[type=number]:focus:not([readonly]), .search-input input[type=search]:focus:not([readonly]),.search-input  textarea.materialize-textarea:focus:not([readonly]) {
-    border-color: #b3e5fc;
+    border-color: #f0ce8f;
 }
 
 .search-input input[type=text]:focus:not([readonly])+label, .search-input input[type=password]:focus:not([readonly])+label, .search-input input[type=email]:focus:not([readonly])+label, .search-input input[type=url]:focus:not([readonly])+label, .search-input input[type=time]:focus:not([readonly])+label, .search-input input[type=date]:focus:not([readonly])+label, .search-input input[type=datetime-local]:focus:not([readonly])+label, .search-input input[type=tel]:focus:not([readonly])+label, .search-input input[type=number]:focus:not([readonly])+label, .search-input input[type=search]:focus:not([readonly])+label, .search-input textarea.materialize-textarea:focus:not([readonly])+label {
@@ -3495,7 +3495,7 @@ body.search-app .search-input input:-ms-input-placeholder {
 }
 .search-input input[type=text], .search-input input[type=password], .search-input input[type=email], .search-input input[type=url], .search-input input[type=time], .search-input input[type=date], .search-input input[type=datetime-local], .search-input input[type=tel], .search-input input[type=number], .search-input input[type=search] {
     display: block;
-    border-bottom: 1px solid #4fc3f7;
+    border-bottom: 1px solid #eba729;
     font-size: 28px;
     height: 60px;
     font-size: 22px;
@@ -3573,7 +3573,7 @@ body.search-app .search-input input:-ms-input-placeholder {
 
 .search-page-results #web .search-result a.search-result-link {
     font-size: 13px;
-    color: #4caf50;
+    color: #f2ae26;
     display: block;
     font-weight: 400;
     margin-bottom: 3px;
@@ -3662,7 +3662,7 @@ body.search-app .search-input input:-ms-input-placeholder {
 .fc-content {
     padding: 10px;
     border-radius: 2px;
-    background-color: #64b5f6;
+    background-color: #f3ba50;
     font-weight: 400;
     border: 0!important;
 }

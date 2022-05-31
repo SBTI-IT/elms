@@ -102,7 +102,7 @@ $error="Something went wrong. Please try again";
 
 
 <div class="input-field col s12">
-<button type="submit" name="add" class="waves-effect waves-light btn indigo m-b-xs">ADD</button>
+<button type="submit" name="add" class="waves-effect waves-light btn orange m-b-xs">ADD</button>
 
 </div>
 

@@ -1272,47 +1272,47 @@ a.live-tile .metroExtraSmall:link {
 .green .accentBorderTop {
   border-top-color: #339933;
 }
-.indigo .accent,
-.indigo .accentBg,
-.indigo .accentBgHover:hover,
-.indigo .accentBgHover a:hover,
-.indigo .live-tile > div,
-.indigo .copy-tile > div,
-.indigo .live-tile > .face,
-.indigo .copy-tile > .face,
-.indigo .live-tile > .slide,
-.indigo .live-tile > .flip-back,
-.indigo .live-tile > .flip-front,
-.indigo .live-tile > .slide-back,
-.indigo .live-tile > .slide-front,
-.indigo .list-tile > div,
-.indigo .flip-list > li > div {
+.orange .accent,
+.orange .accentBg,
+.orange .accentBgHover:hover,
+.orange .accentBgHover a:hover,
+.orange .live-tile > div,
+.orange .copy-tile > div,
+.orange .live-tile > .face,
+.orange .copy-tile > .face,
+.orange .live-tile > .slide,
+.orange .live-tile > .flip-back,
+.orange .live-tile > .flip-front,
+.orange .live-tile > .slide-back,
+.orange .live-tile > .slide-front,
+.orange .list-tile > div,
+.orange .flip-list > li > div {
   background-color: #6a00ff;
 }
-.indigo .accentColor,
-.indigo .accentHover:hover,
-.indigo .accentHover a:hover,
-.indigo .accentLink a,
-.indigo .accentLink a:hover,
-.indigo .accentLink a:visited,
-.indigo a.accentLink,
-.indigo a.accentLink:hover,
-.indigo a.accentLink:visited {
+.orange .accentColor,
+.orange .accentHover:hover,
+.orange .accentHover a:hover,
+.orange .accentLink a,
+.orange .accentLink a:hover,
+.orange .accentLink a:visited,
+.orange a.accentLink,
+.orange a.accentLink:hover,
+.orange a.accentLink:visited {
   color: #6a00ff;
 }
-.indigo .accentBorder {
+.orange .accentBorder {
   border-color: #6a00ff;
 }
-.indigo .accentBorderBottom {
+.orange .accentBorderBottom {
   border-bottom-color: #6a00ff;
 }
-.indigo .accentBorderLeft {
+.orange .accentBorderLeft {
   border-left-color: #6a00ff;
 }
-.indigo .accentBorderRight {
+.orange .accentBorderRight {
   border-right-color: #6a00ff;
 }
-.indigo .accentBorderTop {
+.orange .accentBorderTop {
   border-top-color: #6a00ff;
 }
 .lime .accent,
@@ -2455,55 +2455,55 @@ html body .green.accentBorderRight {
 html body .green.accentBorderTop {
   border-top-color: #339933;
 }
-html body .indigo.accent,
-html body .indigo.live-tile > .accent,
-html body .indigo.list-tile > .accent,
-html body .indigo.copy-tile > .accent,
-html body .indigo.live-tile > div,
-html body .indigo.copy-tile > div,
-html body .indigo.list-tile > div,
-html body .indigo.live-tile > .face,
-html body .indigo.list-tile > .face,
-html body .indigo.copy-tile > .face,
-html body .indigo.live-tile > .slide,
-html body .indigo.live-tile > .flip-back,
-html body .indigo.live-tile > .flip-front,
-html body .indigo.live-tile > .slide-back,
-html body .indigo.live-tile > .slide-front,
-html body .indigo.flip-list > li > .accent,
-html body .indigo.flip-list > li > .flip-back,
-html body .indigo.flip-list > li > .flip-front,
-html body .indigo.slide.accent,
-html body .indigo.slide-front.accent,
-html body .indigo.slide-back.accent,
-html body .indigo.flip-front.accent,
-html body .indigo.flip-back.accent {
+html body .orange.accent,
+html body .orange.live-tile > .accent,
+html body .orange.list-tile > .accent,
+html body .orange.copy-tile > .accent,
+html body .orange.live-tile > div,
+html body .orange.copy-tile > div,
+html body .orange.list-tile > div,
+html body .orange.live-tile > .face,
+html body .orange.list-tile > .face,
+html body .orange.copy-tile > .face,
+html body .orange.live-tile > .slide,
+html body .orange.live-tile > .flip-back,
+html body .orange.live-tile > .flip-front,
+html body .orange.live-tile > .slide-back,
+html body .orange.live-tile > .slide-front,
+html body .orange.flip-list > li > .accent,
+html body .orange.flip-list > li > .flip-back,
+html body .orange.flip-list > li > .flip-front,
+html body .orange.slide.accent,
+html body .orange.slide-front.accent,
+html body .orange.slide-back.accent,
+html body .orange.flip-front.accent,
+html body .orange.flip-back.accent {
   background-color: #6a00ff;
 }
-html body .indigo.accentColor,
-html body .indigo.accentHover:hover,
-html body .indigo.accentHover a:hover,
-html body .indigo.accentLink a,
-html body .indigo.accentLink a:hover,
-html body .indigo.accentLink a:visited,
-a.accentLinkhtml body .indigo,
-a.accentLinkhtml body .indigo:hover,
-a.accentLinkhtml body .indigo:visited {
+html body .orange.accentColor,
+html body .orange.accentHover:hover,
+html body .orange.accentHover a:hover,
+html body .orange.accentLink a,
+html body .orange.accentLink a:hover,
+html body .orange.accentLink a:visited,
+a.accentLinkhtml body .orange,
+a.accentLinkhtml body .orange:hover,
+a.accentLinkhtml body .orange:visited {
   color: #6a00ff;
 }
-html body .indigo.accentBorder {
+html body .orange.accentBorder {
   border-color: #6a00ff;
 }
-html body .indigo.accentBorderBottom {
+html body .orange.accentBorderBottom {
   border-bottom-color: #6a00ff;
 }
-html body .indigo.accentBorderLeft {
+html body .orange.accentBorderLeft {
   border-left-color: #6a00ff;
 }
-html body .indigo.accentBorderRight {
+html body .orange.accentBorderRight {
   border-right-color: #6a00ff;
 }
-html body .indigo.accentBorderTop {
+html body .orange.accentBorderTop {
   border-top-color: #6a00ff;
 }
 html body .lime.accent,
