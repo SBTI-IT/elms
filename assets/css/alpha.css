@@ -3378,17 +3378,17 @@ table.bordered>tbody > tr {
 }
 
 .error-page.page-404 {
-    background: url("../images/mountains5.png") no-repeat;
+    background-color: #fff9c4;
     background-size: cover;
 }
 
 .error-page.page-500 {
-    background: url("../images/mountains4.png") no-repeat;
+    background-color: #fff9c4;
     background-size: cover;
 }
 
 .error-page.page-coming-soon {
-    background: url("../images/mountains2.jpg") no-repeat;
+    background-color: #fff9c4;
     background-size: cover;
 }
 
