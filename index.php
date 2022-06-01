@@ -78,7 +78,7 @@ else{
                                                    <input id="password" type="password" class="validate" name="password" autocomplete="on" required>
                                                    <label for="password">Password</label>
                                                </div>
-                                               <a class="col s12 center-align" href="emp-changepassword.php">Forgot password?</a>
+                                               <a class="col s12 center-align" href="forgot-password.php">Forgot password?</a>
                                                <div class="col s12 center-align m-t-sm">
                                                    <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>

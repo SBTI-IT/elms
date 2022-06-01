@@ -1324,12 +1324,14 @@ nav .nav-wrapper ul li span.badge {
 /* Page Title */
 
 .page-title {
-    float: left;
+    /*float: left;*/
+    text-align: justify;
     margin: 0 8px 5px 8px;
     color: #555;
     line-height: 37px;
     text-transform: uppercase;
 }
+
 
 .page-title-buttons {
     float: right;
@@ -3610,19 +3612,23 @@ body.search-app .search-input input:-ms-input-placeholder {
 /* Authentication */
 
 .signin-page {
-    height: 100%;
-    width: 100%;
-    background-color: rgb(246, 231, 197);
+    /*height: 100%;
+    width: 100%;*/
+    /*background-color: rgb(246, 231, 197);*/
+    background: url("../images/bg1.png") no-repeat;
+    background-size: cover;
     
 }
 
 .signup-page {
-    background-color: rgb(246, 231, 197);
+    background: url("../images/bg1.png") no-repeat;
+    /*background-color: rgb(246, 231, 197);*/
     background-size: cover;
 }
 
 .pattern-lock-screen {
-    background-color: rgb(246, 231, 197);
+    /*background-color: rgb(246, 231, 197);*/
+    background: url("../images/bg1.png") no-repeat;
     background-size: cover;
 }
 
