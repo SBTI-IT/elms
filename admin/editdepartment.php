@@ -13,7 +13,7 @@ $did=intval($_GET['deptid']);
 $deptname=$_POST['departmentname'];
 $deptshortname=$_POST['departmentshortname'];
 $deptcode=$_POST['deptcode'];   
-$sql="update tbldepartments set DepartmentName=:deptname,DepartmentCode=:deptcode,DepartmentShortName=:deptshortname where id=:did";
+$sql="update departments set DepartmentName=:deptname,DepartmentCode=:deptcode,DepartmentShortName=:deptshortname where id=:did";
 $query = $dbh->prepare($sql);
 $query->bindParam(':deptname',$deptname,PDO::PARAM_STR);
 $query->bindParam(':deptcode',$deptcode,PDO::PARAM_STR);
@@ -82,7 +82,7 @@ $msg="Department updated Successfully";
                 else if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
 <?php 
 $did=intval($_GET['deptid']);
-$sql = "SELECT * from tbldepartments WHERE id=:did";
+$sql = "SELECT * from departments WHERE id=:did";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':did',$did,PDO::PARAM_STR);
 $query->execute();

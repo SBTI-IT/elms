@@ -23,7 +23,7 @@ $country=$_POST['country'];
 $mobileno=$_POST['mobileno']; 
 $status=1;
 
-$sql="INSERT INTO tblemployees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:status)";
+$sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:status)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':empid',$empid,PDO::PARAM_STR);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
@@ -218,7 +218,7 @@ error:function (){}
 <div class="input-field col m6 s12">
 <select  name="department" autocomplete="off">
 <option value="">Department...</option>
-<?php $sql = "SELECT DepartmentName from tbldepartments";
+<?php $sql = "SELECT DepartmentName from departments";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

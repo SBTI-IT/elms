@@ -9,7 +9,7 @@ if(isset($_POST['change']))
 $newpassword=md5($_POST['newpassword']);
 $empid=$_SESSION['empid'];
 
-$con="update tblemployees set Password=:newpassword where id=:empid";
+$con="update employees set Password=:newpassword where id=:empid";
 $chngpwd1 = $dbh->prepare($con);
 $chngpwd1-> bindParam(':empid', $empid, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
@@ -172,7 +172,7 @@ $msg="Your Password succesfully changed";
 {
 $empid=$_POST['empid'];
 $email=$_POST['emailid'];
-$sql ="SELECT id FROM tblemployees WHERE EmailId=:email and EmpId=:empid";
+$sql ="SELECT id FROM employees WHERE EmailId=:email and EmpId=:empid";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':email', $email, PDO::PARAM_STR);
 $query-> bindParam(':empid', $empid, PDO::PARAM_STR);

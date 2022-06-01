@@ -10,7 +10,7 @@ else{
 if(isset($_GET['del']))
 {
 $id=$_GET['del'];
-$sql = "delete from  tbldepartments  WHERE id=:id";
+$sql = "delete from  departments  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
@@ -88,7 +88,7 @@ $msg="Department record deleted";
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT * from tbldepartments";
+<?php $sql = "SELECT * from departments";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

@@ -45,10 +45,10 @@ INSERT INTO `admin` (`id`, `UserName`, `Password`, `updationDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbldepartments`
+-- Table structure for table `departments`
 --
 
-CREATE TABLE `tbldepartments` (
+CREATE TABLE `departments` (
   `id` int(11) NOT NULL,
   `DepartmentName` varchar(150) DEFAULT NULL,
   `DepartmentShortName` varchar(100) NOT NULL,
@@ -57,10 +57,10 @@ CREATE TABLE `tbldepartments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbldepartments`
+-- Dumping data for table `departments`
 --
 
-INSERT INTO `tbldepartments` (`id`, `DepartmentName`, `DepartmentShortName`, `DepartmentCode`, `CreationDate`) VALUES
+INSERT INTO `departments` (`id`, `DepartmentName`, `DepartmentShortName`, `DepartmentCode`, `CreationDate`) VALUES
 (1, 'Human Resource', 'HR', 'HR001', '2017-11-01 07:16:25'),
 (2, 'Information Technology', 'IT', 'IT001', '2017-11-01 07:19:37'),
 (3, 'Operations', 'OP', 'OP1', '2017-12-02 21:28:56');
@@ -68,10 +68,10 @@ INSERT INTO `tbldepartments` (`id`, `DepartmentName`, `DepartmentShortName`, `De
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblemployees`
+-- Table structure for table `employees`
 --
 
-CREATE TABLE `tblemployees` (
+CREATE TABLE `employees` (
   `id` int(11) NOT NULL,
   `EmpId` varchar(100) NOT NULL,
   `FirstName` varchar(150) NOT NULL,
@@ -90,20 +90,20 @@ CREATE TABLE `tblemployees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tblemployees`
+-- Dumping data for table `employees`
 --
 
-INSERT INTO `tblemployees` (`id`, `EmpId`, `FirstName`, `LastName`, `EmailId`, `Password`, `Gender`, `Dob`, `Department`, `Address`, `City`, `Country`, `Phonenumber`, `Status`, `RegDate`) VALUES
+INSERT INTO `employees` (`id`, `EmpId`, `FirstName`, `LastName`, `EmailId`, `Password`, `Gender`, `Dob`, `Department`, `Address`, `City`, `Country`, `Phonenumber`, `Status`, `RegDate`) VALUES
 (1, 'EMP10806121', 'Janobe', 'Sourcecode', 'janobe@janobe.com', '36d59e2369f00c4d9f336acf4408bae9', 'Male', '3 February, 1990', 'Human Resource', 'N NEPO', 'NEPO', 'IRE', '9857555555', 1, '2017-11-10 11:29:59'),
 (2, 'DEMP2132', 'James', 'doe', 'james@gmail.com', 'f925916e2754e5e03f75dd58a5733251', 'Male', '3 February, 1990', 'Information Technology', 'N NEPO', 'NEPO', 'IRE', '8587944255', 1, '2017-11-10 13:40:02');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblleaves`
+-- Table structure for table `leaves`
 --
 
-CREATE TABLE `tblleaves` (
+CREATE TABLE `leaves` (
   `id` int(11) NOT NULL,
   `LeaveType` varchar(110) NOT NULL,
   `ToDate` varchar(120) NOT NULL,
@@ -118,10 +118,10 @@ CREATE TABLE `tblleaves` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tblleaves`
+-- Dumping data for table `leaves`
 --
 
-INSERT INTO `tblleaves` (`id`, `LeaveType`, `ToDate`, `FromDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`) VALUES
+INSERT INTO `leaves` (`id`, `LeaveType`, `ToDate`, `FromDate`, `Description`, `PostingDate`, `AdminRemark`, `AdminRemarkDate`, `Status`, `IsRead`, `empid`) VALUES
 (7, 'Casual Leave', '30/11/2017', '29/10/2017', 'test description test descriptiontest descriptiontest descriptiontest descriptiontest descriptiontest descriptiontest description', '2017-11-19 13:11:21', 'Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.\r\n', '2017-12-02 23:26:27 ', 2, 1, 1),
 (8, 'Medical Leave test', '21/10/2017', '25/10/2017', 'test description test descriptiontest descriptiontest descriptiontest descriptiontest descriptiontest descriptiontest description', '2017-11-20 11:14:14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2017-12-02 23:24:39 ', 1, 1, 1),
 (9, 'Medical Leave test', '08/12/2017', '12/12/2017', 'Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.\r\n', '2017-12-02 18:26:01', NULL, NULL, 0, 1, 2),
@@ -132,10 +132,10 @@ INSERT INTO `tblleaves` (`id`, `LeaveType`, `ToDate`, `FromDate`, `Description`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tblleavetype`
+-- Table structure for table `leavetype`
 --
 
-CREATE TABLE `tblleavetype` (
+CREATE TABLE `leavetype` (
   `id` int(11) NOT NULL,
   `LeaveType` varchar(200) DEFAULT NULL,
   `Description` mediumtext,
@@ -143,10 +143,10 @@ CREATE TABLE `tblleavetype` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tblleavetype`
+-- Dumping data for table `leavetype`
 --
 
-INSERT INTO `tblleavetype` (`id`, `LeaveType`, `Description`, `CreationDate`) VALUES
+INSERT INTO `leavetype` (`id`, `LeaveType`, `Description`, `CreationDate`) VALUES
 (1, 'Casual Leave', 'Casual Leave ', '2017-11-01 12:07:56'),
 (2, 'Medical Leave test', 'Medical Leave  test', '2017-11-06 13:16:09'),
 (3, 'Restricted Holiday(RH)', 'Restricted Holiday(RH)', '2017-11-06 13:16:38');
@@ -162,28 +162,28 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbldepartments`
+-- Indexes for table `departments`
 --
-ALTER TABLE `tbldepartments`
+ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblemployees`
+-- Indexes for table `employees`
 --
-ALTER TABLE `tblemployees`
+ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tblleaves`
+-- Indexes for table `leaves`
 --
-ALTER TABLE `tblleaves`
+ALTER TABLE `leaves`
   ADD PRIMARY KEY (`id`),
   ADD KEY `UserEmail` (`empid`);
 
 --
--- Indexes for table `tblleavetype`
+-- Indexes for table `leavetype`
 --
-ALTER TABLE `tblleavetype`
+ALTER TABLE `leavetype`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -197,27 +197,27 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbldepartments`
+-- AUTO_INCREMENT for table `departments`
 --
-ALTER TABLE `tbldepartments`
+ALTER TABLE `departments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tblemployees`
+-- AUTO_INCREMENT for table `employees`
 --
-ALTER TABLE `tblemployees`
+ALTER TABLE `employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tblleaves`
+-- AUTO_INCREMENT for table `leaves`
 --
-ALTER TABLE `tblleaves`
+ALTER TABLE `leaves`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `tblleavetype`
+-- AUTO_INCREMENT for table `leavetype`
 --
-ALTER TABLE `tblleavetype`
+ALTER TABLE `leavetype`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 

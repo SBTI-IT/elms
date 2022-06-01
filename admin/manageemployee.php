@@ -12,7 +12,7 @@ if(isset($_GET['inid']))
 {
 $id=$_GET['inid'];
 $status=0;
-$sql = "update tblemployees set Status=:status  WHERE id=:id";
+$sql = "update employees set Status=:status  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
@@ -27,7 +27,7 @@ if(isset($_GET['id']))
 {
 $id=$_GET['id'];
 $status=1;
-$sql = "update tblemployees set Status=:status  WHERE id=:id";
+$sql = "update employees set Status=:status  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
@@ -106,7 +106,7 @@ header('location:manageemployee.php');
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT EmpId,FirstName,LastName,Department,Status,RegDate,id from  tblemployees";
+<?php $sql = "SELECT EmpId,FirstName,LastName,Department,Status,RegDate,id from  employees";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
