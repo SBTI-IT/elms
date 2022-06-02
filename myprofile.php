@@ -20,7 +20,7 @@ $address=$_POST['address'];
 $city=$_POST['city']; 
 $country=$_POST['country']; 
 $mobileno=$_POST['mobileno']; 
-$sql="update tblemployees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno where EmailId=:eid";
+$sql="update employees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno where EmailId=:eid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
 $query->bindParam(':lname',$lname,PDO::PARAM_STR);
@@ -105,7 +105,7 @@ $msg="Employee record updated Successfully";
                                                         <div class="row">
 <?php 
 $eid=$_SESSION['emplogin'];
-$sql = "SELECT * from  tblemployees where EmailId=:eid";
+$sql = "SELECT * from  employees where EmailId=:eid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':eid',$eid, PDO::PARAM_STR);
 $query->execute();
@@ -167,7 +167,7 @@ foreach($results as $result)
 <div class="input-field col m6 s12">
 <select  name="department" autocomplete="off">
 <option value="<?php echo htmlentities($result->Department);?>"><?php echo htmlentities($result->Department);?></option>
-<?php $sql = "SELECT DepartmentName from tbldepartments";
+<?php $sql = "SELECT DepartmentName from departments";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
