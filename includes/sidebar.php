@@ -7,7 +7,7 @@
                         <div class="sidebar-profile-info">
                     <?php
 $eid=$_SESSION['eid'];
-$sql = "SELECT FirstName,LastName,EmpId from  tblemployees where id=:eid";
+$sql = "SELECT FirstName,LastName,EmpId from  employees where id=:eid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();

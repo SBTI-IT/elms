@@ -82,9 +82,9 @@ else{
                                     </thead>
                                  
                                     <tbody>
-<?php 
-$eid=$_SESSION['alogin'];
-$sql = "SELECT tblleaves.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.EmpId,tblemployees.id,tblleaves.LeaveType,tblleaves.PostingDate,tblleaves.Status from tblleaves join tblemployees on tblleaves.empid=tblemployees.id order by lid desc";
+
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc";
+
 $query = $dbh -> prepare($sql);
 //$query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();

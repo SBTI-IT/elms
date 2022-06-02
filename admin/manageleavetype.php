@@ -10,7 +10,7 @@ else{
 if(isset($_GET['del']))
 {
 $id=$_GET['del'];
-$sql = "delete from  tblleavetype  WHERE id=:id";
+$sql = "delete from  leavetype  WHERE id=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
@@ -87,7 +87,7 @@ $msg="Leave type record deleted";
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT * from tblleavetype";
+<?php $sql = "SELECT * from leavetype";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
