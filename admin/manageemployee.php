@@ -84,7 +84,7 @@ header('location:manageemployee.php');
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title">Manage EmployesWWW</div>
+                        <div class="page-title">Manage Employees</div>
                     </div>
                    
                     <div class="col s12 m12 l12">

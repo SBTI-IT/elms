@@ -105,12 +105,8 @@ $msg="Your Password succesfully changed";
             <header class="mn-header navbar-fixed">
                 <nav class="orange darken-1">
                     <div class="nav-wrapper row">
-                        <section class="material-design-hamburger navigation-toggle">
-                            <a href="#" data-activates="slide-out" class="button-collapse show-on-large material-design-hamburger__icon">
-                                <span class="material-design-hamburger__layer"></span>
-                            </a>
-                        </section>
-                        <div class="header-title col s3">      
+                        
+                        <div class="header-title col s6">      
                             <span class="chapter-title">ELMS | Employee Leave Management System</span>
                         </div>
                       
@@ -121,31 +117,14 @@ $msg="Your Password succesfully changed";
                     </div>
                 </nav>
             </header>
-           
-           
-            <aside id="slide-out" class="side-nav white fixed">
-                <div class="side-nav-wrapper">
-                   
-                  
-                <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion" style="">
-                    <li>&nbsp;</li>
-                    <li class="no-padding"><a class="waves-effect waves-grey" href="index.php"><i class="material-icons">account_box</i>Employe Login</a></li>
-                    <li class="no-padding"><a class="waves-effect waves-grey" href="forgot-password.php"><i class="material-icons">account_box</i>Emp Password Recovery</a></li>
-                
-                       <li class="no-padding"><a class="waves-effect waves-grey" href="admin/"><i class="material-icons">account_box</i>Admin Login</a></li>
-                
-                </ul>
-                <div class="footer">
-                        <p class="copyright"><a href="http://www.softstartbti.co.za/"> SoftstartBTI </a> © 2022</p>
-                    </div>
-                </div>
-            </aside>
             <main class="mn-inner">
+            
                 <div class="row">
                     <div class="col s12">
-                        <div class="page-title"><h4>Employee Password Recovery</h4></div>
+                        
 
-                          <div class="col s12 m6 l8 offset-l2 offset-m3">
+                          <div class="col s10 m2 l8 offset-l1 offset-m2">
+                          <div class="page-title"><h4>Employee Password Recovery</h4></div>
                               <div class="card white darken-1">
 
                                   <div class="card-content ">
@@ -161,11 +140,14 @@ $msg="Your Password succesfully changed";
                                                    <input id="password" type="text" class="validate" name="emailid" autocomplete="off" required>
                                                    <label for="password">Email id</label>
                                                </div>
+                                              
                                                <div class="col s12 right-align m-t-sm">
-                                                
+                                               <a href="index.php"><b>BACK TO LOGIN</b></a>
                                                    <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
+                                               
                                            </form>
+                                           
                                       </div>
                                   </div>
 <?php if(isset($_POST['submit']))
