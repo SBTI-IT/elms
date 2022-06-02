@@ -20,10 +20,19 @@ $department=$_POST['department'];
 $address=$_POST['address']; 
 $city=$_POST['city']; 
 $country=$_POST['country']; 
-$mobileno=$_POST['mobileno']; 
+$mobileno=$_POST['mobileno'];
+$rolename =  $_POST['role'];
 $status=1;
 
-$sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:status)";
+switch($rolename)
+{
+    case "Administrator":
+        $roleID = 0; break;
+    case "Employee":
+        $roleID = 1; break;
+}
+
+$sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,roleID,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:roleid,:status)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':empid',$empid,PDO::PARAM_STR);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
@@ -37,6 +46,7 @@ $query->bindParam(':address',$address,PDO::PARAM_STR);
 $query->bindParam(':city',$city,PDO::PARAM_STR);
 $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
+$query->bindParam(':roleid',$roleID, PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
@@ -191,8 +201,8 @@ error:function (){}
 </div>
 
 <div class="input-field col s12">
-<label for="confirm">Confirm password</label>
-<input id="confirm" name="confirmpassword" type="password" autocomplete="off" required>
+    <label for="confirm">Confirm password</label>
+    <input id="confirm" name="confirmpassword" type="password" autocomplete="off" required>
 </div>
 </div>
 </div>
@@ -253,8 +263,24 @@ foreach($results as $result)
 <input id="phone" name="mobileno" type="tel" maxlength="10" autocomplete="off" required>
  </div>
 
+<div class="input-field col m6 s12">
+<select  name="role" autocomplete="off">
+<option value="">Role...</option>
+<?php $sql = "SELECT Name FROM role";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{   ?>                                            
+<option value="<?php echo htmlentities($result->Name);?>"><?php echo htmlentities($result->Name);?></option>
+<?php }} ?>
+</select>
+</div>
                                                         
-<div class="input-field col s12">
+<div class="input-field col m6 s12">
 <button type="submit" name="add" onclick="return valid();" id="add" class="waves-effect waves-light btn orange m-b-xs">ADD</button>
 
 </div>
