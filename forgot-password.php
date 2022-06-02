@@ -117,6 +117,28 @@ $msg="Your Password succesfully changed";
                     </div>
                 </nav>
             </header>
+<<<<<<< Updated upstream
+=======
+           
+           
+            <aside id="slide-out" class="side-nav white fixed">
+                <div class="side-nav-wrapper">
+                   
+                  
+                <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion" style="">
+                    <li>&nbsp;</li>
+                    <li class="no-padding"><a class="waves-effect waves-grey" href="index.php"><i class="material-icons">account_box</i>Employe Login</a></li>
+                    <li class="no-padding"><a class="waves-effect waves-grey" href="forgot-password.php"><i class="material-icons">account_box</i>Emp Password Recovery</a></li>
+                
+                       <li class="no-padding"><a class="waves-effect waves-grey" href="admin/"><i class="material-icons">account_box</i>Admin Login</a></li>
+                
+                </ul>
+                <div class="footer">
+                        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
+                    </div>
+                </div>
+            </aside>
+>>>>>>> Stashed changes
             <main class="mn-inner">
             
                 <div class="row">
@@ -162,9 +184,11 @@ $query-> execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount() > 0)
 {
-foreach ($results as $result) {
-    $_SESSION['empid']=$result->id;
-  } 
+    foreach ($results as $result) 
+    {
+        $_SESSION['empid']=$result->id;
+    } 
+    
     ?>
 
  <div class="row">
