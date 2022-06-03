@@ -105,7 +105,7 @@ function valid()
 {
 if(document.addemp.password.value!= document.addemp.confirmpassword.value)
 {
-alert("New Password and Confirm Password Field do not match  !!");
+alert("New Password and Confirm Password Fields do not match  !!");
 document.addemp.confirmpassword.focus();
 return false;
 }
