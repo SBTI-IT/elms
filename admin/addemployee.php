@@ -266,7 +266,7 @@ foreach($results as $result)
 <div class="input-field col m6 s12">
 <select  name="role" autocomplete="off">
 <option value="">Role...</option>
-<?php $sql = "SELECT Name FROM role";
+<?php $sql = "SELECT Name FROM roles";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
