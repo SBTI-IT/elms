@@ -119,13 +119,7 @@ $msg="Your Password succesfully changed";
             </header>
            
            
-            <aside id="slide-out" class="side-nav white fixed">
-                <div class="side-nav-wrapper">
-                    <div class="footer">
-                        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
-                    </div>
-                </div>
-            </aside>
+            
             <main class="mn-inner">
             
                 <div class="row">
@@ -155,10 +149,11 @@ $msg="Your Password succesfully changed";
                                                    <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                                
-                                           </form>
+                                            </form>
                                            
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
+                                
 <?php if(isset($_POST['submit']))
 {
 $empid=$_POST['empid'];
@@ -210,9 +205,12 @@ if($query->rowCount() > 0)
 
 
                               </div>
+                              
                           </div>
                     </div>
+                    
                 </div>
+                
             </main>
             
         </div>
@@ -226,4 +224,8 @@ if($query->rowCount() > 0)
         <script src="assets/js/alpha.min.js"></script>
         
     </body>
+
+    <div class="footer">
+        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
+    </div>
 </html>
