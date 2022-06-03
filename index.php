@@ -78,24 +78,27 @@ else
 
                           <div class="col s12 m6 l4 offset-l4 offset-m3">
                               <div class="card white darken-1">
+                              
                                   <div class="card-content ">
-                                      <span class="card-title"><img src="assets/images/softstart.jpg" alt="SIGN IN" style="width:100%"></span>
-                                       <div class="row">
-                                           <form class="col s12" name="signin" method="post">
-                                               <div class="input-field col s12">
-                                                   <input id="username" type="text" name="username" class="validate" autocomplete="on" required >
-                                                   <label for="email">Username</label>
-                                               </div>
-                                               <div class="input-field col s12">
-                                                   <input id="password" type="password" class="validate" name="password" autocomplete="on" required>
-                                                   <label for="password">Password</label>
-                                               </div>
-                                               <a class="col s12 center-align" href="forgot-password.php">Forgot password?</a>
-                                               <div class="col s12 center-align m-t-sm">
-                                                   <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
-                                               </div>
-                                           </form>
-                                      </div>
+                                  <span class="card-title"><img src="assets/images/softstartImage.png" alt="SIGN IN" style="width:100%"></span>
+                                        <div class="card-body">
+                                            <div class="row">
+                                            <form class="col s12" name="signin" method="post">
+                                                <div class="input-field col s12">
+                                                    <input id="username" type="text" name="username" class="validate" autocomplete="on" required >
+                                                    <label for="email">Username</label>
+                                                </div>
+                                                <div class="input-field col s12">
+                                                    <input id="password" type="password" class="validate" name="password" autocomplete="on" required>
+                                                    <label for="password">Password</label>
+                                                </div>
+                                                <a class="col s12 center-align" href="forgot-password.php">Forgot password?</a>
+                                                <div class="col s12 center-align m-t-sm">
+                                                    <input type="submit" name="signin" value="Sign in" class="waves-effect waves-light btn orange">
+                                                </div>
+                                            </form>
+                                            </div>
+                                        </div>
                                   </div>
                               </div>
                           </div>
