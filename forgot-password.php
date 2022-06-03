@@ -117,28 +117,15 @@ $msg="Your Password succesfully changed";
                     </div>
                 </nav>
             </header>
-<<<<<<< Updated upstream
-=======
            
            
             <aside id="slide-out" class="side-nav white fixed">
                 <div class="side-nav-wrapper">
-                   
-                  
-                <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion" style="">
-                    <li>&nbsp;</li>
-                    <li class="no-padding"><a class="waves-effect waves-grey" href="index.php"><i class="material-icons">account_box</i>Employe Login</a></li>
-                    <li class="no-padding"><a class="waves-effect waves-grey" href="forgot-password.php"><i class="material-icons">account_box</i>Emp Password Recovery</a></li>
-                
-                       <li class="no-padding"><a class="waves-effect waves-grey" href="admin/"><i class="material-icons">account_box</i>Admin Login</a></li>
-                
-                </ul>
-                <div class="footer">
+                    <div class="footer">
                         <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
                     </div>
                 </div>
             </aside>
->>>>>>> Stashed changes
             <main class="mn-inner">
             
                 <div class="row">
@@ -164,7 +151,7 @@ $msg="Your Password succesfully changed";
                                                </div>
                                               
                                                <div class="col s12 right-align m-t-sm">
-                                               <a href="index.php"><b>BACK TO LOGIN</b></a>
+                                               <a href="index.php"><b>BACK TO LOGIN  </b></a>
                                                    <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                                
