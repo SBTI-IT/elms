@@ -46,7 +46,7 @@ else{
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Total Regd Employee</span>
+                                <span class="card-title">Total Employees</span>
                                 <span class="stats-counter">
 <?php
 $sql = "SELECT id from employees";
@@ -65,7 +65,7 @@ $empcount=$query->rowCount();
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Listed Departments </span>
+                                <span class="card-title">Total Departments</span>
     <?php
 $sql = "SELECT id from departments";
 $query = $dbh -> prepare($sql);
@@ -81,7 +81,7 @@ $dptcount=$query->rowCount();
                     <div class="col s12 m12 l4">
                         <div class="card stats-card">
                             <div class="card-content">
-                                <span class="card-title">Listed leave Type</span>
+                                <span class="card-title">Total Leave Types</span>
                                     <?php
 $sql = "SELECT id from  leavetype";
 $query = $dbh -> prepare($sql);
@@ -109,7 +109,7 @@ $leavtypcount=$query->rowCount();
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th width="200">Employe Name</th>
+                                            <th width="200">Employee Name</th>
                                             <th width="120">Leave Type</th>
 
                                              <th width="180">Posting Date</th>                 
