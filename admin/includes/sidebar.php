@@ -33,7 +33,7 @@
                         </div>
                     </li>
                     <li class="no-padding">
-                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">account_box</i>Employees<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
+                        <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">groups</i>Employees<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="addemployee.php">Add Employee</a></li>
