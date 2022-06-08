@@ -19,8 +19,18 @@ $department=$_POST['department'];
 $address=$_POST['address']; 
 $city=$_POST['city']; 
 $country=$_POST['country']; 
-$mobileno=$_POST['mobileno']; 
-$sql="update tblemployees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno where id=:eid";
+$mobileno=$_POST['mobileno'];
+$rolename=$_POST['role']; 
+
+switch($rolename)
+{
+    case "Administrator":
+        $roleID = 0; break;
+    case "Employee":
+        $roleID = 1; break;
+}
+
+$sql="update employees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno,RoleID=:roleid where id=:eid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
 $query->bindParam(':lname',$lname,PDO::PARAM_STR);
@@ -31,6 +41,7 @@ $query->bindParam(':address',$address,PDO::PARAM_STR);
 $query->bindParam(':city',$city,PDO::PARAM_STR);
 $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
+$query->bindParam(':roleid',$roleID, PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();
 $msg="Employee record updated Successfully";
@@ -105,7 +116,7 @@ $msg="Employee record updated Successfully";
                                                         <div class="row">
 <?php 
 $eid=intval($_GET['empid']);
-$sql = "SELECT * from  tblemployees where id=:eid";
+$sql = "SELECT * from  employees where id=:eid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':eid',$eid, PDO::PARAM_STR);
 $query->execute();
@@ -116,7 +127,7 @@ if($query->rowCount() > 0)
 foreach($results as $result)
 {               ?> 
  <div class="input-field col  s12">
-<label for="empcode">Employee Code(Must be unique)</label>
+<label for="empcode">Employee ID (Unique)</label>
 <input  name="empcode" id="empcode" value="<?php echo htmlentities($result->EmpId);?>" type="text" autocomplete="off" readonly required>
 <span id="empid-availability" style="font-size:12px;"></span> 
 </div>
@@ -167,7 +178,7 @@ foreach($results as $result)
 <div class="input-field col m6 s12">
 <select  name="department" autocomplete="off">
 <option value="<?php echo htmlentities($result->Department);?>"><?php echo htmlentities($result->Department);?></option>
-<?php $sql = "SELECT DepartmentName from tbldepartments";
+<?php $sql = "SELECT DepartmentName from departments";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -196,11 +207,37 @@ foreach($results as $resultt)
 <input id="country" name="country" type="text"  value="<?php echo htmlentities($result->Country);?>" autocomplete="off" required>
 </div>
 
+<div class="input-field col s12">
+<select  name="role" autocomplete="off">
+<option value="<?php 
+                    if($result->RoleID == 0)
+                        $rname = "Administrator";
+                    else if($result->RoleID == 1)
+                        $rname = "Employee";
+
+                    echo htmlentities($rname);
+                    
+                ?>"><?php echo htmlentities($rname);?></option>
+<!-- Populate list --> 
+<?php $sql = "SELECT Name from roles";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $resultt)
+{  ?>                                            
+<option value="<?php echo htmlentities($resultt->Name);?>"><?php echo htmlentities($resultt->Name);?></option>
+<?php }} ?>
+</select>
+</div>
+
                                                             
 
 <?php }}?>
                                                         
-<div class="input-field col s12">
+<div class="input-field col m6 s12">
 <button type="submit" name="update"  id="update" class="waves-effect waves-light btn orange m-b-xs">UPDATE</button>
 
 </div>

@@ -9,7 +9,7 @@ if(isset($_POST['change']))
 $newpassword=md5($_POST['newpassword']);
 $empid=$_SESSION['empid'];
 
-$con="update tblemployees set Password=:newpassword where id=:empid";
+$con="update employees set Password=:newpassword where id=:empid";
 $chngpwd1 = $dbh->prepare($con);
 $chngpwd1-> bindParam(':empid', $empid, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
@@ -117,6 +117,9 @@ $msg="Your Password succesfully changed";
                     </div>
                 </nav>
             </header>
+           
+           
+            
             <main class="mn-inner">
             
                 <div class="row">
@@ -142,19 +145,20 @@ $msg="Your Password succesfully changed";
                                                </div>
                                               
                                                <div class="col s12 right-align m-t-sm">
-                                               <a href="index.php"><b>BACK TO LOGIN</b></a>
+                                               <a href="index.php"><b>BACK TO LOGIN  </b></a>
                                                    <input type="submit" name="submit" value="Sign in" class="waves-effect waves-light btn orange">
                                                </div>
                                                
-                                           </form>
+                                            </form>
                                            
-                                      </div>
-                                  </div>
+                                        </div>
+                                    </div>
+                                
 <?php if(isset($_POST['submit']))
 {
 $empid=$_POST['empid'];
 $email=$_POST['emailid'];
-$sql ="SELECT id FROM tblemployees WHERE EmailId=:email and EmpId=:empid";
+$sql ="SELECT id FROM employees WHERE EmailId=:email and EmpId=:empid";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':email', $email, PDO::PARAM_STR);
 $query-> bindParam(':empid', $empid, PDO::PARAM_STR);
@@ -162,9 +166,11 @@ $query-> execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount() > 0)
 {
-foreach ($results as $result) {
-    $_SESSION['empid']=$result->id;
-  } 
+    foreach ($results as $result) 
+    {
+        $_SESSION['empid']=$result->id;
+    } 
+    
     ?>
 
  <div class="row">
@@ -199,9 +205,12 @@ foreach ($results as $result) {
 
 
                               </div>
+                              
                           </div>
                     </div>
+                    
                 </div>
+                
             </main>
             
         </div>
@@ -215,4 +224,8 @@ foreach ($results as $result) {
         <script src="assets/js/alpha.min.js"></script>
         
     </body>
+
+    <div class="footer">
+        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
+    </div>
 </html>

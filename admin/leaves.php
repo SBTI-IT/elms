@@ -83,19 +83,19 @@ else{
                                     </thead>
                                  
                                     <tbody>
-<?php 
 
-$sql = "SELECT tblleaves.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.EmpId,tblemployees.id,tblleaves.LeaveType,tblleaves.PostingDate,tblleaves.Status from tblleaves join tblemployees on tblleaves.empid=tblemployees.id";
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id";
+
 $query = $dbh -> prepare($sql);
 $query->bindParam(PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{         
-      ?>  
+                    if($query->rowCount() > 0)
+                    {
+                    foreach($results as $result)
+                    {         
+                        ?>  
 
                                         <tr>
                                             <td> <b><?php echo htmlentities($cnt);?></b></td>

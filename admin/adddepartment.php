@@ -12,7 +12,7 @@ if(isset($_POST['add']))
 $deptname=$_POST['departmentname'];
 $deptshortname=$_POST['departmentshortname'];
 $deptcode=$_POST['deptcode'];   
-$sql="INSERT INTO tbldepartments(DepartmentName,DepartmentCode,DepartmentShortName) VALUES(:deptname,:deptcode,:deptshortname)";
+$sql="INSERT INTO departments(DepartmentName,DepartmentCode,DepartmentShortName) VALUES(:deptname,:deptcode,:deptshortname)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':deptname',$deptname,PDO::PARAM_STR);
 $query->bindParam(':deptcode',$deptcode,PDO::PARAM_STR);

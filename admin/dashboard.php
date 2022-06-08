@@ -46,10 +46,10 @@ else{
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Total Regd Employee</span>
+                                <span class="card-title">Total Employees</span>
                                 <span class="stats-counter">
 <?php
-$sql = "SELECT id from tblemployees";
+$sql = "SELECT id from employees";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -65,9 +65,9 @@ $empcount=$query->rowCount();
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Listed Departments </span>
+                                <span class="card-title">Total Departments</span>
     <?php
-$sql = "SELECT id from tbldepartments";
+$sql = "SELECT id from departments";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -81,9 +81,9 @@ $dptcount=$query->rowCount();
                     <div class="col s12 m12 l4">
                         <div class="card stats-card">
                             <div class="card-content">
-                                <span class="card-title">Listed leave Type</span>
+                                <span class="card-title">Total Leave Types</span>
                                     <?php
-$sql = "SELECT id from  tblleavetype";
+$sql = "SELECT id from  leavetype";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -109,7 +109,7 @@ $leavtypcount=$query->rowCount();
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th width="200">Employe Name</th>
+                                            <th width="200">Employee Name</th>
                                             <th width="120">Leave Type</th>
 
                                              <th width="180">Posting Date</th>                 
@@ -119,7 +119,7 @@ $leavtypcount=$query->rowCount();
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT tblleaves.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.EmpId,tblemployees.id,tblleaves.LeaveType,tblleaves.PostingDate,tblleaves.Status from tblleaves join tblemployees on tblleaves.empid=tblemployees.id order by lid desc limit 6";
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc limit 6";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

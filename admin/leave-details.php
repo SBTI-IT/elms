@@ -13,7 +13,7 @@ $isread=1;
 $did=intval($_GET['leaveid']);  
 date_default_timezone_set('Asia/Kolkata');
 $admremarkdate=date('Y-m-d G:i:s ', strtotime("now"));
-$sql="update tblleaves set IsRead=:isread where id=:did";
+$sql="update leaves set IsRead=:isread where id=:did";
 $query = $dbh->prepare($sql);
 $query->bindParam(':isread',$isread,PDO::PARAM_STR);
 $query->bindParam(':did',$did,PDO::PARAM_STR);
@@ -27,7 +27,7 @@ $description=$_POST['description'];
 $status=$_POST['status'];   
 date_default_timezone_set('Asia/Kolkata');
 $admremarkdate=date('Y-m-d G:i:s ', strtotime("now"));
-$sql="update tblleaves set AdminRemark=:description,Status=:status,AdminRemarkDate=:admremarkdate where id=:did";
+$sql="update leaves set AdminRemark=:description,Status=:status,AdminRemarkDate=:admremarkdate where id=:did";
 $query = $dbh->prepare($sql);
 $query->bindParam(':description',$description,PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
@@ -103,7 +103,7 @@ $msg="Leave updated Successfully";
                                     <tbody>
 <?php 
 $lid=intval($_GET['leaveid']);
-$sql = "SELECT tblleaves.id as lid,tblemployees.FirstName,tblemployees.LastName,tblemployees.EmpId,tblemployees.id,tblemployees.Gender,tblemployees.Phonenumber,tblemployees.EmailId,tblleaves.LeaveType,tblleaves.ToDate,tblleaves.FromDate,tblleaves.Description,tblleaves.PostingDate,tblleaves.Status,tblleaves.AdminRemark,tblleaves.AdminRemarkDate from tblleaves join tblemployees on tblleaves.empid=tblemployees.id where tblleaves.id=:lid";
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,employees.Gender,employees.Phonenumber,employees.EmailId,leaves.LeaveType,leaves.ToDate,leaves.FromDate,leaves.Description,leaves.PostingDate,leaves.Status,leaves.AdminRemark,leaves.AdminRemarkDate from leaves join employees on leaves.empid=employees.id where leaves.id=:lid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':lid',$lid,PDO::PARAM_STR);
 $query->execute();

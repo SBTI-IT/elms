@@ -11,7 +11,7 @@ if(isset($_POST['add']))
 {
 $leavetype=$_POST['leavetype'];
 $description=$_POST['description'];
-$sql="INSERT INTO tblleavetype(LeaveType,Description) VALUES(:leavetype,:description)";
+$sql="INSERT INTO leavetype(LeaveType,Description) VALUES(:leavetype,:description)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
 $query->bindParam(':description',$description,PDO::PARAM_STR);
