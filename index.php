@@ -28,12 +28,12 @@ if($query->rowCount() > 0)
     } 
     else 
     {
-        if($_SESSION['roleID'] == 0)
+        if($_SESSION['roleID'] == 1)
         {
             echo "<script type='text/javascript'> document.location = 'admin/changepassword.php'; </script>";
             $_SESSION['alogin']=$_POST['username'];
         }   
-        else if($_SESSION['roleID'] == 1)
+        else if($_SESSION['roleID'] == 2)
         {
             echo "<script type='text/javascript'> document.location = 'emp-changepassword.php'; </script>";
             $_SESSION['emplogin']=$_POST['username'];
