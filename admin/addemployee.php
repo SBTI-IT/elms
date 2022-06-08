@@ -173,7 +173,7 @@ error:function (){}
 
 
  <div class="input-field col  s12">
-<label for="empcode">Employee Code(Must be unique)</label>
+<label for="empcode">Employee ID (Unique)</label>
 <input  name="empcode" id="empcode" onBlur="checkAvailabilityEmpid()" type="text" autocomplete="off" required>
 <span id="empid-availability" style="font-size:12px;"></span> 
 </div>
