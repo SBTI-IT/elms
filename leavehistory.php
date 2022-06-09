@@ -115,7 +115,7 @@ $dptcount=$query->rowCount();
                                             <th>To</th>
                                              <th>Description</th>
                                              <th width="120">Posting Date</th>
-                                            <th width="200">Admin Remak</th>
+                                            <th width="200">Admin Remark</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -142,7 +142,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->PostingDate);?></td>
                                             <td><?php if($result->AdminRemark=="")
                                             {
-echo htmlentities('waiting for approval');
+echo htmlentities('Waiting for approval');
                                             } else
 {
 
