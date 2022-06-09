@@ -75,7 +75,7 @@ else{
                                             <th>To</th>
                                              <th>Description</th>
                                              <th width="120">Posting Date</th>
-                                            <th width="200">Admin Remak</th>
+                                            <th width="200">Admin Remark</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
