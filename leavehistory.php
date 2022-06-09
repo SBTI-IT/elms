@@ -102,7 +102,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->PostingDate);?></td>
                                             <td><?php if($result->AdminRemark=="")
                                             {
-echo htmlentities('waiting for approval');
+echo htmlentities('Waiting for approval');
                                             } else
 {
 
