@@ -42,7 +42,7 @@ else{
             <main class="mn-inner">
                 <div class="middle-content">
                     <div class="row no-m-t no-m-b">
-                    <div class="col s12 m12 l4">
+                    <div class="col s12 m12 l3">
                         <div class="card stats-card">
                             <div class="card-content">
                             
@@ -61,7 +61,7 @@ $empcount=$query->rowCount();
                             <div id="sparkline-bar"></div>
                         </div>
                     </div>
-                        <div class="col s12 m12 l4">
+                        <div class="col s12 m12 l3">
                         <div class="card stats-card">
                             <div class="card-content">
                             
@@ -78,7 +78,26 @@ $dptcount=$query->rowCount();
                             <div id="sparkline-line"></div>
                         </div>
                     </div>
-                    <div class="col s12 m12 l4">
+                    <div class="col s12 m12 l3">
+                        <div class="card stats-card">
+                            <div class="card-content">
+                            
+                                <span class="card-title">Total Roles</span>
+                                <span class="stats-counter">
+<?php
+$sql = "SELECT id from roles";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$rolescount=$query->rowCount();
+?>
+
+                                    <span class="counter"><?php echo htmlentities($rolescount);?></span></span>
+                            </div>
+                            <div id="sparkline-bar"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l3">
                         <div class="card stats-card">
                             <div class="card-content">
                                 <span class="card-title">Total Leave Types</span>
