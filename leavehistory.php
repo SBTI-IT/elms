@@ -56,7 +56,7 @@ else{
             
        <?php include('includes/sidebar.php');?>
             <main class="mn-inner">
-                <!--MY CODE MY CODE MY CODE-->
+                
             <div class="row no-m-t no-m-b">
                     <div class="col s12 m12 l4">
                         <div class="card stats-card">
@@ -95,12 +95,9 @@ $dptcount=$query->rowCount();
                         </div>
                     </div>
                 </div>
-                <!--MY CODE MY CODE MY CODE-->
+                
                 <div class="row">
-                    <div class="col s12">
-                        <div class="page-title">Leave History</div>
-                    </div>
-                   
+                    
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
