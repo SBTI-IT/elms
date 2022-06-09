@@ -56,6 +56,46 @@ else{
             
        <?php include('includes/sidebar.php');?>
             <main class="mn-inner">
+                <!--MY CODE MY CODE MY CODE-->
+            <div class="row no-m-t no-m-b">
+                    <div class="col s12 m12 l4">
+                        <div class="card stats-card">
+                            <div class="card-content">
+                            
+                                <span class="card-title">Days Accumulated</span>
+                                <span class="stats-counter">
+<?php
+$sql = "SELECT id from employees";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$empcount=$query->rowCount();
+?>
+
+                                    <span class="counter"><?php echo htmlentities($empcount);?></span></span>
+                            </div>
+                            <div id="sparkline-bar"></div>
+                        </div>
+                    </div>
+                        <div class="col s12 m12 l4">
+                        <div class="card stats-card">
+                            <div class="card-content">
+                            
+                                <span class="card-title">Days Remaining</span>
+    <?php
+$sql = "SELECT id from departments";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$dptcount=$query->rowCount();
+?>                            
+                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($dptcount);?></span></span>
+                            </div>
+                            <div id="sparkline-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--MY CODE MY CODE MY CODE-->
                 <div class="row">
                     <div class="col s12">
                         <div class="page-title">Leave History</div>
