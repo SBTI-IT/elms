@@ -16,9 +16,17 @@ $todate=$_POST['todate'];
 $description=$_POST['description'];  
 $status=0;
 $isread=0;
-if($fromdate > $todate){
-                $error=" ToDate should be greater than FromDate ";
-           }
+if($fromdate > $todate)
+{
+    $error=" ToDate should be greater than FromDate ";
+}
+$tdate = date_create($todate);
+$fdate = date_create($fromdate);
+
+//$days = date_diff($tdate, $fdate);
+
+echo $fdate;
+
 $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:status,:isread,:empid)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);

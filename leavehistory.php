@@ -65,14 +65,14 @@ else{
                                 <span class="card-title">Days Accumulated</span>
                                 <span class="stats-counter">
 <?php
-$sql = "SELECT id from employees";
+$sql = "SELECT * from employees";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
-$empcount=$query->rowCount();
+foreach($results as $result)
 ?>
 
-                                    <span class="counter"><?php echo htmlentities($empcount);?></span></span>
+                                    <span class="counter"><?php echo htmlentities($result->AccumDays);?></span></span>
                             </div>
                             <div id="sparkline-bar"></div>
                         </div>
@@ -83,13 +83,13 @@ $empcount=$query->rowCount();
                             
                                 <span class="card-title">Days Remaining</span>
     <?php
-$sql = "SELECT id from departments";
+$sql = "SELECT * from employees";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
-$dptcount=$query->rowCount();
+foreach($results as $result)
 ?>                            
-                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($dptcount);?></span></span>
+                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($result->RemDays);?></span></span>
                             </div>
                             <div id="sparkline-line"></div>
                         </div>
@@ -154,7 +154,7 @@ if($stats==1){
                                                  <?php } if($stats==2)  { ?>
                                                 <span style="color: red">Not Approved</span>
                                                  <?php } if($stats==0)  { ?>
- <span style="color: blue">waiting for approval</span>
+ <span style="color: blue">Waiting for approval</span>
  <?php } ?>
 
                                              </td>
