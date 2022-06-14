@@ -2,13 +2,42 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+//MY CODE MY CODE
+
+//MY CODE MY CODE
 if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
 }
 else{
-if(isset($_POST['apply']))
+    //MY CODE MY CODE
+    $statusMsg = '';
+
+    // File upload path
+    $targetDir = "uploads/";
+    $fileName = basename($_FILES["file"]["name"]);
+    $targetFilePath = $targetDir . $fileName;
+    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    //MY CODE MY CODE
+if(isset($_POST['apply']) && !empty($_FILES["file"]["name"]))
 {
+    //MY CODE MY CODE
+    $allowTypes = array('jpg','png','jpeg','gif','pdf');
+    if(in_array($fileType, $allowTypes)){
+        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
+            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,file_name,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:file,:status,:isread,:empid)";
+            if($sql){
+                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+            }else{
+                $statusMsg = "File upload failed, please try again.";
+            } 
+        }else{
+            $statusMsg = "Sorry, there was an error uploading your file.";
+        }
+    }else{
+        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+    }
+    //MY CODE MY CODE
 $empid=$_SESSION['eid'];
  $leavetype=$_POST['leavetype'];
 $fromdate=$_POST['fromdate'];  
@@ -19,12 +48,13 @@ $isread=0;
 if($fromdate > $todate){
                 $error=" ToDate should be greater than FromDate ";
            }
-$sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:status,:isread,:empid)";
+
 $query = $dbh->prepare($sql);
 $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
 $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
 $query->bindParam(':todate',$todate,PDO::PARAM_STR);
 $query->bindParam(':description',$description,PDO::PARAM_STR);
+$query->bindParam(':file',$fileName,PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->bindParam(':isread',$isread,PDO::PARAM_STR);
 $query->bindParam(':empid',$empid,PDO::PARAM_STR);
@@ -39,7 +69,12 @@ else
 $error="Something went wrong. Please try again";
 }
 
+}//MY CODE MY CODE
+else{
+    $statusMsg = 'Please select a file to upload.';
 }
+echo $statusMsg;
+//MY CODE MY CODE
 
     ?>
 
@@ -139,6 +174,17 @@ foreach($results as $result)
 
 <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
 </div>
+<!--MY CODE MY CODE-->
+<div class="input-field col m12 s12">
+<label for="">Additional Documents</label>    
+</div>
+
+<div class="input-field col m12 s12" align="center">
+<input type="file" name="file">
+</div>
+
+
+<!--MY CODE MY CODE-->
 </div>
       <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
 
