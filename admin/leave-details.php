@@ -116,7 +116,7 @@ foreach($results as $result)
       ?>  
 
                                         <tr>
-                                            <td style="font-size:16px;"> <b>Employe Name :</b></td>
+                                            <td style="font-size:16px;"> <b>EmployeeName :</b></td>
                                               <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank">
                                                 <?php echo htmlentities($result->FirstName." ".$result->LastName);?></a></td>
                                               <td style="font-size:16px;"><b>Emp Id :</b></td>
@@ -144,7 +144,7 @@ foreach($results as $result)
                                         </tr>
 
 <tr>
-                                             <td style="font-size:16px;"><b>Employe Leave Description : </b></td>
+                                             <td style="font-size:16px;"><b>EmployeeLeave Description : </b></td>
                                             <td colspan="5"><?php echo htmlentities($result->Description);?></td>
                                           
                                         </tr>
