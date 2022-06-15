@@ -104,7 +104,7 @@ $msg="Employee record updated Successfully";
                                                     <div class="col m6">
                                                         <div class="row">
 <?php 
-$eid=$_SESSION['emplogin'];
+$eid=$_SESSION['superlogin'];
 $sql = "SELECT * from  employees where EmailId=:eid";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':eid',$eid, PDO::PARAM_STR);
