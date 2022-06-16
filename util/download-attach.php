@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attachment</title>
+</head>
+<body>
 <?php
     if(!empty($_GET['file']))
     {
@@ -16,7 +25,10 @@
             readfile($filePath);
             exit;
         }else{
-            echo 'The file does not exist.';
+            echo "<h2>File attachment was removed from server.</h2>";
+            echo "<h3>Contact IT support for further assistance</h3>";
         }
     }
 ?>
+</body>
+</html>
