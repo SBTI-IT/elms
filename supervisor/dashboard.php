@@ -138,7 +138,9 @@ $leavtypcount=$query->rowCount();
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc limit 6";
+<?php 
+
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id and leaves.empid<>".$_SESSION['eid']." order by lid desc limit 6";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
