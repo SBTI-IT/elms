@@ -43,7 +43,7 @@ $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 $query->bindParam(':roleid',$roleID, PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();
-$msg="Employee record updated Successfully";
+$msg="Employee record updated successfully";
 }
 
     ?>
@@ -216,7 +216,7 @@ foreach($results as $resultt)
                         case 3: $rname = "Supervisor"; break;
                     }
                     echo htmlentities($rname);
-                    
+
                 ?>"><?php echo htmlentities($rname);?></option>
 <!-- Populate list --> 
 <?php $sql = "SELECT Name from roles";
