@@ -9,72 +9,61 @@ if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
 }
-else{
-    //MY CODE MY CODE
-    $statusMsg = '';
-
-    // File upload path
-    $targetDir = "uploads/";
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-    //MY CODE MY CODE
-if(isset($_POST['apply']) && !empty($_FILES["file"]["name"]))
+else
 {
-    //MY CODE MY CODE
-    $allowTypes = array('jpg','png','jpeg','gif','pdf');
-    if(in_array($fileType, $allowTypes)){
-        if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,file_name,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:file,:status,:isread,:empid)";
-            if($sql){
-                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-            }else{
-                $statusMsg = "File upload failed, please try again.";
-            } 
-        }else{
-            $statusMsg = "Sorry, there was an error uploading your file.";
-        }
-    }else{
-        $statusMsg = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
-    }
-    //MY CODE MY CODE
-$empid=$_SESSION['eid'];
- $leavetype=$_POST['leavetype'];
-$fromdate=$_POST['fromdate'];  
-$todate=$_POST['todate'];
-$description=$_POST['description'];  
-$status=0;
-$isread=0;
-if($fromdate > $todate){
+    if( isset($_POST['apply']) )
+    {
+        // File name
+        $fileName = $_FILES['file']['name'];
+        // File upload path
+        $targetDir = "attachments/" . basename($fileName);
+        $fileType = pathinfo($targetDir, PATHINFO_EXTENSION);
+        
+        if( isset($fileName) )
+        {
+            $allowTypes = array('jpg','png','jpeg','gif','pdf');
+            if(in_array($fileType, $allowTypes))
+            {
+                if( move_uploaded_file($_FILES['file']['tmp_name'], $targetDir) )
+                    $msg = "The file ".$fileName. " has been uploaded successfully."; 
+                else
+                    $error = "Sorry, there was an error uploading your file.";
+            } else {
+                $error = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+            }
+
+            $empid=$_SESSION['eid'];
+            $leavetype=$_POST['leavetype'];
+            $fromdate=$_POST['fromdate'];  
+            $todate=$_POST['todate'];
+            $description=$_POST['description']; 
+            $status=0;
+            $isread=0;
+
+            if($fromdate > $todate)
                 $error=" ToDate should be greater than FromDate ";
-           }
 
-$query = $dbh->prepare($sql);
-$query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-$query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-$query->bindParam(':todate',$todate,PDO::PARAM_STR);
-$query->bindParam(':description',$description,PDO::PARAM_STR);
-$query->bindParam(':file',$fileName,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->bindParam(':isread',$isread,PDO::PARAM_STR);
-$query->bindParam(':empid',$empid,PDO::PARAM_STR);
-$query->execute();
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$msg="Leave applied successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
+            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Attachment,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:attachment,:status,:isread,:empid)";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+            $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+            $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+            $query->bindParam(':description',$description,PDO::PARAM_STR);
+            $query->bindParam(':attachment',basename($fileName),PDO::PARAM_STR);
+            $query->bindParam(':status',$status,PDO::PARAM_STR);
+            $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+            $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+            $query->execute();
+            $lastInsertId = $dbh->lastInsertId();
 
-}//MY CODE MY CODE
-else{
-    $statusMsg = 'Please select a file to upload.';
-}
-echo $statusMsg;
-//MY CODE MY CODE
+            if($lastInsertId)
+                $msg="Leave applied successfully";
+            else 
+                $error="Something went wrong. Please try again";
+        }
+        else
+            $error = "Please attach additional documents";
+    }
 
     ?>
 
@@ -131,7 +120,7 @@ echo $statusMsg;
                     <div class="col s12 m12 l8">
                         <div class="card">
                             <div class="card-content">
-                                <form id="example-form" method="post" name="addemp">
+                                <form id="example-form" method="post" name="addemp" enctype="multipart/form-data">
                                     <div>
                                         <h3>Apply for Leave</h3>
                                         <section>
@@ -139,60 +128,49 @@ echo $statusMsg;
                                                 <div class="row">
                                                     <div class="col m12">
                                                         <div class="row">
-     <?php if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+                                                            <?php if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php echo htmlentities($error); ?> </div><?php } 
+                                                                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 
+                                                                <div class="input-field col s12">
+                                                                <select  name="leavetype" autocomplete="off">
+                                                                <option value="">Select leave type...</option>
+                                                                <?php $sql = "SELECT  LeaveType from leavetype";
+                                                                $query = $dbh->prepare($sql);
+                                                                $query->execute();
+                                                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                                                $cnt=1;
+                                                                if($query->rowCount() > 0)
+                                                                {
+                                                                foreach($results as $result)
+                                                                {   ?>                                            
+                                                                <option value="<?php echo htmlentities($result->LeaveType);?>"><?php echo htmlentities($result->LeaveType);?></option>
+                                                                <?php }} ?>
+                                                                </select>
+                                                                </div>
+                                                                
+                                                                <div class="input-field col m6 s12">
+                                                                <label for="fromdate">From  Date</label>
+                                                                <input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                </div>
+                                                                <div class="input-field col m6 s12">
+                                                                <label for="todate">To Date</label>
+                                                                <input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                </div>
+                                                                <div class="input-field col m12 s12">
+                                                                <label for="birthdate">Description</label>    
 
- <div class="input-field col  s12">
-<select  name="leavetype" autocomplete="off">
-<option value="">Select leave type...</option>
-<?php $sql = "SELECT  LeaveType from leavetype";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{   ?>                                            
-<option value="<?php echo htmlentities($result->LeaveType);?>"><?php echo htmlentities($result->LeaveType);?></option>
-<?php }} ?>
-</select>
-</div>
-
-
-<div class="input-field col m6 s12">
-<label for="fromdate">From  Date</label>
-<input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
-</div>
-<div class="input-field col m6 s12">
-<label for="todate">To Date</label>
-<input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
-</div>
-<div class="input-field col m12 s12">
-<label for="birthdate">Description</label>    
-
-<textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
-</div>
-<!--MY CODE MY CODE-->
-<div class="input-field col m12 s12">
-<label for="">Additional Documents</label>    
-</div>
-
-<div class="input-field col m12 s12" align="center">
-<input type="file" name="file">
-</div>
-
-
-<!--MY CODE MY CODE-->
-</div>
-      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
-
-                                                </div>
+                                                                <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
+                                                                </div>
+                                                                <!--MY CODE MY CODE -->
+                                                                <div class="col m12 s12">
+                                                                    <label for="file">Additional Documents </label>
+                                                                    <input id="file" type="file" name="file">    
+                                                                </div>
+                                                        </div>
+                                                            <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
+                                                    </div>
                                             </div>
                                         </section>
-                                     
-                                    
                                         </section>
                                     </div>
                                 </form>
