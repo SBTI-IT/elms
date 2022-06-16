@@ -27,10 +27,8 @@ $status=1;
 switch($rolename)
 {
     case "Administrator":
-        $roleID = 0; break;
-    case "Employee":
         $roleID = 1; break;
-    case "Supervisor":
+    case "Employee":
         $roleID = 2; break;
 }
 
