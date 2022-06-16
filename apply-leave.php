@@ -2,9 +2,7 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-//MY CODE MY CODE
 
-//MY CODE MY CODE
 if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
