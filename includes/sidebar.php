@@ -5,6 +5,7 @@
                             <img src="assets/images/profile-image.png" class="circle" alt="">
                         </div>
                         <div class="sidebar-profile-info">
+                            <p>Employee</p>
                     <?php
 $eid=$_SESSION['eid'];
 $sql = "SELECT FirstName,LastName,EmpId from  employees where id=:eid";
