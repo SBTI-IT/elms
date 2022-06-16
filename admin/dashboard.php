@@ -58,7 +58,9 @@ $empcount=$query->rowCount();
 
                                     <span class="counter"><?php echo htmlentities($empcount);?></span></span>
                             </div>
-                            <div id="sparkline-bar"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:14.3%"></div>
+                            </div>
                         </div>
                     </div>
                         <div class="col s12 m12 l3">
@@ -75,7 +77,9 @@ $dptcount=$query->rowCount();
 ?>                            
                                 <span class="stats-counter"><span class="counter"><?php echo htmlentities($dptcount);?></span></span>
                             </div>
-                            <div id="sparkline-line"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:57%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col s12 m12 l3">
@@ -94,7 +98,10 @@ $rolescount=$query->rowCount();
 
                                     <span class="counter"><?php echo htmlentities($rolescount);?></span></span>
                             </div>
-                            <div id="sparkline-bar"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:100%"></div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="col s12 m12 l3">
@@ -112,7 +119,7 @@ $leavtypcount=$query->rowCount();
                       
                             </div>
                             <div class="progress stats-card-progress">
-                                <div class="determinate" style="width: 70%"></div>
+                                <div class="determinate" style="width:100%"></div>
                             </div>
                         </div>
                     </div>
