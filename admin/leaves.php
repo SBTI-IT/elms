@@ -16,7 +16,7 @@ else{
     <head>
         
         <!-- Title -->
-        <title>Admin | Total Leave </title>
+        <title>Admin | All Leave </title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta charset="UTF-8">
@@ -72,7 +72,7 @@ else{
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th width="200">EmployeeName</th>
+                                            <th width="200">Employee Name</th>
                                             <th width="120">Leave Type</th>
 
                                              <th width="180">Posting Date</th>                 
@@ -94,29 +94,24 @@ if($query->rowCount() > 0)
 {
 foreach($results as $result)
 {         
-      ?>  
-
+                                        ?>  
                                         <tr>
                                             <td> <b><?php echo htmlentities($cnt);?></b></td>
-                                              <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank"><?php echo htmlentities($result->FirstName." ".$result->LastName);?>(<?php echo htmlentities($result->EmpId);?>)</a></td>
+                                            <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank"><?php echo htmlentities($result->FirstName." ".$result->LastName);?> (<?php echo htmlentities($result->EmpId);?>)</a></td>
                                             <td><?php echo htmlentities($result->LeaveType);?></td>
                                             <td><?php echo htmlentities($result->PostingDate);?></td>
-                                                                       <td><?php $stats=$result->Status;
-if($stats==1){
+                                            <td><?php $stats=$result->Status;
+                                            if($stats==1){
                                              ?>
                                                  <span style="color: green">Approved</span>
                                                  <?php } if($stats==2)  { ?>
                                                 <span style="color: red">Not Approved</span>
                                                  <?php } if($stats==0)  { ?>
- <span style="color: blue">waiting for approval</span>
- <?php } ?>
-
-
-                                             </td>
-
-          <td>
-           <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
-                                    </tr>
+                                                <span style="color: blue">Waiting for approval</span>
+                                                <?php } ?>
+                                            </td>
+                                            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
+                                        </tr>
                                          <?php $cnt++;} }?>
                                     </tbody>
                                 </table>
