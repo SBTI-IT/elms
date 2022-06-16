@@ -11,34 +11,31 @@ else{
 // code for update the read notification status
 $isread=1;
 $did=intval($_GET['leaveid']);  
-date_default_timezone_set('Asia/Kolkata');
-$admremarkdate=date('Y-m-d G:i:s ', strtotime("now"));
+date_default_timezone_set('Africa/Johannesburg');
+$admremarkdate=date('d-m-Y G:i:s ', strtotime("now"));
 $sql="update leaves set IsRead=:isread where id=:did";
 $query = $dbh->prepare($sql);
 $query->bindParam(':isread',$isread,PDO::PARAM_STR);
 $query->bindParam(':did',$did,PDO::PARAM_STR);
 $query->execute();
 
-// code for action taken on leave
-if(isset($_POST['update']))
-{ 
-$did=intval($_GET['leaveid']);
-$description=$_POST['description'];
-$status=$_POST['status'];   
-date_default_timezone_set('Asia/Kolkata');
-$admremarkdate=date('Y-m-d G:i:s ', strtotime("now"));
-$sql="update leaves set AdminRemark=:description,Status=:status,AdminRemarkDate=:admremarkdate where id=:did";
-$query = $dbh->prepare($sql);
-$query->bindParam(':description',$description,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->bindParam(':admremarkdate',$admremarkdate,PDO::PARAM_STR);
-$query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
-$msg="Leave updated Successfully";
-}
-
-
-
+    // code for action taken on leave
+    if(isset($_POST['update']))
+    { 
+        $did=intval($_GET['leaveid']);
+        $description=$_POST['description'];
+        $status=$_POST['status'];   
+        date_default_timezone_set('Africa/Johannesburg');
+        $admremarkdate=date('d-m-Y G:i:s ', strtotime("now"));
+        $sql="update leaves set AdminRemark=:description,Status=:status,AdminRemarkDate=:admremarkdate where id=:did";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':admremarkdate',$admremarkdate,PDO::PARAM_STR);
+        $query->bindParam(':did',$did,PDO::PARAM_STR);
+        $query->execute();
+        $msg="Leave updated successfully";
+    }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +100,7 @@ $msg="Leave updated Successfully";
                                     <tbody>
 <?php 
 $lid=intval($_GET['leaveid']);
-$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,employees.Gender,employees.Phonenumber,employees.EmailId,leaves.LeaveType,leaves.ToDate,leaves.FromDate,leaves.Description,leaves.PostingDate,leaves.Status,leaves.AdminRemark,leaves.AdminRemarkDate from leaves join employees on leaves.empid=employees.id where leaves.id=:lid";
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,employees.Gender,employees.Phonenumber,employees.EmailId,leaves.LeaveType,leaves.ToDate,leaves.FromDate,leaves.Description,leaves.Attachment,leaves.PostingDate,leaves.Status,leaves.AdminRemark,leaves.AdminRemarkDate from leaves join employees on leaves.empid=employees.id where leaves.id=:lid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':lid',$lid,PDO::PARAM_STR);
 $query->execute();
@@ -113,61 +110,65 @@ if($query->rowCount() > 0)
 {
 foreach($results as $result)
 {         
-      ?>  
+    ?>  
+        <tr>
+            <td style="font-size:16px;"> <b>Employee Name :</b></td>
+                <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank">
+                <?php echo htmlentities($result->FirstName." ".$result->LastName);?></a></td>
+                <td style="font-size:16px;"><b>Emp ID :</b></td>
+                <td><?php echo htmlentities($result->EmpId);?></td>
+                <td style="font-size:16px;"><b>Gender :</b></td>
+                <td><?php echo htmlentities($result->Gender);?>
+            </td>
+        </tr>
 
-                                        <tr>
-                                            <td style="font-size:16px;"> <b>EmployeeName :</b></td>
-                                              <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank">
-                                                <?php echo htmlentities($result->FirstName." ".$result->LastName);?></a></td>
-                                              <td style="font-size:16px;"><b>Emp Id :</b></td>
-                                              <td><?php echo htmlentities($result->EmpId);?></td>
-                                              <td style="font-size:16px;"><b>Gender :</b></td>
-                                              <td><?php echo htmlentities($result->Gender);?></td>
-                                          </tr>
+        <tr>
+            <td style="font-size:16px;"><b>Emp Email ID :</b></td>
+        <td><?php echo htmlentities($result->EmailId);?></td>
+            <td style="font-size:16px;"><b>Emp Contact No.:</b></td>
+        <td><?php echo htmlentities($result->Phonenumber);?></td>
+        <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
 
-                                          <tr>
-                                             <td style="font-size:16px;"><b>Emp Email id :</b></td>
-                                            <td><?php echo htmlentities($result->EmailId);?></td>
-                                             <td style="font-size:16px;"><b>Emp Contact No. :</b></td>
-                                            <td><?php echo htmlentities($result->Phonenumber);?></td>
-                                            <td>&nbsp;</td>
-                                             <td>&nbsp;</td>
-                                        </tr>
+        <tr>
+            <td style="font-size:16px;"><b>Leave Type :</b></td>
+            <td><?php echo htmlentities($result->LeaveType);?></td>
+                <td style="font-size:16px;"><b>Leave Date :</b></td>
+            <td>From <?php echo htmlentities($result->ToDate);?> to <?php echo htmlentities($result->FromDate);?></td>
+            <td style="font-size:16px;"><b>Posting Date</b></td>
+            <td><?php echo htmlentities($result->PostingDate);?></td>
+        </tr>
 
-  <tr>
-                                             <td style="font-size:16px;"><b>Leave Type :</b></td>
-                                            <td><?php echo htmlentities($result->LeaveType);?></td>
-                                             <td style="font-size:16px;"><b>Leave Date . :</b></td>
-                                            <td>From <?php echo htmlentities($result->FromDate);?> to <?php echo htmlentities($result->ToDate);?></td>
-                                            <td style="font-size:16px;"><b>Posting Date</b></td>
-                                           <td><?php echo htmlentities($result->PostingDate);?></td>
-                                        </tr>
+        <tr>
+            <td style="font-size:16px;"><b>Employee Leave Description : </b></td>
+            <td colspan="5"><?php echo htmlentities($result->Description);?></td>            
+        </tr>
 
+        <tr>
+            <td style="font-size:16px;"><b>Attachment :</b></td>
+            <td colspan="5"><a href="../util/download-attach.php?file=<?php echo htmlentities($result->Attachment);?>" target ="_blank">
+            <?php echo htmlentities($result->Attachment);?></a></td>                             
+        </tr>
+    <tr>
+        <td style="font-size:16px;"><b>Leave Status :</b></td>
+        <td colspan="5"><?php $stats=$result->Status;
+        
+        if($stats==1){
+        ?>
+            <span style="color: green">Approved</span>
+            <?php } if($stats==2)  { ?>
+            <span style="color: red">Not Approved</span>
+            <?php } if($stats==0)  { ?>
+            <span style="color: blue">Waiting for approval</span>
+        <?php } ?>
+        </td>
+    </tr>
 <tr>
-                                             <td style="font-size:16px;"><b>EmployeeLeave Description : </b></td>
-                                            <td colspan="5"><?php echo htmlentities($result->Description);?></td>
-                                          
-                                        </tr>
-
-<tr>
-<td style="font-size:16px;"><b>leave Status :</b></td>
-<td colspan="5"><?php $stats=$result->Status;
-if($stats==1){
-?>
-<span style="color: green">Approved</span>
- <?php } if($stats==2)  { ?>
-<span style="color: red">Not Approved</span>
-<?php } if($stats==0)  { ?>
- <span style="color: blue">waiting for approval</span>
- <?php } ?>
-</td>
-</tr>
-
-<tr>
-<td style="font-size:16px;"><b>Admin Remark: </b></td>
+<td style="font-size:16px;"><b>Admin Remark : </b></td>
 <td colspan="5"><?php
 if($result->AdminRemark==""){
-  echo "waiting for Approval";  
+  echo "Waiting for approval";  
 }
 else{
 echo htmlentities($result->AdminRemark);
@@ -176,7 +177,7 @@ echo htmlentities($result->AdminRemark);
  </tr>
 
  <tr>
-<td style="font-size:16px;"><b>Admin Action taken date : </b></td>
+<td style="font-size:16px;"><b>Admin Action taken on : </b></td>
 <td colspan="5"><?php
 if($result->AdminRemarkDate==""){
   echo "NA";  
@@ -203,7 +204,7 @@ if($stats==0)
                                             <option value="1">Approved</option>
                                             <option value="2">Not Approved</option>
                                         </select></p>
-                                        <p><textarea id="textarea1" name="description" class="materialize-textarea" name="description" placeholder="Description" length="500" maxlength="500" required></textarea></p>
+                                        <p><textarea id="textarea1" name="description" class="materialize-textarea" name="description" placeholder="Description" length="500" maxlength="500"></textarea></p>
     </div>
     <div class="modal-footer" style="width:90%">
        <input type="submit" class="waves-effect waves-light btn orange m-b-xs" name="update" value="Submit">
