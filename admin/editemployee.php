@@ -24,10 +24,9 @@ $rolename=$_POST['role'];
 
 switch($rolename)
 {
-    case "Administrator":
-        $roleID = 0; break;
-    case "Employee":
-        $roleID = 1; break;
+    case "Administrator": $roleID = 1; break;
+    case "Employee": $roleID = 2; break;
+    case "Supervisor": $roleID = 3; break;
 }
 
 $sql="update employees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno,RoleID=:roleid where id=:eid";
@@ -107,8 +106,8 @@ $msg="Employee record updated Successfully";
                                 <form id="example-form" method="post" name="updatemp">
                                     <div>
                                         <h3>Update Employee Info</h3>
-                                           <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                           <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>: <?php echo htmlentities($error); ?> </div><?php } 
+                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                         <section>
                                             <div class="wizard-content">
                                                 <div class="row">
@@ -210,11 +209,12 @@ foreach($results as $resultt)
 <div class="input-field col s12">
 <select  name="role" autocomplete="off">
 <option value="<?php 
-                    if($result->RoleID == 0)
-                        $rname = "Administrator";
-                    else if($result->RoleID == 1)
-                        $rname = "Employee";
-
+                    switch($result->RoleID)
+                    {
+                        case 1: $rname = "Administrator"; break;
+                        case 2: $rname = "Employee"; break;
+                        case 3: $rname = "Supervisor"; break;
+                    }
                     echo htmlentities($rname);
                     
                 ?>"><?php echo htmlentities($rname);?></option>
