@@ -51,7 +51,7 @@
                             </a>
                         </section>
                         <div class="header-title col s3">      
-                            <span class="chapter-title">ELMS | Supervisor</span>
+                            <span class="chapter-title">ELMS | Employee</span>
                         </div>
                     </div>
                 </nav>
