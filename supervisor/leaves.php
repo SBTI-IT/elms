@@ -16,7 +16,7 @@ else{
     <head>
         
         <!-- Title -->
-        <title>Supervisor | Total Leave </title>
+        <title>Supervisor | All Leave </title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta charset="UTF-8">
@@ -65,12 +65,10 @@ else{
                    
                     <div class="col s12 m12 l12">
                         <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">Leave History</span>
-                                
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                            <div class="card-content">  
+                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="example" class="display responsive-table ">
-                                <a href="#">Export to Excel</a>
+                                <a href="../export-table.php">Excel<i class="material-icons">file_download</i></a><br><br>
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -85,7 +83,7 @@ else{
                                  
                                     <tbody>
 
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc";
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id";
 
 $query = $dbh -> prepare($sql);
 //$query->bindParam(':eid',$eid,PDO::PARAM_STR);
@@ -110,13 +108,8 @@ if($stats==1){
                                                  <?php } if($stats==2)  { ?>
                                                 <span style="color: red">Not Approved</span>
                                                  <?php } if($stats==0)  { ?>
- <span style="color: blue">waiting for approval</span>
- <?php } ?>
-
-
-                                             </td>
-
-          <td>
+ <span style="color: blue">Waiting for approval</span>
+ <?php } ?></td>
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>
