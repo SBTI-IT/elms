@@ -37,7 +37,12 @@ if($query->rowCount() > 0)
         {
             echo "<script type='text/javascript'> document.location = 'leavehistory.php'; </script>";
             $_SESSION['emplogin']=$_POST['username'];
-        }      
+        }
+        else if($_SESSION['roleID'] == 3)
+        {
+            echo "<script type='text/javascript'> document.location = 'supervisor/dashboard.php'; </script>";
+            $_SESSION['superlogin']=$_POST['username'];
+        }        
     } 
 }
 else
