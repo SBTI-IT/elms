@@ -79,8 +79,8 @@ $msg="Role updated successfully";
                               
                                 <div class="row">
                                     <form class="col s12" name="chngpwd" method="post">
-                                          <?php if($error){?><div class="errorWrap"><strong>ERROR</strong> : <?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                          <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>: <?php echo htmlentities($error); ?> </div><?php } 
+                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
 <?php
 $lid=intval($_GET['lid']);
 $sql = "SELECT * from roles where id=:lid";

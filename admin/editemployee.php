@@ -25,8 +25,8 @@ $rolename=$_POST['role'];
 switch($rolename)
 {
     case "Administrator": $roleID = 1; break;
-    case "Employee": $roleID = 2; break;
-    case "Supervisor": $roleID = 3; break;
+    case "Supervisor": $roleID = 2; break;
+    case "Employee": $roleID = 3; break;
 }
 
 $sql="update employees set FirstName=:fname,LastName=:lname,Gender=:gender,Dob=:dob,Department=:department,Address=:address,City=:city,Country=:country,Phonenumber=:mobileno,RoleID=:roleid where id=:eid";
@@ -212,8 +212,8 @@ foreach($results as $resultt)
                     switch($result->RoleID)
                     {
                         case 1: $rname = "Administrator"; break;
-                        case 2: $rname = "Employee"; break;
-                        case 3: $rname = "Supervisor"; break;
+                        case 2: $rname = "Supervisor"; break;
+                        case 3: $rname = "Employee"; break;      
                     }
                     echo htmlentities($rname);
 
