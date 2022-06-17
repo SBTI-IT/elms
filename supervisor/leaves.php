@@ -34,6 +34,8 @@ else{
         <!-- Theme Styles -->
         <link href="../assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/css/custom.css" rel="stylesheet" type="text/css"/>
+
+        
 <style>
         .errorWrap {
     padding: 10px;
@@ -52,6 +54,7 @@ else{
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
         </style>
+        <script src="table2excel.js"> </script>
     </head>
     <body>
        <?php include('includes/header.php');?>
@@ -67,8 +70,8 @@ else{
                         <div class="card">
                             <div class="card-content">  
                                 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
-                                <table id="example" class="display responsive-table ">
-                                <a href="../export-table.php">Excel<i class="material-icons">file_download</i></a><br><br>
+                                <table id="dataTable" class="display responsive-table ">
+                                <a href="" id="downloadexcel"><i class="material-icons">file_download</i>EXCEL</a><br><br>
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -124,6 +127,13 @@ if($stats==1){
         </div>
         <div class="left-sidebar-hover"></div>
         
+        <script>
+        document.getElementById('downloadexcel').addEventListener('click', function() {
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("#dataTable"));
+      });
+   </script>
+
         <!-- Javascripts -->
         <script src="../assets/plugins/jquery/jquery-2.2.0.min.js"></script>
         <script src="../assets/plugins/materialize/js/materialize.min.js"></script>
@@ -134,6 +144,7 @@ if($stats==1){
         <script src="../assets/js/pages/table-data.js"></script>
          <script src="assets/js/pages/ui-modals.js"></script>
         <script src="assets/plugins/google-code-prettify/prettify.js"></script>
+        <script src="table2excel.js"></script>
         
     </body>
 </html>
