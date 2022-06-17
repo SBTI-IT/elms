@@ -9,7 +9,7 @@
                         <p>Supervisor</p>
                         <?php
                             $eid=$_SESSION['eid'];
-                            $sql = "SELECT FirstName,LastName,EmpId from  employees where id=:eid";
+                            $sql = "SELECT FirstName,LastName,EmpId,Department from  employees where id=:eid";
                             $query = $dbh -> prepare($sql);
                             $query->bindParam(':eid',$eid,PDO::PARAM_STR);
                             $query->execute();
@@ -21,7 +21,7 @@
                             {               
                         ?>
                                 <p><?php echo htmlentities($result->FirstName." ".$result->LastName);?></p>
-                                <span><?php echo htmlentities($result->EmpId)?></span>
+                                <span><?php echo htmlentities($result->Department)?></span>
                          <?php }} ?>
                          
                         
