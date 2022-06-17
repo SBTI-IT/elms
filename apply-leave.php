@@ -19,7 +19,7 @@ else
         
         if( isset($fileName) )
         {
-            $allowTypes = array('jpg','png','jpeg','gif','pdf');
+            $allowTypes = array('jpg','png','docx','pdf');
             if(in_array($fileType, $allowTypes))
             {
                 if( move_uploaded_file($_FILES['file']['tmp_name'], $targetDir) )
