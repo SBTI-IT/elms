@@ -62,17 +62,17 @@ else{
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Days Accumulated</span>
+                                <span class="card-title">Leave Days Used</span>
                                 <span class="stats-counter">
 <?php
-$sql = "SELECT * from employees";
+$sql = "SELECT * from leaves";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)
 ?>
 
-                                    <span class="counter"><?php echo htmlentities($result->AccumDays);?></span></span>
+                                    <span class="counter"><?php echo htmlentities($result->usedDays);?></span></span>
                             </div>
                             <div id="sparkline-bar"></div>
                         </div>
@@ -81,15 +81,15 @@ foreach($results as $result)
                         <div class="card stats-card">
                             <div class="card-content">
                             
-                                <span class="card-title">Days Remaining</span>
+                                <span class="card-title">Leave Days Remaining</span>
     <?php
-$sql = "SELECT * from employees";
+$sql = "SELECT * from leaves";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)
 ?>                            
-                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($result->RemDays);?></span></span>
+                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($result->leftDays);?></span></span>
                             </div>
                             <div id="sparkline-line"></div>
                         </div>

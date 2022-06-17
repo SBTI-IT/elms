@@ -16,6 +16,7 @@ $todate=$_POST['todate'];
 $description=$_POST['description'];  
 $status=0;
 $isread=0;
+
 if($fromdate > $todate)
 {
     $error=" ToDate should be greater than FromDate ";
@@ -25,18 +26,136 @@ $fdate = date_create($fromdate);
 
 //$days = date_diff($tdate, $fdate);
 
-echo $fdate;
+//echo $fdate;
+    if($leavetype == "Annual")
+    {
+        
+        $sql = "SELECT  leaves.leftDays, leaves.usedDays, leavetype.days FROM leavetype, leaves WHERE leaves.LeaveType = leavetype.LeaveType AND leaves.empid= '$empid'";
+        $result = mysqli_query($connection, $sql);
+        if(mysqli_num_rows($result))
+        {
+            foreach($result as $person)
+            {
+                $result1 = $person["usedDays"];
+                $result2 = $person["leftDays"];
+                $result3 = $person["days"];
+            }
+            //$dataDays;
+           
+        }
+        //$days = 21;
+        $todateS = strtotime($tdate);
+        $fromdateS = strtotime($fdate);
+        $datadays = $todate - $fromdate;
+        $leftDays = $result3 - $datadays;
+        $usedDays  = $result2 + $datadays;
+        
+        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':leftDays',$leftDays,PDO::PARAM_STR);
+        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+        $query->execute();
+        
+        $sql = "UPDATE leaves SET leftDays=:leftDays WHERE empid=:empid";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leftDays',$leftDays,PDO::PARAM_STR);
+        $query->execute();
 
-$sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:status,:isread,:empid)";
-$query = $dbh->prepare($sql);
-$query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-$query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-$query->bindParam(':todate',$todate,PDO::PARAM_STR);
-$query->bindParam(':description',$description,PDO::PARAM_STR);
-$query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->bindParam(':isread',$isread,PDO::PARAM_STR);
-$query->bindParam(':empid',$empid,PDO::PARAM_STR);
-$query->execute();
+        
+    }else if($leavetype == "Medical Leave")
+    {
+        $days = 10;
+        $todateS = strtotime($tdate);
+        $fromdateS = strtotime($fdate);
+        $leftdays = $todate - $fromdate;
+        $dataDays = $days - $leftdays;
+        $usedDays  = $days - $dataDays;
+
+        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
+        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+        $query->execute();
+    }else if($leavetype == "Study Leave")
+    {
+        $days = 2;
+        $todateS = strtotime($tdate);
+        $fromdateS = strtotime($fdate);
+        $leftdays = $todate - $fromdate;
+        $dataDays = $days - $leftdays;
+        $usedDays  = $days - $dataDays;
+
+        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
+        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+        $query->execute();
+    }else if($leavetype == "Compassionate Leave")
+    {
+        $days = 103;
+        $todateS = strtotime($tdate);
+        $fromdateS = strtotime($fdate);
+        $leftdays = $todate - $fromdate;
+        $dataDays = $days - $leftdays;
+        $usedDays  = $days - $dataDays;
+
+        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
+        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+        $query->execute();
+    }else if($leavetype == "Unpaid Leave")
+    {
+        $days = 0;
+        $todateS = strtotime($tdate);
+        $fromdateS = strtotime($fdate);
+        $leftdays = $todate - $fromdate;
+        $dataDays = 0;
+        $usedDays  = 0;
+
+        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+        $query->bindParam(':description',$description,PDO::PARAM_STR);
+        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
+        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
+        $query->bindParam(':status',$status,PDO::PARAM_STR);
+        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+        $query->execute();
+    }
+//}
+
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {

@@ -120,6 +120,58 @@ if($stats==1){
                                          <?php $cnt++;} }?>
                                     </tbody>
                                 </table>
+
+                                
+                            </div>
+                            <div class="col s12">
+                        <div class="page-title">Leave Days History</div>
+                    </div>
+
+                    <div class="col s12 m12 l12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">Leave Days History</span>
+                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <table id="example" class="display responsive-table ">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th width="200">EmployeeName</th>
+                                            <th width="120">Leave Type</th>
+
+                                             <th width="180">Remaining Leave Days</th>                 
+                                            <th>Used Leave Days</th>
+                                        </tr>
+                                    </thead>
+                                 
+                                    <tbody>
+
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.leftDays,leaves.usedDays from leaves join employees on leaves.empid=employees.id order by lid desc";
+
+$query = $dbh -> prepare($sql);
+//$query->bindParam(':eid',$eid,PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{         
+      ?>  
+
+                                        <tr>
+                                            <td> <b><?php echo htmlentities($cnt);?></b></td>
+                                              <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>" target="_blank"><?php echo htmlentities($result->FirstName." ".$result->LastName);?>(<?php echo htmlentities($result->EmpId);?>)</a></td>
+                                            <td><?php echo htmlentities($result->LeaveType);?></td>
+                                            <td><?php echo htmlentities($result->leftDays);?></td>
+                                            <td><?php echo htmlentities($result->usedDays);?></td>
+          
+                                        </tr>
+                                         <?php $cnt++;} }?>
+                                    </tbody>
+                                </table>
+
+                                
                             </div>
                         </div>
                     </div>
@@ -128,6 +180,9 @@ if($stats==1){
          
         </div>
         <div class="left-sidebar-hover"></div>
+
+
+
         
         <!-- Javascripts -->
         <script src="../assets/plugins/jquery/jquery-2.2.0.min.js"></script>
