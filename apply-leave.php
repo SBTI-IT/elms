@@ -55,7 +55,10 @@ else
             $lastInsertId = $dbh->lastInsertId();
 
             if($lastInsertId)
+            {
                 $msg="Leave applied successfully";
+                include("util/send-email-notification.php");
+            }              
             else 
                 $error="Something went wrong. Please try again";
         }
