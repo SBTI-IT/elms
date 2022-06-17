@@ -26,9 +26,9 @@ $status=1;
 
 switch($rolename)
 {
-    case "Administrator": $roleID = 1; break;
-    case "Employee":      $roleID = 2; break;
-    case "Supervisor":    $roleID = 3; break;
+    case "Administrator":   $roleID = 1; break;
+    case "Supervisor":      $roleID = 2; break;
+    case "Employee":        $roleID = 3; break;
 }
 
 $sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,roleID,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:roleid,:status)";
