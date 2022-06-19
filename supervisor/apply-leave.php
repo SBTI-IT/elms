@@ -3,6 +3,12 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 
+require ('../vendor/PHPMailer/src/Exception.php');
+require ('../vendor/PHPMailer/src/PHPMailer.php');
+require ('../vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 if(strlen($_SESSION['superlogin'])==0)
 {   
     header('location:index.php');
@@ -19,7 +25,7 @@ else
         
         if( isset($fileName) )
         {
-            $allowTypes = array('jpg','png','jpeg','gif','pdf');
+            $allowTypes = array('jpg','png','docx','pdf');
             if(in_array($fileType, $allowTypes))
             {
                 if( move_uploaded_file($_FILES['file']['tmp_name'], $targetDir) )
@@ -55,7 +61,37 @@ else
             $lastInsertId = $dbh->lastInsertId();
 
             if($lastInsertId)
+            {
                 $msg="Leave applied successfully";
+                //SendMailNotification();
+                
+                $mail = new PHPMailer();
+
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = "dipolelo@softstartbti.co.za";
+                $mail->Password = "hEYN^D7d_#zxfsk";
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('dipolelo@softstartbti.co.za');
+                $mail->addAddress('sbtielms@gmail.com','ELMS');
+                $mail->Subject = '[LEAVE APPLICATION]';
+                
+                $mail->isHTML(true);
+
+                $mailContent = "<h2>Good day [Ayanda],</h2>
+                                <h3>Kindly view my leave application on the LMS.</h3>
+                                <h3>Kind regards</h3>";
+
+                $mail->Body = $mailContent;
+
+                if(!$mail->Send())
+                    echo "Mailer Error: " . $mail->ErrorInfo;
+                else
+                    echo "Message has been sent";
+            }            
             else 
                 $error="Something went wrong. Please try again";
         }
@@ -63,7 +99,32 @@ else
             $error = "Please attach additional documents";
     }
 
-    ?>
+function SendMailNotification()
+{
+    //use PHPMailer\PHPMailer\PHPMailer;
+
+    $mail = new PHPMailer();
+
+    $mail->isSMTP();
+    $mail->Host = "smtp.gmail.com";
+    $mail->SMTPAuth = true;
+    $mail->Username = "dipolelo@softstartbti.co.za";
+    $mail->Password = "hEYN^D7d_#zxfsk";
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+
+    $mail->setFrom('dipolelo@softstartbti.co.za');
+    $mail->addAddress('dipolelodips@gmail.com','Dipolelo');
+    $mail->Subject = 'Leave applicatrion';
+    $mail->Body = "Hello, somebody applied for a leave. Take action on";
+
+    if(!$mail->Send())
+        echo "Mailer Error: " . $mail->ErrorInfo;
+    else
+        echo "Notification sent"; 
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
