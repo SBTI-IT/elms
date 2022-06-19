@@ -7,7 +7,7 @@ if(isset($_POST['signin']))
 {
 $uname=$_POST['username'];
 $password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,Status,RoleID,id FROM employees WHERE EmailId=:uname and Password=:password";
+$sql ="SELECT EmailId,Password,Status,RoleID,id,Department FROM employees WHERE EmailId=:uname and Password=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':uname', $uname, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -20,6 +20,7 @@ if($query->rowCount() > 0)
         $status=$result->Status;
         $_SESSION['eid']=$result->id;
         $_SESSION['roleID'] = $result->RoleID;
+        $_SESSION['department'] = $result->Department;
     }
 
     if($status==0)

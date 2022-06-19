@@ -3,6 +3,12 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 
+require ('vendor/PHPMailer/src/Exception.php');
+require ('vendor/PHPMailer/src/PHPMailer.php');
+require ('vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
@@ -27,7 +33,7 @@ else
                 else
                     $error = "Sorry, there was an error uploading your file.";
             } else {
-                $error = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+                $error = 'Sorry, only JPG, JPEG, PNG, DOCX & PDF files are allowed to upload.';
             }
 
             $empid=$_SESSION['eid'];
@@ -54,10 +60,54 @@ else
             $query->execute();
             $lastInsertId = $dbh->lastInsertId();
 
+            $department = $_SESSION['department'];
+            $myName = $_SESSION['firstName'];
+            $rid = 2;
+
             if($lastInsertId)
             {
-                $msg="Leave applied successfully";
-                include("util/send-email-notification.php");
+
+                $sql1 = "SELECT * FROM employees WHERE Department=:department AND RoleID=:rid";
+                $query2 = $dbh->prepare($sql1);
+                $query2->bindParam(':department', $department, PDO::PARAM_STR);
+                $query2->bindParam(':rid', $rid, PDO::PARAM_STR);
+                $query2->execute();
+                $res = $query2->fetchAll(PDO::FETCH_OBJ);  
+
+                foreach($res as $result)
+                {
+                    $recipient = $result->EmailId;
+                    $firstName = $result->FirstName;
+                }              
+
+                $mail = new PHPMailer();
+            
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = "dipolelo@softstartbti.co.za";
+                $mail->Password = "hEYN^D7d_#zxfsk";
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('dipolelo@softstartbti.co.za');
+                //$mail->addAddress($recipient,'ELMS');
+                $mail->addAddress('sbtielms@gmail.com', 'ELMS');
+                $mail->Subject = '[LEAVE APPLICATION]';
+                
+                $mail->isHTML(true);
+
+                $mailContent = "<h2>Good day $firstName,</h2>
+                                <h3>Kindly view my leave application on the LMS.</h3>
+                                <h3>Kind regards,</h3>
+                                <b><h3>$myName</h3></b>";
+
+                $mail->Body = $mailContent;
+
+                if(!$mail->Send())
+                    echo "<script> alert('Mailer Error: '.$mail->ErrorInfo);</script>";
+                else
+                    $msg = "Leave applied successfully";                
             }              
             else 
                 $error="Something went wrong. Please try again";
@@ -65,8 +115,7 @@ else
         else
             $error = "Please attach additional documents";
     }
-
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
