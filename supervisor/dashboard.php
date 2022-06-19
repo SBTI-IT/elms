@@ -165,11 +165,6 @@ if($stats==1){
                                                  <?php } if($stats==0)  { ?>
  <span style="color: blue">Waiting for approval</span>
  <?php } ?>
-
-
-                                             </td>
-
-          <td>
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>
