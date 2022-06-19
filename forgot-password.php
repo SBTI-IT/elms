@@ -226,7 +226,5 @@ Already have an account<a href="index.php">Sign in</a>
         
     </body>
 
-    <div class="footer">
-        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
-    </div>
+    
 </html>
