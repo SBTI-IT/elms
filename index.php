@@ -110,6 +110,7 @@ else
                           </div>
                     </div>
                 </div>
+                <p class="copyright center" style="color:grey"><a href="https://www.softstartbti.co.za">SoftstartBTI</a> © 2022</p>
             </main>
         </div>
         
@@ -119,6 +120,6 @@ else
         <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
         <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
         <script src="assets/js/alpha.min.js"></script>
-        
+
     </body>
 </html>
