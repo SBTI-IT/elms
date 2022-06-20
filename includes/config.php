@@ -1,6 +1,6 @@
 <?php 
 // DB credentials.
-define('DB_HOST','localhost');
+define('DB_HOST','192.168.87.55');
 define('DB_USER','root');
 define('DB_PASS','');
 define('DB_NAME','elms');
