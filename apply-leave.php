@@ -86,7 +86,7 @@ else
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPAuth = true;
                 $mail->Username = "dipolelo@softstartbti.co.za";
-                $mail->Password = "hEYN^D7d_#zxfsk";
+                $mail->Password = "D7d^hEYN_#zxfsk";
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
