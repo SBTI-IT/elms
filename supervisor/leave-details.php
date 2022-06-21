@@ -2,6 +2,12 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
+require ('../vendor/PHPMailer/src/Exception.php');
+require ('../vendor/PHPMailer/src/PHPMailer.php');
+require ('../vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
 if(strlen($_SESSION['superlogin'])==0)
     {   
 header('location:index.php');
@@ -34,7 +40,62 @@ $query->execute();
         $query->bindParam(':admremarkdate',$admremarkdate,PDO::PARAM_STR);
         $query->bindParam(':did',$did,PDO::PARAM_STR);
         $query->execute();
-        $msg="Leave updated successfully";
+        //$msg="Leave updated successfully";
+
+        $lastInsertId = $dbh->lastInsertId();
+
+            $department = $_SESSION['department'];
+            $myName = $_SESSION['firstName'];
+            $rid = 3;
+
+            if($lastInsertId)
+            {
+
+                $sql1 = "SELECT * FROM employees WHERE Department=:department AND RoleID=:rid";
+                $query2 = $dbh->prepare($sql1);
+                $query2->bindParam(':department', $department, PDO::PARAM_STR);
+                $query2->bindParam(':rid', $rid, PDO::PARAM_STR);
+                $query2->execute();
+                $res = $query2->fetchAll(PDO::FETCH_OBJ);  
+
+                foreach($res as $result)
+                {
+                    $recipient = $result->EmailId;
+                    $firstName = $result->FirstName;
+                }              
+
+                $mail = new PHPMailer();
+            
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = "dipolelo@softstartbti.co.za";
+                $mail->Password = "D7d^hEYN_#zxfsk";
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('lekenamp@gmail.com');
+                //$mail->addAddress($recipient,'ELMS');
+                $mail->addAddress('matshediso@softstartbti.co.za', 'ELMS');
+                $mail->Subject = '[LEAVE APPLICATION]';
+                
+                $mail->isHTML(true);
+
+                $mailContent = "<h2>Good day $myName,</h2>
+                                <h3>Kindly view your application status on the LMS.</h3>
+                                <h3>Kind regards,</h3>
+                                <b><h3>$firstName</h3></b>";
+
+                $mail->Body = $mailContent;
+
+                if(!$mail->Send())
+                    echo "<script> alert('Mailer Error: '.$mail->ErrorInfo);</script>";
+                else
+                    $msg = "Leave applied successfully";                
+            }              
+            else 
+                $error="Something went wrong. Please try again";
+
     }
  ?>
 <!DOCTYPE html>

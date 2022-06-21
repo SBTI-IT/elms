@@ -90,9 +90,9 @@ else
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('dipolelo@softstartbti.co.za');
+                $mail->setFrom('matshediso@softstartbti.co.za');
                 //$mail->addAddress($recipient,'ELMS');
-                $mail->addAddress('sbtielms@gmail.com', 'ELMS');
+                $mail->addAddress('lekenamp@gmail.com', 'ELMS');
                 $mail->Subject = '[LEAVE APPLICATION]';
                 
                 $mail->isHTML(true);
