@@ -70,8 +70,8 @@ else
                 $mail->isSMTP();
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPAuth = true;
-                $mail->Username = "dipolelo@softstartbti.co.za";
-                $mail->Password = "hEYN^D7d_#zxfsk";
+                $mail->Username = ""; // Add Softstart elms email here
+                $mail->Password = ""; // Add email password here
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
