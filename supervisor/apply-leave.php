@@ -75,8 +75,8 @@ else
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('dipolelo@softstartbti.co.za');
-                $mail->addAddress('sbtielms@gmail.com','ELMS');
+                $mail->setFrom(''); // Set from email
+                $mail->addAddress('','ELMS'); // Set to address
                 $mail->Subject = '[LEAVE APPLICATION]';
                 
                 $mail->isHTML(true);
