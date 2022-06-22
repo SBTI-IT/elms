@@ -92,7 +92,7 @@ else
 
                 $mail->setFrom(''); // Set from email
                 //$mail->addAddress($recipient,'ELMS');
-                $mail->addAddress('sbtielms@gmail.com', 'ELMS');
+                $mail->addAddress('', 'ELMS');
                 $mail->Subject = '[LEAVE APPLICATION]';
                 
                 $mail->isHTML(true);
