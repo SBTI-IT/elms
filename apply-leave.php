@@ -85,12 +85,12 @@ else
                 $mail->isSMTP();
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPAuth = true;
-                $mail->Username = "dipolelo@softstartbti.co.za";
-                $mail->Password = "D7d^hEYN_#zxfsk";
+                $mail->Username = ""; // SMTP Email here
+                $mail->Password = ""; // Email password here
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('dipolelo@softstartbti.co.za');
+                $mail->setFrom(''); // Set from email
                 //$mail->addAddress($recipient,'ELMS');
                 $mail->addAddress('sbtielms@gmail.com', 'ELMS');
                 $mail->Subject = '[LEAVE APPLICATION]';
