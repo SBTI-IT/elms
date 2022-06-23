@@ -2,19 +2,12 @@
 
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
-## v0.9.0-Alpha
-The system allows the supervisor to manage the categories of the system:
+## v2.0
 
-### Leave
-* viewing, accepting or rejecting an employee’s leave application 
-
-### Employee
-* adding and removing an employee
-
-### Departments
-* adding and removing departments
-
-The employee(user) is able to apply for a leave. 
+- Attach documents to leave applications
+- Sends email notification to supervisor or admin after leave application
+- Export leave application history to MS Excel sheet
+- Supervisor role
 
 ## v1.0.0-Beta
 A few UI changes have been made to the template
@@ -31,3 +24,16 @@ In this version, the Admin and Employee login pages have been merged into a sing
 
 All the Leave Management categories have been merged into a single page, the categories can be filtered through using the search input on the top-right of the table.
 
+## v0.9.0-Alpha
+The system allows the supervisor to manage the categories of the system:
+
+### Leave
+* viewing, accepting or rejecting an employee’s leave application 
+
+### Employee
+* adding and removing an employee
+
+### Departments
+* adding and removing departments
+
+The employee(user) is able to apply for a leave. 
