@@ -58,7 +58,9 @@ $empcount=$query->rowCount();
 
                                     <span class="counter"><?php echo htmlentities($empcount);?></span></span>
                             </div>
-                            <div id="sparkline-bar"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:14.3%"></div>
+                            </div>
                         </div>
                     </div>
                         <div class="col s12 m12 l3">
@@ -75,7 +77,9 @@ $dptcount=$query->rowCount();
 ?>                            
                                 <span class="stats-counter"><span class="counter"><?php echo htmlentities($dptcount);?></span></span>
                             </div>
-                            <div id="sparkline-line"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:14.3%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col s12 m12 l3">
@@ -94,7 +98,9 @@ $rolescount=$query->rowCount();
 
                                     <span class="counter"><?php echo htmlentities($rolescount);?></span></span>
                             </div>
-                            <div id="sparkline-bar"></div>
+                            <div class="progress stats-card-progress">
+                                <div class="determinate" style="width:14.3%"></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col s12 m12 l3">
@@ -138,7 +144,9 @@ $leavtypcount=$query->rowCount();
                                     </thead>
                                  
                                     <tbody>
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc limit 6";
+<?php 
+
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id and leaves.empid<>".$_SESSION['eid']." order by lid desc limit 6";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -163,11 +171,6 @@ if($stats==1){
                                                  <?php } if($stats==0)  { ?>
  <span style="color: blue">Waiting for approval</span>
  <?php } ?>
-
-
-                                             </td>
-
-          <td>
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>

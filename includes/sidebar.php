@@ -5,9 +5,10 @@
                             <img src="assets/images/profile-image.png" class="circle" alt="">
                         </div>
                         <div class="sidebar-profile-info">
+                            <p>Employee</p>
                     <?php
 $eid=$_SESSION['eid'];
-$sql = "SELECT FirstName,LastName,EmpId from  employees where id=:eid";
+$sql = "SELECT FirstName,LastName,EmpId,Department,RoleID from  employees where id=:eid";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();
@@ -15,10 +16,15 @@ $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
 if($query->rowCount() > 0)
 {
+    
 foreach($results as $result)
-{               ?>
+{
+    $_SESSION['firstName'] = $result->FirstName;
+    $_SESSION['department'] = $result->Department;
+    $_SESSION['roleid'] = $result->RoleID;               
+                   ?>
                                 <p><?php echo htmlentities($result->FirstName." ".$result->LastName);?></p>
-                                <span><?php echo htmlentities($result->EmpId)?></span>
+                                <span><?php echo htmlentities($result->Department)?></span>
                          <?php }} ?>
                         </div>
                     </div>
@@ -26,7 +32,7 @@ foreach($results as $result)
                 <ul class="sidebar-menu collapsible collapsible-accordion" data-collapsible="accordion">
 
   <li class="no-padding"><a class="waves-effect waves-grey" href="myprofile.php"><i class="material-icons">account_box</i>My Profile</a></li>
-  <li class="no-padding"><a class="waves-effect waves-grey" href="emp-changepassword.php"><i class="material-icons">settings_input_svideo</i>Change Password</a></li>
+  <li class="no-padding"><a class="waves-effect waves-grey" href="emp-changepassword.php"><i class="material-icons">autorenew</i>Change Password</a></li>
                     <li class="no-padding">
                         <a class="collapsible-header waves-effect waves-grey"><i class="material-icons">apps</i>Leaves<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
                         <div class="collapsible-body">

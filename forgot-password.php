@@ -188,7 +188,8 @@ if($query->rowCount() > 0)
 
 
 <div class="input-field col s12">
-<button type="submit" name="change" class="waves-effect waves-light btn orange m-b-xs" onclick="return valid();">Change</button>
+Already have an account<a href="index.php">Sign in</a>
+<button type="submit" name="change" class="waves-effect waves-light btn orange m-b-xs">Recover</button>
 
 </div>
 </div>
@@ -225,7 +226,5 @@ if($query->rowCount() > 0)
         
     </body>
 
-    <div class="footer">
-        <p class="copyright"><a href="http://www.softstartbti.co.za/">SoftstartBTI</a> © 2022</p>
-    </div>
+    
 </html>

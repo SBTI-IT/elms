@@ -16,7 +16,7 @@ else{
     <head>
         
         <!-- Title -->
-        <title>Supervisor | Total Leave </title>
+        <title>Supervisor | All Leave </title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta charset="UTF-8">
@@ -34,6 +34,8 @@ else{
         <!-- Theme Styles -->
         <link href="../assets/css/alpha.min.css" rel="stylesheet" type="text/css"/>
         <link href="../assets/css/custom.css" rel="stylesheet" type="text/css"/>
+
+        
 <style>
         .errorWrap {
     padding: 10px;
@@ -52,6 +54,7 @@ else{
     box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
 }
         </style>
+        <script src="table2excel.js"> </script>
     </head>
     <body>
        <?php include('includes/header.php');?>
@@ -65,12 +68,10 @@ else{
                    
                     <div class="col s12 m12 l12">
                         <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">Leave History</span>
-                                
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
-                                <table id="example" class="display responsive-table ">
-                                <a href="#">Export to Excel</a>
+                            <div class="card-content">  
+                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <table id="dataTable" class="display responsive-table ">
+                                <a href="" id="downloadexcel"><i class="material-icons">file_download</i>EXCEL</a><br><br>
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -85,7 +86,7 @@ else{
                                  
                                     <tbody>
 
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id order by lid desc";
+<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id";
 
 $query = $dbh -> prepare($sql);
 //$query->bindParam(':eid',$eid,PDO::PARAM_STR);
@@ -110,13 +111,8 @@ if($stats==1){
                                                  <?php } if($stats==2)  { ?>
                                                 <span style="color: red">Not Approved</span>
                                                  <?php } if($stats==0)  { ?>
- <span style="color: blue">waiting for approval</span>
- <?php } ?>
-
-
-                                             </td>
-
-          <td>
+ <span style="color: blue">Waiting for approval</span>
+ <?php } ?></td>
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>
@@ -131,6 +127,13 @@ if($stats==1){
         </div>
         <div class="left-sidebar-hover"></div>
         
+        <script>
+        document.getElementById('downloadexcel').addEventListener('click', function() {
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("#dataTable"));
+      });
+   </script>
+
         <!-- Javascripts -->
         <script src="../assets/plugins/jquery/jquery-2.2.0.min.js"></script>
         <script src="../assets/plugins/materialize/js/materialize.min.js"></script>
@@ -141,6 +144,7 @@ if($stats==1){
         <script src="../assets/js/pages/table-data.js"></script>
          <script src="assets/js/pages/ui-modals.js"></script>
         <script src="assets/plugins/google-code-prettify/prettify.js"></script>
+        <script src="table2excel.js"></script>
         
     </body>
 </html>

@@ -67,7 +67,7 @@ else{
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title">Not Approved Leave History</span>
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="example" class="display responsive-table ">
                                     <thead>
                                         <tr>
@@ -110,11 +110,6 @@ if($stats==1){
                                                  <?php } if($stats==0)  { ?>
  <span style="color: blue">waiting for approval</span>
  <?php } ?>
-
-
-                                             </td>
-
-          <td>
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>

@@ -33,7 +33,7 @@ $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
 $query->execute();
-$msg="Employee record updated Successfully";
+$msg="Employee record updated successfully";
 }
 
     ?>
@@ -97,7 +97,7 @@ $msg="Employee record updated Successfully";
                                     <div>
                                         <h3>Update Employee Info</h3>
                                            <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                         <section>
                                             <div class="wizard-content">
                                                 <div class="row">

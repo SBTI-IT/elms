@@ -7,7 +7,7 @@ if(isset($_POST['signin']))
 {
 $uname=$_POST['username'];
 $password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,Status,RoleID,id FROM employees WHERE EmailId=:uname and Password=:password";
+$sql ="SELECT EmailId,Password,Status,RoleID,id,Department FROM employees WHERE EmailId=:uname and Password=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':uname', $uname, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -20,6 +20,7 @@ if($query->rowCount() > 0)
         $status=$result->Status;
         $_SESSION['eid']=$result->id;
         $_SESSION['roleID'] = $result->RoleID;
+        $_SESSION['department'] = $result->Department;
     }
 
     if($status==0)
@@ -32,17 +33,17 @@ if($query->rowCount() > 0)
         {
             echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
             $_SESSION['alogin']=$_POST['username'];
-        }   
-        else if($_SESSION['roleID'] == 2)
-        {
-            echo "<script type='text/javascript'> document.location = 'leavehistory.php'; </script>";
-            $_SESSION['emplogin']=$_POST['username'];
         }
-        else if($_SESSION['roleID'] == 3)
+        else if($_SESSION['roleID'] == 2)
         {
             echo "<script type='text/javascript'> document.location = 'supervisor/dashboard.php'; </script>";
             $_SESSION['superlogin']=$_POST['username'];
-        }        
+        }       
+        else if($_SESSION['roleID'] == 3)
+        {
+            echo "<script type='text/javascript'> document.location = 'leavehistory.php'; </script>";
+            $_SESSION['emplogin']=$_POST['username'];
+        }    
     } 
 }
 else
@@ -109,6 +110,7 @@ else
                           </div>
                     </div>
                 </div>
+                <p class="copyright center" style="color:grey"><a href="https://www.softstartbti.co.za">SoftstartBTI</a> © 2022</p>
             </main>
         </div>
         
@@ -118,6 +120,6 @@ else
         <script src="assets/plugins/material-preloader/js/materialPreloader.min.js"></script>
         <script src="assets/plugins/jquery-blockui/jquery.blockui.js"></script>
         <script src="assets/js/alpha.min.js"></script>
-        
+
     </body>
 </html>

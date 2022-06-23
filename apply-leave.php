@@ -2,173 +2,120 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
+require ('vendor/PHPMailer/src/Exception.php');
+require ('vendor/PHPMailer/src/PHPMailer.php');
+require ('vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 if(strlen($_SESSION['emplogin'])==0)
     {   
 header('location:index.php');
 }
-else{
-if(isset($_POST['apply']))
+else
 {
-$empid=$_SESSION['eid'];
- $leavetype=$_POST['leavetype'];
-$fromdate=$_POST['fromdate'];  
-$todate=$_POST['todate'];
-$description=$_POST['description'];  
-$status=0;
-$isread=0;
-
-if($fromdate > $todate)
-{
-    $error=" ToDate should be greater than FromDate ";
-}
-$tdate = date_create($todate);
-$fdate = date_create($fromdate);
-
-//$days = date_diff($tdate, $fdate);
-
-//echo $fdate;
-    if($leavetype == "Annual")
+    if( isset($_POST['apply']) )
     {
+        // File name
+        $fileName = $_FILES['file']['name'];
+        // File upload path
+        $targetDir = "attachments/" . basename($fileName);
+        $fileType = pathinfo($targetDir, PATHINFO_EXTENSION);
         
-        $sql = "SELECT  leaves.leftDays, leaves.usedDays, leavetype.days FROM leavetype, leaves WHERE leaves.LeaveType = leavetype.LeaveType AND leaves.empid= '$empid'";
-        $result = mysqli_query($connection, $sql);
-        if(mysqli_num_rows($result))
+        if( isset($fileName) )
         {
-            foreach($result as $person)
+            $allowTypes = array('jpg','png','docx','pdf');
+            if(in_array($fileType, $allowTypes))
             {
-                $result1 = $person["usedDays"];
-                $result2 = $person["leftDays"];
-                $result3 = $person["days"];
+                if( move_uploaded_file($_FILES['file']['tmp_name'], $targetDir) )
+                    $msg = "The file ".$fileName. " has been uploaded successfully."; 
+                else
+                    $error = "Sorry, there was an error uploading your file.";
+            } else {
+                $error = 'Sorry, only JPG, JPEG, PNG, DOCX & PDF files are allowed to upload.';
             }
-            //$dataDays;
-           
+
+            $empid=$_SESSION['eid'];
+            $leavetype=$_POST['leavetype'];
+            $fromdate=$_POST['fromdate'];  
+            $todate=$_POST['todate'];
+            $description=$_POST['description']; 
+            $status=0;
+            $isread=0;
+
+            if($fromdate > $todate)
+                $error=" ToDate should be greater than FromDate ";
+
+            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Attachment,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:attachment,:status,:isread,:empid)";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+            $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+            $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+            $query->bindParam(':description',$description,PDO::PARAM_STR);
+            $query->bindParam(':attachment',basename($fileName),PDO::PARAM_STR);
+            $query->bindParam(':status',$status,PDO::PARAM_STR);
+            $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+            $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+            $query->execute();
+            $lastInsertId = $dbh->lastInsertId();
+
+            $department = $_SESSION['department'];
+            $myName = $_SESSION['firstName'];
+            $rid = 2;
+
+            if($lastInsertId)
+            {
+
+                $sql1 = "SELECT * FROM employees WHERE Department=:department AND RoleID=:rid";
+                $query2 = $dbh->prepare($sql1);
+                $query2->bindParam(':department', $department, PDO::PARAM_STR);
+                $query2->bindParam(':rid', $rid, PDO::PARAM_STR);
+                $query2->execute();
+                $res = $query2->fetchAll(PDO::FETCH_OBJ);  
+
+                foreach($res as $result)
+                {
+                    $recipient = $result->EmailId;
+                    $firstName = $result->FirstName;
+                }              
+
+                $mail = new PHPMailer();
+            
+                $mail->isSMTP();
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPAuth = true;
+                $mail->Username = ""; // SMTP Email here
+                $mail->Password = ""; // Email password here
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom(''); // Set from email
+                //$mail->addAddress($recipient,'ELMS');
+                $mail->addAddress('', 'ELMS');
+                $mail->Subject = '[LEAVE APPLICATION]';
+                
+                $mail->isHTML(true);
+
+                $mailContent = "<h2>Good day $firstName,</h2>
+                                <h3>Kindly view my leave application on the LMS.</h3>
+                                <h3>Kind regards,</h3>
+                                <b><h3>$myName</h3></b>";
+
+                $mail->Body = $mailContent;
+
+                if(!$mail->Send())
+                    echo "<script> alert('Mailer Error: '.$mail->ErrorInfo);</script>";
+                else
+                    $msg = "Leave applied successfully";                
+            }              
+            else 
+                $error="Something went wrong. Please try again";
         }
-        //$days = 21;
-        $todateS = strtotime($tdate);
-        $fromdateS = strtotime($fdate);
-        $datadays = $todate - $fromdate;
-        $leftDays = $result3 - $datadays;
-        $usedDays  = $result2 + $datadays;
-        
-        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-        $query->bindParam(':description',$description,PDO::PARAM_STR);
-        $query->bindParam(':leftDays',$leftDays,PDO::PARAM_STR);
-        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
-        $query->bindParam(':status',$status,PDO::PARAM_STR);
-        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-        $query->execute();
-        
-        $sql = "UPDATE leaves SET leftDays=:leftDays WHERE empid=:empid";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leftDays',$leftDays,PDO::PARAM_STR);
-        $query->execute();
-
-        
-    }else if($leavetype == "Medical Leave")
-    {
-        $days = 10;
-        $todateS = strtotime($tdate);
-        $fromdateS = strtotime($fdate);
-        $leftdays = $todate - $fromdate;
-        $dataDays = $days - $leftdays;
-        $usedDays  = $days - $dataDays;
-
-        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-        $query->bindParam(':description',$description,PDO::PARAM_STR);
-        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
-        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
-        $query->bindParam(':status',$status,PDO::PARAM_STR);
-        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-        $query->execute();
-    }else if($leavetype == "Study Leave")
-    {
-        $days = 2;
-        $todateS = strtotime($tdate);
-        $fromdateS = strtotime($fdate);
-        $leftdays = $todate - $fromdate;
-        $dataDays = $days - $leftdays;
-        $usedDays  = $days - $dataDays;
-
-        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-        $query->bindParam(':description',$description,PDO::PARAM_STR);
-        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
-        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
-        $query->bindParam(':status',$status,PDO::PARAM_STR);
-        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-        $query->execute();
-    }else if($leavetype == "Compassionate Leave")
-    {
-        $days = 103;
-        $todateS = strtotime($tdate);
-        $fromdateS = strtotime($fdate);
-        $leftdays = $todate - $fromdate;
-        $dataDays = $days - $leftdays;
-        $usedDays  = $days - $dataDays;
-
-        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-        $query->bindParam(':description',$description,PDO::PARAM_STR);
-        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
-        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
-        $query->bindParam(':status',$status,PDO::PARAM_STR);
-        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-        $query->execute();
-    }else if($leavetype == "Unpaid Leave")
-    {
-        $days = 0;
-        $todateS = strtotime($tdate);
-        $fromdateS = strtotime($fdate);
-        $leftdays = $todate - $fromdate;
-        $dataDays = 0;
-        $usedDays  = 0;
-
-        $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,leftDays,usedDays,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:leftDays,:usedDays,:status,:isread,:empid)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-        $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-        $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-        $query->bindParam(':description',$description,PDO::PARAM_STR);
-        $query->bindParam(':leftDays',$dataDays,PDO::PARAM_STR);
-        $query->bindParam(':usedDays',$usedDays,PDO::PARAM_STR);
-        $query->bindParam(':status',$status,PDO::PARAM_STR);
-        $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-        $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-        $query->execute();
+        else
+            $error = "Please attach additional documents";
     }
-//}
-
-$lastInsertId = $dbh->lastInsertId();
-if($lastInsertId)
-{
-$msg="Leave applied successfully";
-}
-else 
-{
-$error="Something went wrong. Please try again";
-}
-
-}
-
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -223,7 +170,7 @@ $error="Something went wrong. Please try again";
                     <div class="col s12 m12 l8">
                         <div class="card">
                             <div class="card-content">
-                                <form id="example-form" method="post" name="addemp">
+                                <form id="example-form" method="post" name="addemp" enctype="multipart/form-data">
                                     <div>
                                         <h3>Apply for Leave</h3>
                                         <section>
@@ -231,49 +178,49 @@ $error="Something went wrong. Please try again";
                                                 <div class="row">
                                                     <div class="col m12">
                                                         <div class="row">
-     <?php if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+                                                            <?php if($error){?><div class="errorWrap"><strong>ERROR </strong>:<?php echo htmlentities($error); ?> </div><?php } 
+                                                                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
 
+                                                                <div class="input-field col s12">
+                                                                <select  name="leavetype" autocomplete="off">
+                                                                <option value="">Select leave type...</option>
+                                                                <?php $sql = "SELECT  LeaveType from leavetype";
+                                                                $query = $dbh->prepare($sql);
+                                                                $query->execute();
+                                                                $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                                                $cnt=1;
+                                                                if($query->rowCount() > 0)
+                                                                {
+                                                                foreach($results as $result)
+                                                                {   ?>                                            
+                                                                <option value="<?php echo htmlentities($result->LeaveType);?>"><?php echo htmlentities($result->LeaveType);?></option>
+                                                                <?php }} ?>
+                                                                </select>
+                                                                </div>
+                                                                
+                                                                <div class="input-field col m6 s12">
+                                                                <label for="fromdate">From  Date</label>
+                                                                <input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                </div>
+                                                                <div class="input-field col m6 s12">
+                                                                <label for="todate">To Date</label>
+                                                                <input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                </div>
+                                                                <div class="input-field col m12 s12">
+                                                                <label for="birthdate">Description</label>    
 
- <div class="input-field col  s12">
-<select  name="leavetype" autocomplete="off">
-<option value="">Select leave type...</option>
-<?php $sql = "SELECT  LeaveType from leavetype";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{   ?>                                            
-<option value="<?php echo htmlentities($result->LeaveType);?>"><?php echo htmlentities($result->LeaveType);?></option>
-<?php }} ?>
-</select>
-</div>
-
-
-<div class="input-field col m6 s12">
-<label for="fromdate">From  Date</label>
-<input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
-</div>
-<div class="input-field col m6 s12">
-<label for="todate">To Date</label>
-<input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
-</div>
-<div class="input-field col m12 s12">
-<label for="birthdate">Description</label>    
-
-<textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
-</div>
-</div>
-      <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
-
-                                                </div>
+                                                                <textarea id="textarea1" name="description" class="materialize-textarea" length="500" required></textarea>
+                                                                </div>
+                                                                <!--MY CODE MY CODE -->
+                                                                <div class="col m12 s12">
+                                                                    <label for="file">Additional Documents </label>
+                                                                    <input id="file" type="file" name="file">    
+                                                                </div>
+                                                        </div>
+                                                            <button type="submit" name="apply" id="apply" class="waves-effect waves-light btn orange m-b-xs">Apply</button>                                             
+                                                    </div>
                                             </div>
                                         </section>
-                                     
-                                    
                                         </section>
                                     </div>
                                 </form>

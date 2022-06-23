@@ -20,7 +20,7 @@ $query->bindParam(':deptcode',$deptcode,PDO::PARAM_STR);
 $query->bindParam(':deptshortname',$deptshortname,PDO::PARAM_STR);
 $query->bindParam(':did',$did,PDO::PARAM_STR);
 $query->execute();
-$msg="Department updated Successfully";
+$msg="Department updated successfully";
 }
 
     ?>
@@ -79,7 +79,7 @@ $msg="Department updated Successfully";
                                 <div class="row">
                                     <form class="col s12" name="chngpwd" method="post">
                                           <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
 <?php 
 $did=intval($_GET['deptid']);
 $sql = "SELECT * from departments WHERE id=:did";

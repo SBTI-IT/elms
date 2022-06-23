@@ -26,12 +26,9 @@ $status=1;
 
 switch($rolename)
 {
-    case "Administrator":
-        $roleID = 0; break;
-    case "Employee":
-        $roleID = 1; break;
-    case "Supervisor":
-        $roleID = 2; break;
+    case "Administrator":   $roleID = 1; break;
+    case "Supervisor":      $roleID = 2; break;
+    case "Employee":        $roleID = 3; break;
 }
 
 $sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,roleID,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:roleid,:status)";
@@ -54,7 +51,7 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$msg="Employee record added Successfully";
+$msg="Employee record added successfully";
 }
 else 
 {
@@ -107,7 +104,7 @@ function valid()
 {
 if(document.addemp.password.value!= document.addemp.confirmpassword.value)
 {
-alert("New Password and Confirm Password Fields do not match  !!");
+alert("Password and Confirm Password fields do not match!");
 document.addemp.confirmpassword.focus();
 return false;
 }
@@ -170,8 +167,8 @@ error:function (){}
                                                 <div class="row">
                                                     <div class="col m6">
                                                         <div class="row">
-     <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
-                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+     <?php if($error){?><div class="errorWrap"><strong>ERROR</strong>: <?php echo htmlentities($error); ?> </div><?php } 
+                else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
 
 
  <div class="input-field col  s12">

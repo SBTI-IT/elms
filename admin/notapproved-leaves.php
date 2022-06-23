@@ -109,12 +109,9 @@ if($stats==1){
                                                 <span style="color: red">Not Approved</span>
                                                  <?php } if($stats==0)  { ?>
  <span style="color: blue">waiting for approval</span>
- <?php } ?>
+ <?php } ?> </td>
 
-
-                                             </td>
-
-          <td>
+          
            <td><a href="leave-details.php?leaveid=<?php echo htmlentities($result->lid);?>" class="waves-effect waves-light btn orange m-b-xs"  > View Details</a></td>
                                     </tr>
                                          <?php $cnt++;} }?>
