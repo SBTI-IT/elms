@@ -17,7 +17,7 @@ A few UI changes have been made to the template
 ![_index php](https://user-images.githubusercontent.com/48829302/175241247-64775d1f-a4ee-415e-b77e-0fb5f3c6fa80.png)
 
 
-In this version, the Admin and Employee login pages have been merged into a single page.
+Admin, Supervisor and Employee login pages have been merged into a single login page.
 
 ### Leave Management
 
