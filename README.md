@@ -2,6 +2,11 @@
 
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
+## v2.3
+- Send email notification to employee after leave application status is changed
+- MS Excel spreadsheet has extra columns inducating the From-To and Days remaining
+- Calculates leave days remaining for Supervisor and Employee
+
 ## v2.0
 
 - Attach documents to leave applications
