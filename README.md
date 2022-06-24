@@ -4,7 +4,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 
 ## v2.3
 - Sends an email notification to employee after leave application status is changed
-- MS Excel spreadsheet has extra columns inducating the From-To and Days remaining
+- MS Excel spreadsheet has extra columns showing the From-To and Days remaining
 - Calculates leave days remaining for Supervisor and Employee
 
 ## v2.0
