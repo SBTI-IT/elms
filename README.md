@@ -12,7 +12,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 - Attach documents to leave applications
 - Sends email notification to supervisor or admin after leave application
 - Export leave applications history to MS Excel sheet
-- Supervisor role
+- Added Supervisor role
 
 ## v1.0.0-Beta
 A few UI changes have been made to the template
