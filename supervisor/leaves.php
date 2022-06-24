@@ -59,7 +59,8 @@ else{
     <body>
        <?php include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php include('includes/sidebar.php');
+        include('../supervisor_export_addition/download.php');?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -71,7 +72,7 @@ else{
                             <div class="card-content">  
                                 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="dataTable" class="display responsive-table ">
-                                <a href="" id="downloadexcel"><i class="material-icons">file_download</i>EXCEL</a><br><br>
+                                <a href="" id="downloadexcel" name="downloadLink"><i class="material-icons">file_download</i>EXCEL</a><br><br>
                                     <thead>
                                         <tr>
                                             <th>#</th>
