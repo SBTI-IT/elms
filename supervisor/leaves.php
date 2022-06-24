@@ -59,7 +59,8 @@ else{
     <body>
        <?php include('includes/header.php');?>
             
-       <?php include('includes/sidebar.php');?>
+       <?php include('includes/sidebar.php');
+        include('download.php');?>
             <main class="mn-inner">
                 <div class="row">
                     <div class="col s12">
@@ -71,7 +72,10 @@ else{
                             <div class="card-content">  
                                 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="dataTable" class="display responsive-table ">
-                                <a href="" id="downloadexcel"><i class="material-icons">file_download</i>EXCEL</a><br><br>
+                                <!--<a href="" id="" name="downloadLink"><i class="material-icons">file_download</i>EXCEL</a><br><br>-->
+                                <form action="download.php" method="post">
+                                    <button type="submit" name="submit" class="waves-effect waves-light btn orange m-b-xs"> Download </button>
+                                </form>
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -86,7 +90,10 @@ else{
                                  
                                     <tbody>
 
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id";
+
+<?php 
+$dept = $_SESSION["department"];
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id WHERE employees.Department='$dept'";
 
 $query = $dbh -> prepare($sql);
 //$query->bindParam(':eid',$eid,PDO::PARAM_STR);
@@ -127,12 +134,12 @@ if($stats==1){
         </div>
         <div class="left-sidebar-hover"></div>
         
-        <script>
+        <!--<script>
         document.getElementById('downloadexcel').addEventListener('click', function() {
         var table2excel = new Table2Excel();
         table2excel.export(document.querySelectorAll("#dataTable"));
       });
-   </script>
+   </script>-->
 
         <!-- Javascripts -->
         <script src="../assets/plugins/jquery/jquery-2.2.0.min.js"></script>
