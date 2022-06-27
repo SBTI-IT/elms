@@ -2,22 +2,29 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
+
+require ('../vendor/PHPMailer/src/Exception.php');
+require ('../vendor/PHPMailer/src/PHPMailer.php');
+require ('../vendor/PHPMailer/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 if(strlen($_SESSION['superlogin'])==0)
     {   
 header('location:index.php');
 }
 else{
 
-// code for update the read notification status
-$isread=1;
-$did=intval($_GET['leaveid']);  
-date_default_timezone_set('Africa/Johannesburg');
-$admremarkdate=date('d-m-Y G:i:s ', strtotime("now"));
-$sql="update leaves set IsRead=:isread where id=:did";
-$query = $dbh->prepare($sql);
-$query->bindParam(':isread',$isread,PDO::PARAM_STR);
-$query->bindParam(':did',$did,PDO::PARAM_STR);
-$query->execute();
+    // code for update the read notification status
+    $isread=1;
+    $did=intval($_GET['leaveid']);  
+    date_default_timezone_set('Africa/Johannesburg');
+    $admremarkdate=date('d-m-Y G:i:s ', strtotime("now"));
+    $sql="update leaves set IsRead=:isread where id=:did";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+    $query->bindParam(':did',$did,PDO::PARAM_STR);
+    $query->execute();
 
     // code for action taken on leave
     if(isset($_POST['update']))
@@ -34,6 +41,8 @@ $query->execute();
         $query->bindParam(':admremarkdate',$admremarkdate,PDO::PARAM_STR);
         $query->bindParam(':did',$did,PDO::PARAM_STR);
         $query->execute();
+        
+        
         $msg="Leave updated successfully";
     }
  ?>
@@ -161,7 +170,53 @@ foreach($results as $result)
             <span style="color: red">Not Approved</span>
             <?php } if($stats==0)  { ?>
             <span style="color: blue">Waiting for approval</span>
-        <?php } ?>
+        <?php } 
+        
+        if($stats != 0)
+        {
+            $mail = new PHPMailer();
+            
+            $supervisorName = $_SESSION['myName'];
+
+            $recName = $result->FirstName;
+            $recipient = $result->EmailId;
+            $description = $_POST['description'];
+
+            switch($stats)
+            {
+                case 1: $aStatus = "Approved"; break;
+                case 2: $aStatus = "Not Approved"; break;
+            }
+
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = "leaveapplications@softstartbti.co.za"; // SMTP Email here
+            $mail->Password = "CPEJ%G5e"; // Email password here
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
+
+            $mail->setFrom('leaveapplications@softstartbti.co.za', 'ELMS'); // Set from email
+            //$mail->addAddress($recipient,'LMS');
+            $mail->addAddress($recipient, 'ELMS');
+            $mail->Subject = '[LEAVE APPLICATION]';
+            $mail->isHTML(true);
+
+            $mailContent = "<body style=font-family:verdana>
+                            <h2>Good day $recFullName,</h2>
+                            <h3>The status of your application was changed to: <span style=color:green>$aStatus</span>
+                            <br>Remark: $description</h3>
+                            <h3>Regards,</h3>
+                            <b><h3>$supervisorName</h3></b>
+                            <h4 style=color:red>This is an automated email sent by SoftstartBTI ELMS. Do not reply.</h4>
+                            </body>";
+
+            $mail->Body = $mailContent;
+
+            if(!$mail->Send())
+                $error = 'Mailer Error: '.$mail->ErrorInfo;
+        }
+        ?>
         </td>
     </tr>
 <tr>
@@ -204,7 +259,7 @@ if($stats==0)
                                             <option value="1">Approved</option>
                                             <option value="2">Not Approved</option>
                                         </select></p>
-                                        <p><textarea id="textarea1" name="description" class="materialize-textarea" name="description" placeholder="Description" length="500" maxlength="500"></textarea></p>
+                                        <p><textarea id="textarea1" class="materialize-textarea" name="description" placeholder="Description" length="500" maxlength="500"></textarea></p>
     </div>
     <div class="modal-footer" style="width:90%">
        <input type="submit" class="waves-effect waves-light btn orange m-b-xs" name="update" value="Submit">

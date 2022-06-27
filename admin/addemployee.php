@@ -24,6 +24,12 @@ $mobileno=$_POST['mobileno'];
 $rolename =  $_POST['role'];
 $status=1;
 
+$annual = 21;
+$medical = 10;
+$study = 2;
+$maternity = 103;
+$unpaid = 5;
+
 switch($rolename)
 {
     case "Administrator":   $roleID = 1; break;
@@ -31,7 +37,7 @@ switch($rolename)
     case "Employee":        $roleID = 3; break;
 }
 
-$sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,roleID,Status) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:roleid,:status)";
+$sql="INSERT INTO employees(EmpId,FirstName,LastName,EmailId,Password,Gender,Dob,Department,Address,City,Country,Phonenumber,roleID,Status,Annual_lv,Medical_lv,Study_lv,Maternity_lv,Unpaid_lv) VALUES(:empid,:fname,:lname,:email,:password,:gender,:dob,:department,:address,:city,:country,:mobileno,:roleid,:status,:annual,:medical,:study,:maternity,:unpaid)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':empid',$empid,PDO::PARAM_STR);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
@@ -47,6 +53,11 @@ $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 $query->bindParam(':roleid',$roleID, PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
+$query->bindParam(':annual',$annual,PDO::PARAM_STR);
+$query->bindParam(':medical',$medical,PDO::PARAM_STR);
+$query->bindParam(':study',$study,PDO::PARAM_STR);
+$query->bindParam(':maternity',$maternity,PDO::PARAM_STR);
+$query->bindParam(':unpaid',$unpaid,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)

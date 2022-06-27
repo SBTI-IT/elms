@@ -17,6 +17,7 @@ else
 {
     if( isset($_POST['apply']) )
     {
+        $err = 0;
         // File name
         $fileName = $_FILES['file']['name'];
         // File upload path
@@ -29,101 +30,236 @@ else
             if(in_array($fileType, $allowTypes))
             {
                 if( move_uploaded_file($_FILES['file']['tmp_name'], $targetDir) )
+                {
                     $msg = "The file ".$fileName. " has been uploaded successfully."; 
+
+                    $empid=$_SESSION['eid'];
+                    $leavetype=$_POST['leavetype'];
+                    $fromdate=$_POST['fromdate'];  
+                    $todate=$_POST['todate'];
+                    $description=$_POST['description']; 
+                    $status=0;
+                    $isread=0;
+
+                    date_default_timezone_set('Africa/Johannesburg');
+                    $fDay = date("d", strtotime($fromdate));
+                    $fMonth = date("m", strtotime($fromdate));
+                    $fYear = date("Y", strtotime($fromdate));
+
+                    $tDay = date("d", strtotime($todate));
+                    $tMonth = date("m", strtotime($todate));
+                    $tYear = date("Y", strtotime($todate));
+
+                    if( $tMonth >= $fMonth & $tYear >= $fYear)
+                    {
+                        $fDate = strtotime($fromdate);
+                        $tDate = strtotime($todate);
+                        
+                        $daysTaken = $tDate - $fDate;
+                        $daysTaken = abs(round($daysTaken / 86400)) + 1;
+
+                        $empid = $_SESSION['eid'];
+                        $cDays = 0;
+
+                        switch($leavetype)
+                        {
+                            case "Annual":
+                                $q= $dbh->prepare("SELECT Annual_lv FROM employees WHERE id=:empid");
+                                $q->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $q->execute();
+                                $r = $q->fetchAll(PDO::FETCH_OBJ);
+                                $c = 0;
+
+                                foreach($r as $result)
+                                    $cDays = $result->Annual_lv;                                   
+
+                                if($Days > 0 & $daysTaken <= $cDays)
+                                {
+                                    $cDays = $cDays - $daysTaken;
+                                    $query = $dbh->prepare("UPDATE employees SET Annual_lv = :annual WHERE id=:empid");
+                                    $query->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                    $query->bindParam(':annual', $cDays, PDO::PARAM_STR);
+                                    $query->execute();
+                                }
+                                else
+                                {
+                                    $error="You have used up your annual leaves";
+                                    $err = 1;
+                                }
+                                break;
+                            case "Medical Leave": 
+                                $q= $dbh->prepare("SELECT Medical_lv FROM employees WHERE id=:empid");
+                                $q->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $q->execute();
+                                $r = $q->fetchAll(PDO::FETCH_OBJ);
+
+                                foreach($r as $result)
+                                    $cDays = $result->Medical_lv;                                   
+
+                                if($cDays > 0 & $daysTaken <= $cDays)
+                                {
+                                $cDays = $cDays - $daysTaken;
+                                $query = $dbh->prepare("UPDATE employees SET Medical_lv = :annual WHERE id=:empid");
+                                $query->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $query->bindParam(':annual', $cDays, PDO::PARAM_STR);
+                                $query->execute();
+                                }
+                                else {
+                                    $error = "You have used up your medical leaves";
+                                    $err = 1;
+                                }
+                                break;
+                            case "Study Leave": 
+                                $q= $dbh->prepare("SELECT Study_lv FROM employees WHERE id=:empid");
+                                $q->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $q->execute();
+                                $r = $q->fetchAll(PDO::FETCH_OBJ);
+
+                                foreach($r as $result)
+                                    $cDays = $result->Study_lv;                                   
+
+                                if($cDays > 0 & $daysTaken <= $cDays)
+                                {
+                                    $cDays = $cDays - $daysTaken;
+                                    $query = $dbh->prepare("UPDATE employees SET Study_lv = :annual WHERE id=:empid");
+                                    $query->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                    $query->bindParam(':annual', $cDays, PDO::PARAM_STR);
+                                    $query->execute();
+                                }
+                                else {
+                                    $error = "You have used up your study leaves";
+                                    $err = 1;
+                                }
+
+                                break;
+                            case "Compassionate Leave": 
+                                $q= $dbh->prepare("SELECT Maternity_lv FROM employees WHERE id=:empid");
+                                $q->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $q->execute();
+                                $r = $q->fetchAll(PDO::FETCH_OBJ);
+
+                                foreach($r as $result)
+                                    $cDays = $result->Maternity_lv;                                   
+
+                                if($cDays > 0 & $daysTaken <= $cDays) 
+                                {
+                                    $cDays = $cDays - $daysTaken;
+                                    $query = $dbh->prepare("UPDATE employees SET Maternity_lv = :annual WHERE id=:empid");
+                                    $query->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                    $query->bindParam(':annual', $cDays, PDO::PARAM_STR);
+                                    $query->execute();
+                                }
+                                else
+                                {
+                                    $error = "You have used up your maternity leaves";
+                                    $err = 1;
+                                }
+                                    
+                                break;
+                            case "Unpaid Leave": 
+                                $q= $dbh->prepare("SELECT Unpaid_lv FROM employees WHERE id=:empid");
+                                $q->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                $q->execute();
+                                $r = $q->fetchAll(PDO::FETCH_OBJ);
+
+                                foreach($r as $result)
+                                    $cDays = $result->Unpaid_lv;                                   
+
+                                if($cDays > 0 & $daysTaken <= $cDays)
+                                {
+                                    $cDays = $cDays - $daysTaken;
+                                    $query = $dbh->prepare("UPDATE employees SET Unpaid_lv = :annual WHERE id=:empid");
+                                    $query->bindParam(':empid', $empid, PDO::PARAM_STR);
+                                    $query->bindParam(':annual', $cDays, PDO::PARAM_STR);
+                                    $query->execute();
+                                }
+                                else
+                                {
+                                    $error = "You have used up your unpaid leaves";
+                                    $err = 1;
+                                }
+
+                                break;
+                        }
+
+                        if($err == 0)
+                        {
+                            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Attachment,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:attachment,:status,:isread,:empid)";
+                            $query = $dbh->prepare($sql);
+                            $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
+                            $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
+                            $query->bindParam(':todate',$todate,PDO::PARAM_STR);
+                            $query->bindParam(':description',$description,PDO::PARAM_STR);
+                            $query->bindParam(':attachment',basename($fileName),PDO::PARAM_STR);
+                            $query->bindParam(':status',$status,PDO::PARAM_STR);
+                            $query->bindParam(':isread',$isread,PDO::PARAM_STR);
+                            $query->bindParam(':empid',$empid,PDO::PARAM_STR);
+                            $query->execute();
+                            $lastInsertId = $dbh->lastInsertId();
+
+                            $department = $_SESSION['department'];
+                            $myName = $_SESSION['firstName'];
+                            $rid = 2;
+
+                            if($lastInsertId)
+                            {
+                                $sql1 = "SELECT * FROM employees WHERE Department=:department AND RoleID=:rid";
+                                $query2 = $dbh->prepare($sql1);
+                                $query2->bindParam(':department', $department, PDO::PARAM_STR);
+                                $query2->bindParam(':rid', $rid, PDO::PARAM_STR);
+                                $query2->execute();
+                                $res = $query2->fetchAll(PDO::FETCH_OBJ);  
+
+                                foreach($res as $result)
+                                {
+                                    $recipient = $result->EmailId;
+                                    $firstName = $result->FirstName;
+                                }              
+
+                                $mail = new PHPMailer();
+                            
+                                $mail->isSMTP();
+                                $mail->Host = "smtp.gmail.com";
+                                $mail->SMTPAuth = true;
+                                $mail->Username = "leaveapplications@softstartbti.co.za"; // SMTP Email here
+                                $mail->Password = "CPEJ%G5e"; // Email password here
+                                $mail->SMTPSecure = 'tls';
+                                $mail->Port = 587;
+
+                                $mail->setFrom('leaveapplications@softstartbti.co.za', $_SESSION['myName']); // Set from email
+                                //$mail->addAddress('ayanda@softstartbti.co.za', 'ELMS');
+                                $mail->addAddress('leaveapplications@softstartbti.co.za', 'ELMS');
+                                $mail->Subject = '[LEAVE APPLICATION]';
+                                
+                                $mail->isHTML(true);
+
+                                $mailContent = "<h2>Good day [Ayanda],</h2>
+                                                <h3>Kindly view my leave application on the LMS.</h3>
+                                                <h3>Kind regards</h3>";
+
+                                $mail->Body = $mailContent;
+
+                                if(!$mail->Send())
+                                    $error = 'Mailer Error: '.$mail->ErrorInfo;
+                                else
+                                    $msg = "Leave applied successfully";
+                            }
+                            else
+                                $error = "Sorry, there was an error uploading your file.";
+                        }
+                    }
+                    else
+                        $error=" ToDate should be greater than FromDate ";
+                }
                 else
                     $error = "Sorry, there was an error uploading your file.";
-            } else {
-                $error = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
             }
-
-            $empid=$_SESSION['eid'];
-            $leavetype=$_POST['leavetype'];
-            $fromdate=$_POST['fromdate'];  
-            $todate=$_POST['todate'];
-            $description=$_POST['description']; 
-            $status=0;
-            $isread=0;
-
-            if($fromdate > $todate)
-                $error=" ToDate should be greater than FromDate ";
-
-            $sql="INSERT INTO leaves(LeaveType,ToDate,FromDate,Description,Attachment,Status,IsRead,empid) VALUES(:leavetype,:fromdate,:todate,:description,:attachment,:status,:isread,:empid)";
-            $query = $dbh->prepare($sql);
-            $query->bindParam(':leavetype',$leavetype,PDO::PARAM_STR);
-            $query->bindParam(':fromdate',$fromdate,PDO::PARAM_STR);
-            $query->bindParam(':todate',$todate,PDO::PARAM_STR);
-            $query->bindParam(':description',$description,PDO::PARAM_STR);
-            $query->bindParam(':attachment',basename($fileName),PDO::PARAM_STR);
-            $query->bindParam(':status',$status,PDO::PARAM_STR);
-            $query->bindParam(':isread',$isread,PDO::PARAM_STR);
-            $query->bindParam(':empid',$empid,PDO::PARAM_STR);
-            $query->execute();
-            $lastInsertId = $dbh->lastInsertId();
-
-            if($lastInsertId)
-            {
-                $msg="Leave applied successfully";
-                //SendMailNotification();
-                
-                $mail = new PHPMailer();
-
-                $mail->isSMTP();
-                $mail->Host = "smtp.gmail.com";
-                $mail->SMTPAuth = true;
-                $mail->Username = ""; // Add Softstart elms email here
-                $mail->Password = ""; // Add email password here
-                $mail->SMTPSecure = 'tls';
-                $mail->Port = 587;
-
-                $mail->setFrom(''); // Set from email
-                $mail->addAddress('','ELMS'); // Set to address
-                $mail->Subject = '[LEAVE APPLICATION]';
-                
-                $mail->isHTML(true);
-
-                $mailContent = "<h2>Good day [Ayanda],</h2>
-                                <h3>Kindly view my leave application on the LMS.</h3>
-                                <h3>Kind regards</h3>";
-
-                $mail->Body = $mailContent;
-
-                if(!$mail->Send())
-                    echo "Mailer Error: " . $mail->ErrorInfo;
-                else
-                    echo "Message has been sent";
-            }            
             else 
-                $error="Something went wrong. Please try again";
+                $error = 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
         }
         else
             $error = "Please attach additional documents";
     }
-
-function SendMailNotification()
-{
-    //use PHPMailer\PHPMailer\PHPMailer;
-
-    $mail = new PHPMailer();
-
-    $mail->isSMTP();
-    $mail->Host = "smtp.gmail.com";
-    $mail->SMTPAuth = true;
-    $mail->Username = "dipolelo@softstartbti.co.za";
-    $mail->Password = "hEYN^D7d_#zxfsk";
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
-
-    $mail->setFrom('dipolelo@softstartbti.co.za');
-    $mail->addAddress('dipolelodips@gmail.com','Dipolelo');
-    $mail->Subject = 'Leave applicatrion';
-    $mail->Body = "Hello, somebody applied for a leave. Take action on";
-
-    if(!$mail->Send())
-        echo "Mailer Error: " . $mail->ErrorInfo;
-    else
-        echo "Notification sent"; 
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -209,11 +345,11 @@ function SendMailNotification()
                                                                 
                                                                 <div class="input-field col m6 s12">
                                                                 <label for="fromdate">From  Date</label>
-                                                                <input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                <input placeholder="" id="mask1" name="fromdate" class="masked" type="text" data-inputmask="'alias': 'dd-mm-yyyy'" required>
                                                                 </div>
                                                                 <div class="input-field col m6 s12">
                                                                 <label for="todate">To Date</label>
-                                                                <input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'date'" required>
+                                                                <input placeholder="" id="mask1" name="todate" class="masked" type="text" data-inputmask="'alias': 'dd-mm-yyyy'" required>
                                                                 </div>
                                                                 <div class="input-field col m12 s12">
                                                                 <label for="birthdate">Description</label>    

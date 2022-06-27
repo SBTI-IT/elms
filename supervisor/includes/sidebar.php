@@ -19,7 +19,7 @@
                             {
                             foreach($results as $result)
                             {               
-                        ?>
+                                $_SESSION['myName'] = $result->FirstName; ?>
                                 <p><?php echo htmlentities($result->FirstName." ".$result->LastName);?></p>
                                 <span><?php echo htmlentities($result->Department)?></span>
                          <?php }} ?>

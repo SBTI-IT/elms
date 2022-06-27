@@ -7,7 +7,7 @@ if(isset($_POST['signin']))
 {
 $uname=$_POST['username'];
 $password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,Status,RoleID,id,Department FROM employees WHERE EmailId=:uname and Password=:password";
+$sql ="SELECT EmpId,EmailId,Password,Status,RoleID,id,Department FROM employees WHERE EmailId=:uname and Password=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':uname', $uname, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -19,6 +19,7 @@ if($query->rowCount() > 0)
     {
         $status=$result->Status;
         $_SESSION['eid']=$result->id;
+        $_SESSION['empid']=$result->EmpId;
         $_SESSION['roleID'] = $result->RoleID;
         $_SESSION['department'] = $result->Department;
     }
@@ -29,21 +30,21 @@ if($query->rowCount() > 0)
     } 
     else 
     {
-        if($_SESSION['roleID'] == 1)
+        switch($_SESSION['roleID'])
         {
-            echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
-            $_SESSION['alogin']=$_POST['username'];
+            case 1:
+                echo "<script type='text/javascript'> document.location = 'admin/dashboard.php'; </script>";
+                $_SESSION['alogin']=$_POST['username'];
+                break;
+            case 2:
+                echo "<script type='text/javascript'> document.location = 'supervisor/dashboard.php'; </script>";
+                $_SESSION['superlogin']=$_POST['username'];
+                break;
+            case 3:
+                echo "<script type='text/javascript'> document.location = 'leavehistory.php'; </script>";
+                $_SESSION['emplogin']=$_POST['username'];
+                break;
         }
-        else if($_SESSION['roleID'] == 2)
-        {
-            echo "<script type='text/javascript'> document.location = 'supervisor/dashboard.php'; </script>";
-            $_SESSION['superlogin']=$_POST['username'];
-        }       
-        else if($_SESSION['roleID'] == 3)
-        {
-            echo "<script type='text/javascript'> document.location = 'leavehistory.php'; </script>";
-            $_SESSION['emplogin']=$_POST['username'];
-        }    
     } 
 }
 else

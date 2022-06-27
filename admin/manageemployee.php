@@ -101,8 +101,6 @@ header('location:manageemployee.php');
                                             <th>Department</th>
                                              <th>Status</th>
                                              <th>Reg Date</th>
-                                             <th>Days Accumulated</th>
-                                             <th>Days Remaining</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -133,8 +131,6 @@ if($stats){
 
                                              </td>
                                               <td><?php echo htmlentities($result->RegDate);?></td>
-                                              <td>0</td>
-                                              <td>100</td>
                                             <td><a href="editemployee.php?empid=<?php echo htmlentities($result->id);?>"><i class="material-icons">mode_edit</i></a>
                                         <?php if($result->Status==1)
  {?>

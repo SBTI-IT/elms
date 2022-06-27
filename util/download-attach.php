@@ -25,7 +25,7 @@
             readfile($filePath);
             exit;
         }else{
-            echo "<h2>File attachment was removed from server.</h2>";
+            echo "<h2>File attachment was removed from the server <span style='font-size:100px;'>&#128533;</span></h2>";
             echo "<h3>Contact IT support for further assistance</h3>";
         }
     }

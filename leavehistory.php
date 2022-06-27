@@ -102,7 +102,7 @@ foreach($results as $result)
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title">Leave History</span>
-                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong> : <?php echo htmlentities($msg); ?> </div><?php }?>
+                                <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="example" class="display responsive-table ">
                                     <thead>
                                         <tr>
@@ -115,8 +115,7 @@ foreach($results as $result)
                                             <th width="200">Admin Remark</th>
                                             <th>Status</th>
                                         </tr>
-                                    </thead>
-                                 
+                                    </thead>                               
                                     <tbody>
 <?php 
 $eid=$_SESSION['eid'];
@@ -131,11 +130,11 @@ if($query->rowCount() > 0)
 foreach($results as $result)
 {               ?>  
                                         <tr>
-                                            <td> <?php echo htmlentities($cnt);?></td>
+                                            <td><?php echo htmlentities($cnt);?></td>
                                             <td><?php echo htmlentities($result->LeaveType);?></td>
                                             <td><?php echo htmlentities($result->ToDate);?></td>
                                             <td><?php echo htmlentities($result->FromDate);?></td>
-                                           <td><?php echo htmlentities($result->Description);?></td>
+                                            <td><?php echo htmlentities($result->Description);?></td>
                                             <td><?php echo htmlentities($result->PostingDate);?></td>
                                             <td><?php if($result->AdminRemark=="")
                                             {
@@ -160,13 +159,58 @@ if($stats==1){
                                              </td>
           
                                         </tr>
-                                         <?php $cnt++;} }?>
+                                         <?php $cnt++;} } ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="row">                 
+                    <div class="col s12 m12 l12">
+                        <div class="card">
+                            <div class="card-content">
+                                <span class="card-title">Leave Days Remaining</span>
+                                <table id="example" class="display responsive-table ">
+                                    <thead>
+                                        <tr>
+                                            <th>Annual</th>
+                                            <th>Medical</th>
+                                            <th>Study</th>
+                                            <th>Maternity</th>
+                                            <th>Unpaid</th>
+                                        </tr>
+                                    </thead>                               
+                                    <tbody>
+                                    <?php 
+                                    $eid=$_SESSION['eid'];
+                                    $sql = "SELECT Annual_lv,Medical_lv,Study_lv,Maternity_lv,Unpaid_lv from employees where id=:eid";
+                                    $query = $dbh -> prepare($sql);
+                                    $query->bindParam(':eid',$eid,PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results=$query->fetchAll(PDO::FETCH_OBJ);
+                                    $cnt=1;
+                                    if($query->rowCount() > 0)
+                                    {
+                                    foreach($results as $result)
+                                    {               
+                                    ?>  
+                                    <tr>
+                                        <td><?php echo htmlentities($result->Annual_lv);?></td>
+                                        <td><?php echo htmlentities($result->Medical_lv);?></td>
+                                        <td><?php echo htmlentities($result->Study_lv);?></td>
+                                        <td><?php echo htmlentities($result->Maternity_lv);?></td>
+                                        <td><?php echo htmlentities($result->Unpaid_lv);?></td>
+                                    </tr>
+                                    <?php $cnt++;} } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
          
         </div>
