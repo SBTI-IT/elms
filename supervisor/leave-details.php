@@ -203,11 +203,11 @@ foreach($results as $result)
             $mail->isHTML(true);
 
             $mailContent = "<body style=font-family:verdana>
-                            <h2>Good day $recFullName,</h2>
-                            <h3>The status of your application was changed to: <span style=color:green>$aStatus</span>
-                            <br>Remark: $description</h3>
-                            <h3>Regards,</h3>
-                            <b><h3>$supervisorName</h3></b>
+                            <p><b>Good day $recName,
+                            <br><br>The status of your application was changed to: <span style=color:green>$aStatus</span>
+                            <br>Remark: $description
+                            <br><br>Regards,
+                            <b>$supervisorName</b></p>
                             <h4 style=color:red>This is an automated email sent by SoftstartBTI ELMS. Do not reply.</h4>
                             </body>";
 
@@ -215,7 +215,7 @@ foreach($results as $result)
 
             if(!$mail->Send())
                 $error = 'Mailer Error: '.$mail->ErrorInfo;
-        }
+            }
         ?>
         </td>
     </tr>
