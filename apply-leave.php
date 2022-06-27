@@ -256,10 +256,9 @@ else
                     }
                     else
                         $error=" ToDate should be greater than FromDate ";
-            } else {
-                $error = 'Sorry, only JPG, JPEG, PNG, DOCX & PDF files are allowed to upload.';
-            }
-            
+                } else {
+                    $error = 'Sorry, only JPG, JPEG, PNG, DOCX & PDF files are allowed to upload.';
+                } 
             }              
             else 
                 $error="Something went wrong. Please try again";
