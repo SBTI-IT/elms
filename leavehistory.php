@@ -56,48 +56,8 @@ else{
             
        <?php include('includes/sidebar.php');?>
             <main class="mn-inner">
-                
-            <div class="row no-m-t no-m-b">
-                    <div class="col s12 m12 l4">
-                        <div class="card stats-card">
-                            <div class="card-content">
-                            
-                                <span class="card-title">Days Accumulated</span>
-                                <span class="stats-counter">
-<?php
-$sql = "SELECT * from employees";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-foreach($results as $result)
-?>
-
-                                    <span class="counter"><?php echo htmlentities($result->AccumDays);?></span></span>
-                            </div>
-                            <div id="sparkline-bar"></div>
-                        </div>
-                    </div>
-                        <div class="col s12 m12 l4">
-                        <div class="card stats-card">
-                            <div class="card-content">
-                            
-                                <span class="card-title">Days Remaining</span>
-    <?php
-$sql = "SELECT * from employees";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-foreach($results as $result)
-?>                            
-                                <span class="stats-counter"><span class="counter"><?php echo htmlentities($result->RemDays);?></span></span>
-                            </div>
-                            <div id="sparkline-line"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
                     
+                <div class="row">                 
                     <div class="col s12 m12 l12">
                         <div class="card">
                             <div class="card-content">
