@@ -24,7 +24,7 @@ $dept = $_SESSION['department'];
         $sheet->setCellValue('D1', 'Posting Date');
         $sheet->setCellValue('E1', 'From Date');
         $sheet->setCellValue('F1', 'To Date');
-        $sheet->setCellValue('G1', 'Count Days Left');
+        $sheet->setCellValue('G1', 'Total Leave Days');
         
         $sqlStatement="SELECT CONCAT(employees.FirstName,' ',employees.LastName,'(',employees.EmpId,')') AS fullname, leaves.LeaveType,leaves.PostingDate,leaves.FromDate, leaves.ToDate, leaves.leftDays
                     from leaves join employees on leaves.empid=employees.id";
