@@ -24,29 +24,11 @@ $mobileno=$_POST['mobileno'];
 $rolename =  $_POST['role'];
 $status=1;
 
-// Assign total leaves to new employee
-$strQuery = "SELECT Days FROM LeaveType";
-$query = $dbh->prepare($strQuery);
-$query->execute();
-$result = $query->fetchAll(PDO::FETCH_OBJ);
-
-if($$query->rowCount() > 0)
-{
-    $count=0;
-    $totLeaveDays = array();
-    foreach($result AS $day)
-    {
-        $totLeaveDays[$count] = $day->Days;
-        $count++;
-    }
-}
-
-
-// $annual = 21;
-// $medical = 10;
-// $study = 2;
-// $maternity = 103;
-// $unpaid = 5;
+$annual = 21;
+$medical = 10;
+$study = 10;
+$maternity = 3;
+$unpaid = 10;
 
 switch($rolename)
 {
@@ -71,11 +53,11 @@ $query->bindParam(':country',$country,PDO::PARAM_STR);
 $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
 $query->bindParam(':roleid',$roleID, PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
-$query->bindParam(':annual',$totLeaveDays[0],PDO::PARAM_STR);
-$query->bindParam(':medical',$totLeaveDays[1],PDO::PARAM_STR);
-$query->bindParam(':study',$totLeaveDays[2],PDO::PARAM_STR);
-$query->bindParam(':maternity',$totLeaveDays[3],PDO::PARAM_STR);
-$query->bindParam(':unpaid',$totLeaveDays[4],PDO::PARAM_STR);
+$query->bindParam(':annual',$annual,PDO::PARAM_STR);
+$query->bindParam(':medical',$medical,PDO::PARAM_STR);
+$query->bindParam(':study',$study,PDO::PARAM_STR);
+$query->bindParam(':maternity',$maternity,PDO::PARAM_STR);
+$query->bindParam(':unpaid',$unpaid,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
