@@ -223,7 +223,7 @@ else
                                 $mail->Host = "smtp.gmail.com";
                                 $mail->SMTPAuth = true;
                                 $mail->Username = "leaveapplications@softstartbti.co.za"; // SMTP Email here
-                                $mail->Password = "CPEJ%G5e"; // Email password here
+                                $mail->Password = "G5e%CPEJ"; // Email password here
                                 $mail->SMTPSecure = 'tls';
                                 $mail->Port = 587;
 
