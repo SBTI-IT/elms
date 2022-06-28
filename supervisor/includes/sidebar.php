@@ -8,8 +8,8 @@
                        
                         <p>Supervisor</p>
                         <?php
-                            $eid=$_SESSION['eid'];
-                            $sql = "SELECT FirstName,LastName,EmpId,Department from  employees where id=:eid";
+                            $eid = $_SESSION['eid'];
+                            $sql = "SELECT FirstName,LastName,EmpId,Department from employees where id=:eid";
                             $query = $dbh -> prepare($sql);
                             $query->bindParam(':eid',$eid,PDO::PARAM_STR);
                             $query->execute();
@@ -19,7 +19,9 @@
                             {
                             foreach($results as $result)
                             {               
-                                $_SESSION['myName'] = $result->FirstName; ?>
+                                $_SESSION['myName'] = $result->FirstName; 
+                                $_SESSION['department'] = $result->Department; ?>
+                                
                                 <p><?php echo htmlentities($result->FirstName." ".$result->LastName);?></p>
                                 <span><?php echo htmlentities($result->Department)?></span>
                          <?php }} ?>
