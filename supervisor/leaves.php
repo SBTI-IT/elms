@@ -86,7 +86,9 @@ else{
                                  
                                     <tbody>
 
-<?php $sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id";
+<?php 
+$dept = $_SESSION["department"];
+$sql = "SELECT leaves.id as lid,employees.FirstName,employees.LastName,employees.EmpId,employees.id,leaves.LeaveType,leaves.PostingDate,leaves.Status from leaves join employees on leaves.empid=employees.id WHERE employees.Department='$dept'";
 
 $query = $dbh -> prepare($sql);
 //$query->bindParam(':eid',$eid,PDO::PARAM_STR);
