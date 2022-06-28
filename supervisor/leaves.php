@@ -74,7 +74,7 @@ else{
                                 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="dataTable" class="display responsive-table ">
                                 <form action="download.php" method="post">
-                                    <button type="submit" name="submit" class="waves-effect waves-light btn orange m-b-xs"> Download </button>
+                                    <button type="submit" name="submit" class="waves-effect waves-light btn orange m-b-xs"> Excel </button>
                                 </form>
                                     <thead>
                                         <tr>
