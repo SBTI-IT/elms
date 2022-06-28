@@ -9,9 +9,11 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $dept = $_SESSION['department'];
-    if (isset($_POST['submit'])) {
 
+    if (isset($_POST['submit'])) {
+        //echo'<script>alert("Successfully downloaded")</script>';
         //Create spreadsheet
+        
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         //$sheet->setTitle("Users");
@@ -28,7 +30,7 @@ $dept = $_SESSION['department'];
                     from leaves join employees on leaves.empid=employees.id WHERE employees.Department='$dept'";
         $query = $dbh -> prepare($sqlStatement);
         $query->execute();
-    
+        
         $i=2;
         while ($row = $query->fetch()) {
 
@@ -41,8 +43,10 @@ $dept = $_SESSION['department'];
             $sheet->setCellValue("G".$i, $row["leftDays"]);
             $i++;
         }
-    
+        
         $writer = new Xlsx($spreadsheet);
+        
         $writer->save("users.xlsx");
         header("Location:leaves.php");
     }
+    
