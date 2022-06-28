@@ -71,7 +71,9 @@ else{
                             <div class="card-content">  
                                 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>: <?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="dataTable" class="display responsive-table ">
-                                <a href="" id="downloadexcel"><i class="material-icons">file_download</i>EXCEL</a><br><br>
+                                <form action="download.php" method="post">
+                                    <button type="submit" name="submit" class="waves-effect waves-light btn orange m-b-xs"> Download </button>
+                                </form>
                                     <thead>
                                         <tr>
                                             <th>#</th>
