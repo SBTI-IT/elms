@@ -9,9 +9,11 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 $dept = $_SESSION['department'];
-    if (isset($_POST['submit'])) {
 
+    if (isset($_POST['submit'])) {
+        //echo'<script>alert("Successfully downloaded")</script>';
         //Create spreadsheet
+        
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
         //$sheet->setTitle("Users");
@@ -22,13 +24,13 @@ $dept = $_SESSION['department'];
         $sheet->setCellValue('D1', 'Posting Date');
         $sheet->setCellValue('E1', 'From Date');
         $sheet->setCellValue('F1', 'To Date');
-        $sheet->setCellValue('G1', 'Count Days Left');
+        $sheet->setCellValue('G1', 'Total Leave Days');
         
         $sqlStatement="SELECT CONCAT(employees.FirstName,' ',employees.LastName,'(',employees.EmpId,')') AS fullname, leaves.LeaveType,leaves.PostingDate,leaves.FromDate, leaves.ToDate, leaves.leftDays
                     from leaves join employees on leaves.empid=employees.id WHERE employees.Department='$dept'";
         $query = $dbh -> prepare($sqlStatement);
         $query->execute();
-    
+        
         $i=2;
         while ($row = $query->fetch()) {
 
@@ -41,8 +43,10 @@ $dept = $_SESSION['department'];
             $sheet->setCellValue("G".$i, $row["leftDays"]);
             $i++;
         }
-    
+        
         $writer = new Xlsx($spreadsheet);
+        
         $writer->save("users.xlsx");
         header("Location:leaves.php");
     }
+    
