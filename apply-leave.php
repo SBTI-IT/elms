@@ -234,7 +234,7 @@ else
                                 $mail->addAttachment($targetDir);
                                 $mail->isHTML(true);
 
-                                $mailContent = "<body style=font-family:verdana>
+                                $mailContent = "<body style=font-family:helvetica>
                                                 <p><b>Good day $firstName
                                                 <br><br>Kindly see my leave application on the LMS.
                                                 <br>Attached is the supporting document.
