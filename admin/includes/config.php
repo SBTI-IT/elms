@@ -3,7 +3,7 @@
 define('DB_HOST','localhost');
 define('DB_USER','softstartbtico_lms');
 define('DB_PASS','J8s3n,OAjBcF');
-define('DB_NAME','elms');
+define('DB_NAME','softstartbtico_lms');
 // Establish database connection.
 try
 {
