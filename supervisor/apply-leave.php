@@ -221,14 +221,14 @@ else
                                 $mail->isSMTP();
                                 $mail->Host = "smtp.gmail.com";
                                 $mail->SMTPAuth = true;
-                                $mail->Username = "leaveapplications@softstartbti.co.za"; // SMTP Email here
-                                $mail->Password = "CPEJ%G5e"; // Email password here
+                                $mail->Username = ""; // SMTP Email here
+                                $mail->Password = ""; // Email password here
                                 $mail->SMTPSecure = 'tls';
                                 $mail->Port = 587;
 
-                                $mail->setFrom('leaveapplications@softstartbti.co.za', $_SESSION['myName']); // Set from email
-                                //$mail->addAddress('ayanda@softstartbti.co.za', 'ELMS');
-                                $mail->addAddress('leaveapplications@softstartbti.co.za', 'ELMS');
+                                $mail->setFrom('', $_SESSION['myName']); // Set from email
+                                //$mail->addAddress('', 'ELMS');
+                                $mail->addAddress('', 'ELMS');
                                 $mail->Subject = '[LEAVE APPLICATION]';
                                 
                                 $mail->isHTML(true);
