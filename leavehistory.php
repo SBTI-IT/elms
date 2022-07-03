@@ -138,7 +138,7 @@ if($stats==1){
                                             <th>Annual</th>
                                             <th>Medical</th>
                                             <th>Study</th>
-                                            <th>Maternity</th>
+                                            <th>Parental</th>
                                             <th>Unpaid</th>
                                         </tr>
                                     </thead>                               
