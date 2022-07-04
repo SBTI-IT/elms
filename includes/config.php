@@ -1,9 +1,9 @@
 <?php 
 // DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','softstartbtico_lms');
-define('DB_PASS','J8s3n,OAjBcF');
-define('DB_NAME','softstartbtico_lms');
+define('DB_HOST','');
+define('DB_USER','');
+define('DB_PASS','');
+define('DB_NAME','');
 // Establish database connection.
 try
 {
