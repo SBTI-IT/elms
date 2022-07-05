@@ -4,7 +4,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 
 ## v2.4.4
 - Redesign login page
-- Bug fix #39
+- Bug fix on issue #39
 
 ## v2.3
 - Sends an email notification to Employee after leave application status is changed by Supervisor
