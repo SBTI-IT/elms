@@ -11,7 +11,7 @@ PHP Class for handling Matrices
 [![License](https://img.shields.io/github/license/MarkBaker/PHPMatrix)](https://packagist.org/packages/markbaker/matrix)
 
 
-[![Matrix Transform](https://imgs.xkcd.com/comics/matrix_transform.png)](https://xkcd.com/184/)
+[![Matrix Transform](https://imgs.xkcd.com/helveticas/matrix_transform.png)](https://xkcd.com/184/)
 
 Matrix Transform
 

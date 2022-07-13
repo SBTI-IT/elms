@@ -57,7 +57,7 @@ $( document ).ready(function() {
         scaleBeginAtZero : true,
         angleLineColor : "rgba(0,0,0,.1)",
         angleLineWidth : 1,
-        pointLabelFontFamily : "'Arial'",
+        pointLabelFontFamily : "'Helvetica'",
         pointLabelFontStyle : "normal",
         pointLabelFontSize : 10,
         pointLabelFontColor : "#666",

@@ -15,7 +15,7 @@ $simditor-button-width: 46px;
       display: none !important;
       width: 100%;
       box-sizing: border-box;
-      font-family: monaco;
+      font-family: helvetica;
       font-size: 16px;
       line-height: 1.6;
       border: none;
@@ -33,7 +33,7 @@ $simditor-button-width: 46px;
       z-index: 0;
       padding: 22px 15px;
       font-size: 16px;
-      font-family: arial, sans-serif;
+      font-family: Helvetica, sans-serif;
       line-height: 1.5;
       color: #999999;
       background: transparent;
@@ -203,7 +203,7 @@ $simditor-button-width: 46px;
               content: "H";
               font-size: 19px;
               font-weight: bold;
-              font-family: 'Times New Roman';
+              font-family: 'helvetica';
             }
 
             &.active-h1 span:before {
@@ -535,7 +535,7 @@ $simditor-button-width: 46px;
 
 .simditor .simditor-body, .editor-style {
   font-size: 16px;
-  font-family: arial, sans-serif;
+  font-family: Helvetica, sans-serif;
   line-height: 1.6;
   color: #333;
   outline: none;
@@ -627,7 +627,7 @@ $simditor-button-width: 46px;
     background: #eeeeee;
     border-radius: 3px;
     font-size: 13px;
-    font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
+    font-family: 'helvetica', monospace;
   }
 
   pre {
@@ -638,7 +638,7 @@ $simditor-button-width: 46px;
     background: #F0F0F0;
     border-radius: 3px;
     font-size:13px;
-    font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
+    font-family: 'helvetica', monospace;
     white-space: pre;
     word-wrap: normal;
     overflow-x: auto;
