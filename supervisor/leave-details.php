@@ -202,7 +202,7 @@ foreach($results as $result)
             $mail->Subject = '[LEAVE APPLICATION]';
             $mail->isHTML(true);
 
-            $mailContent = "<body style=font-family:verdana>
+            $mailContent = "<body style=font-family:helvetica>
                             <p><b>Good day $recName,
                             <br><br>The status of your application was changed to: <span style=color:green>$aStatus</span>
                             <br>Remark: $description

@@ -7,8 +7,8 @@
 
 */
 .cm-s-panda-syntax {
-	/*font-family: 'Operator Mono', 'Source Sans Pro', Helvetica, Arial, sans-serif;*/
-	font-family: 'Operator Mono', 'Source Sans Pro', Menlo, Monaco, Consolas, Courier New, monospace;
+	/*font-family: 'Operator Mono', 'Source Sans Pro', Helvetica, Helvetica, sans-serif;*/
+	font-family: helvetica, monospace;
 	background: #292A2B;
 	color: #E6E6E6;
 }

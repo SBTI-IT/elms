@@ -97,7 +97,7 @@
 			scaleBeginAtZero: false,
 
 			// String - Scale label font declaration for the scale label
-			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Helvetica', sans-serif",
 
 			// Number - Scale label font size in pixels
 			scaleFontSize: 12,
@@ -127,7 +127,7 @@
 			tooltipFillColor: "rgba(0,0,0,0.8)",
 
 			// String - Tooltip label font declaration for the scale label
-			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Helvetica', sans-serif",
 
 			// Number - Tooltip label font size in pixels
 			tooltipFontSize: 14,
@@ -139,7 +139,7 @@
 			tooltipFontColor: "#fff",
 
 			// String - Tooltip title font declaration for the scale label
-			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Helvetica', sans-serif",
 
 			// Number - Tooltip title font size in pixels
 			tooltipTitleFontSize: 14,
@@ -3163,7 +3163,7 @@
 			angleLineWidth : 1,
 
 			//String - Point label font declaration
-			pointLabelFontFamily : "'Arial'",
+			pointLabelFontFamily : "'Helvetica'",
 
 			//String - Point label font weight
 			pointLabelFontStyle : "normal",

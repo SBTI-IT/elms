@@ -898,7 +898,7 @@ class Html extends BaseWriter
         // Start styles
         if ($generateSurroundingHTML) {
             // html { }
-            $css['html']['font-family'] = 'Calibri, Arial, Helvetica, sans-serif';
+            $css['html']['font-family'] = 'Calibri, Helvetica, Helvetica, sans-serif';
             $css['html']['font-size'] = '11pt';
             $css['html']['background-color'] = 'white';
         }

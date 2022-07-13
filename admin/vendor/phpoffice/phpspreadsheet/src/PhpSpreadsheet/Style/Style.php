@@ -160,7 +160,7 @@ class Style extends Supervisor
      * $spreadsheet->getActiveSheet()->getStyle('B2')->applyFromArray(
      *     [
      *         'font' => [
-     *             'name' => 'Arial',
+     *             'name' => 'Helvetica',
      *             'bold' => true,
      *             'italic' => false,
      *             'underline' => Font::UNDERLINE_DOUBLE,

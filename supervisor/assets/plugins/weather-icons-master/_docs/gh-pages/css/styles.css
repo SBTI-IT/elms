@@ -1071,7 +1071,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -1521,7 +1521,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: Menlo, Monaco, helvetica, "Courier New", monospace;
 }
 code {
   padding: 2px 4px;
@@ -6013,7 +6013,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6131,7 +6131,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8859,7 +8859,7 @@ h2 {
   margin: 0 auto;
 }
 body {
-  font-family: "proxima nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima nova", "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.7em;
 }
@@ -8904,7 +8904,7 @@ header {
   }
 }
 header h1 {
-  font-family: "proxima nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima nova", "Proxima Nova", "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-weight: 100;
   font-size: 30px;
   margin-top: 20px;
@@ -8919,7 +8919,7 @@ header h1 {
   }
 }
 header h2 {
-  font-family: "proxima-nova", "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "proxima-nova", "Proxima Nova", "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-weight: 300;
   text-align: center;
   color: #ffffff;
@@ -9040,7 +9040,7 @@ header .icon .icon-box {
   margin-bottom: 10px;
 }
 .section-title {
-  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Proxima Nova", "Helvetica" Neue", Helvetica, Helvetica, sans-serif;
   font-weight: 100;
   margin-bottom: 10px;
   color: #9667a2;

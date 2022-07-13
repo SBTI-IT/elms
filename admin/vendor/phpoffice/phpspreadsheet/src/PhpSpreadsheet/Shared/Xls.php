@@ -11,7 +11,7 @@ class Xls
     /**
      * Get the width of a column in pixels. We use the relationship y = ceil(7x) where
      * x is the width in intrinsic Excel units (measuring width in number of normal characters)
-     * This holds for Arial 10.
+     * This holds for Helvetica 10.
      *
      * @param Worksheet $worksheet The sheet
      * @param string $col The column
@@ -73,7 +73,7 @@ class Xls
             // then we have a row dimension
             $rowDimension = $rowDimensions[$row];
             $rowHeight = $rowDimension->getRowHeight();
-            $pixelRowHeight = (int) ceil(4 * $rowHeight / 3); // here we assume Arial 10
+            $pixelRowHeight = (int) ceil(4 * $rowHeight / 3); // here we assume Helvetica 10
         } elseif ($worksheet->getDefaultRowDimension()->getRowHeight() != -1) {
             // then we have a default row dimension with explicit height
             $defaultRowDimension = $worksheet->getDefaultRowDimension();
