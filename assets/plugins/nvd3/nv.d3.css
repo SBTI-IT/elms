@@ -276,11 +276,11 @@ svg.nvd3-svg {
 
 
 .nvd3 text {
-    font: normal 12px Helvetica;
+    font: normal 12px Arial;
 }
 
 .nvd3 .title {
-    font: bold 14px Helvetica;
+    font: bold 14px Arial;
 }
 
 .nvd3 .nv-background {
@@ -514,7 +514,7 @@ svg.nvd3-svg {
     z-index: 10000;
     display: block;
 
-    font-family: Helvetica;
+    font-family: Arial;
     font-size: 13px;
     text-align: left;
     pointer-events: none;

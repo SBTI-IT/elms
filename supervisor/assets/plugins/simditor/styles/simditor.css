@@ -155,7 +155,7 @@
   display: none !important;
   width: 100%;
   box-sizing: border-box;
-  font-family: helvetica;
+  font-family: monaco;
   font-size: 16px;
   line-height: 1.6;
   border: none;
@@ -172,7 +172,7 @@
   z-index: 0;
   padding: 22px 15px;
   font-size: 16px;
-  font-family: Helvetica, sans-serif;
+  font-family: arial, sans-serif;
   line-height: 1.5;
   color: #999999;
   background: transparent;
@@ -316,7 +316,7 @@
   content: "H";
   font-size: 19px;
   font-weight: bold;
-  font-family: 'helvetica';
+  font-family: 'Times New Roman';
 }
 .simditor .simditor-toolbar > ul > li > .toolbar-item.toolbar-item-title.active-h1 span:before {
   content: 'H1';
@@ -588,7 +588,7 @@
 
 .simditor .simditor-body, .editor-style {
   font-size: 16px;
-  font-family: Helvetica, sans-serif;
+  font-family: arial, sans-serif;
   line-height: 1.6;
   color: #333;
   outline: none;
@@ -688,7 +688,7 @@
   background: #eeeeee;
   border-radius: 3px;
   font-size: 13px;
-  font-family: 'helvetica', monospace;
+  font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
 }
 .simditor .simditor-body pre, .editor-style pre {
   padding: 10px 5px 10px 10px;
@@ -698,7 +698,7 @@
   background: #F0F0F0;
   border-radius: 3px;
   font-size: 13px;
-  font-family: 'helvetica', monospace;
+  font-family: 'monaco', 'Consolas', "Liberation Mono", Courier, monospace;
   white-space: pre;
   word-wrap: normal;
   overflow-x: auto;

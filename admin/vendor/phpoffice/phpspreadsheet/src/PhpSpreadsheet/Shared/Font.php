@@ -41,18 +41,18 @@ class Font
 
     //  XXX: Constants created!
     /** Font filenames */
-    const Helvetica = 'Helvetica.ttf';
-    const Helvetica_BOLD = 'Helveticabd.ttf';
-    const Helvetica_ITALIC = 'Helveticai.ttf';
-    const Helvetica_BOLD_ITALIC = 'Helveticabi.ttf';
+    const ARIAL = 'arial.ttf';
+    const ARIAL_BOLD = 'arialbd.ttf';
+    const ARIAL_ITALIC = 'ariali.ttf';
+    const ARIAL_BOLD_ITALIC = 'arialbi.ttf';
 
     const CALIBRI = 'calibri.ttf';
     const CALIBRI_BOLD = 'calibrib.ttf';
     const CALIBRI_ITALIC = 'calibrii.ttf';
     const CALIBRI_BOLD_ITALIC = 'calibriz.ttf';
 
-    const helvetica_SANS_MS = 'helvetica.ttf';
-    const helvetica_SANS_MS_BOLD = 'helveticabd.ttf';
+    const COMIC_SANS_MS = 'comic.ttf';
+    const COMIC_SANS_MS_BOLD = 'comicbd.ttf';
 
     const COURIER_NEW = 'cour.ttf';
     const COURIER_NEW_BOLD = 'courbd.ttf';
@@ -83,8 +83,8 @@ class Font
 
     const SYMBOL = 'symbol.ttf';
 
-    const helvetica = 'helvetica.ttf';
-    const helvetica_BOLD = 'helveticabd.ttf';
+    const TAHOMA = 'tahoma.ttf';
+    const TAHOMA_BOLD = 'tahomabd.ttf';
 
     const TIMES_NEW_ROMAN = 'times.ttf';
     const TIMES_NEW_ROMAN_BOLD = 'timesbd.ttf';
@@ -123,7 +123,7 @@ class Font
      * @var array
      */
     public static $defaultColumnWidths = [
-        'Helvetica' => [
+        'Arial' => [
             1 => ['px' => 24, 'width' => 12.00000000],
             2 => ['px' => 24, 'width' => 12.00000000],
             3 => ['px' => 32, 'width' => 10.66406250],
@@ -331,8 +331,8 @@ class Font
                 $columnWidth = $columnWidth * $fontSize / 11; // extrapolate from font size
 
                 break;
-            case 'Helvetica':
-                // value 8 was set because of experience in different exports at Helvetica 10 font.
+            case 'Arial':
+                // value 8 was set because of experience in different exports at Arial 10 font.
                 $columnWidth = (int) (8 * StringHelper::countCharacters($columnText));
                 $columnWidth = $columnWidth * $fontSize / 10; // extrapolate from font size
 
@@ -420,10 +420,10 @@ class Font
 
         // Check if we can map font to true type font file
         switch ($name) {
-            case 'Helvetica':
+            case 'Arial':
                 $fontFile = (
-                    $bold ? ($italic ? self::Helvetica_BOLD_ITALIC : self::Helvetica_BOLD)
-                          : ($italic ? self::Helvetica_ITALIC : self::Helvetica)
+                    $bold ? ($italic ? self::ARIAL_BOLD_ITALIC : self::ARIAL_BOLD)
+                          : ($italic ? self::ARIAL_ITALIC : self::ARIAL)
                 );
 
                 break;
@@ -441,9 +441,9 @@ class Font
                 );
 
                 break;
-            case 'helvetica Sans MS':
+            case 'Comic Sans MS':
                 $fontFile = (
-                    $bold ? self::helvetica_SANS_MS_BOLD : self::helvetica_SANS_MS
+                    $bold ? self::COMIC_SANS_MS_BOLD : self::COMIC_SANS_MS
                 );
 
                 break;
@@ -488,9 +488,9 @@ class Font
                 $fontFile = self::SYMBOL;
 
                 break;
-            case 'helvetica':
+            case 'Tahoma':
                 $fontFile = (
-                    $bold ? self::helvetica_BOLD : self::helvetica
+                    $bold ? self::TAHOMA_BOLD : self::TAHOMA
                 );
 
                 break;
@@ -599,52 +599,52 @@ class Font
     public static function getDefaultRowHeightByFont(FontStyle $font)
     {
         switch ($font->getName()) {
-            case 'Helvetica':
+            case 'Arial':
                 switch ($font->getSize()) {
                     case 10:
-                        // inspection of Helvetica 10 workbook says 12.75pt ~17px
+                        // inspection of Arial 10 workbook says 12.75pt ~17px
                         $rowHeight = 12.75;
 
                         break;
                     case 9:
-                        // inspection of Helvetica 9 workbook says 12.00pt ~16px
+                        // inspection of Arial 9 workbook says 12.00pt ~16px
                         $rowHeight = 12;
 
                         break;
                     case 8:
-                        // inspection of Helvetica 8 workbook says 11.25pt ~15px
+                        // inspection of Arial 8 workbook says 11.25pt ~15px
                         $rowHeight = 11.25;
 
                         break;
                     case 7:
-                        // inspection of Helvetica 7 workbook says 9.00pt ~12px
+                        // inspection of Arial 7 workbook says 9.00pt ~12px
                         $rowHeight = 9;
 
                         break;
                     case 6:
                     case 5:
-                        // inspection of Helvetica 5,6 workbook says 8.25pt ~11px
+                        // inspection of Arial 5,6 workbook says 8.25pt ~11px
                         $rowHeight = 8.25;
 
                         break;
                     case 4:
-                        // inspection of Helvetica 4 workbook says 6.75pt ~9px
+                        // inspection of Arial 4 workbook says 6.75pt ~9px
                         $rowHeight = 6.75;
 
                         break;
                     case 3:
-                        // inspection of Helvetica 3 workbook says 6.00pt ~8px
+                        // inspection of Arial 3 workbook says 6.00pt ~8px
                         $rowHeight = 6;
 
                         break;
                     case 2:
                     case 1:
-                        // inspection of Helvetica 1,2 workbook says 5.25pt ~7px
+                        // inspection of Arial 1,2 workbook says 5.25pt ~7px
                         $rowHeight = 5.25;
 
                         break;
                     default:
-                        // use Helvetica 10 workbook as an approximation, extrapolation
+                        // use Arial 10 workbook as an approximation, extrapolation
                         $rowHeight = 12.75 * $font->getSize() / 10;
 
                         break;

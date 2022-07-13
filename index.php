@@ -84,7 +84,7 @@ else
                       <div class="row">
 
                           <div class="col s12 m6 l4 offset-l4 offset-m3">
-                              <div class="card  darken-1">
+                              <div class="card white darken-1">
                               
                                   <div class="card-content ">
                                   <span class="card-title"><img src="assets/images/softstartImage.png" alt="SIGN IN" style="width:100%"></span>

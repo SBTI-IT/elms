@@ -11,7 +11,7 @@ PHP Class Library for working with Complex numbers
 [![License](https://img.shields.io/github/license/MarkBaker/PHPComplex)](https://packagist.org/packages/markbaker/complex)
 
 
-[![Complex Numbers](https://imgs.xkcd.com/helveticas/complex_numbers_2x.png)](https://xkcd.com/2028/)
+[![Complex Numbers](https://imgs.xkcd.com/comics/complex_numbers_2x.png)](https://xkcd.com/2028/)
 
 ---
 

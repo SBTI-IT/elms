@@ -78,7 +78,7 @@ body .fc { /* extra precedence to overcome jqui */
 	font-size: 1em;
 	text-align: center;
 	overflow: hidden;
-	font-family: "helvetica", monospace;
+	font-family: "Courier New", Courier, monospace;
 
 	/* don't allow browser text-selection */
 	-webkit-touch-callout: none;
@@ -91,7 +91,7 @@ body .fc { /* extra precedence to overcome jqui */
 
 /*
 Acceptable font-family overrides for individual icons:
-	"Helvetica", sans-serif
+	"Arial", sans-serif
 	"Times New Roman", serif
 
 NOTE: use percentage font sizes or else old IE chokes

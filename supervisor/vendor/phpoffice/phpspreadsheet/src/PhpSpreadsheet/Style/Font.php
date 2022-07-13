@@ -146,7 +146,7 @@ class Font extends Supervisor
      * <code>
      * $spreadsheet->getActiveSheet()->getStyle('B2')->getFont()->applyFromArray(
      *     [
-     *         'name' => 'Helvetica',
+     *         'name' => 'Arial',
      *         'bold' => TRUE,
      *         'italic' => FALSE,
      *         'underline' => \PhpOffice\PhpSpreadsheet\Style\Font::UNDERLINE_DOUBLE,

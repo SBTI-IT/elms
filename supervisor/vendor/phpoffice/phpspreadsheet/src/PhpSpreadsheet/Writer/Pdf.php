@@ -136,10 +136,10 @@ abstract class Pdf extends Html
 
     /**
      * Set font. Examples:
-     *      'Helveticaunicid0-chinese-simplified'
-     *      'Helveticaunicid0-chinese-traditional'
-     *      'Helveticaunicid0-korean'
-     *      'Helveticaunicid0-japanese'.
+     *      'arialunicid0-chinese-simplified'
+     *      'arialunicid0-chinese-traditional'
+     *      'arialunicid0-korean'
+     *      'arialunicid0-japanese'.
      *
      * @param string $fontName
      *
