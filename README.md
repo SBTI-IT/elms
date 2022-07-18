@@ -3,7 +3,8 @@
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
 ## v2.4.4
-- Redesign login page
+- Redesign login page]
+- Change color scheme to Orange, Grey and Light grey
 - Bug fix on issue #39
 
 ## v2.3
