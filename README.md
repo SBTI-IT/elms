@@ -5,6 +5,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 ## Supported Browsers
 - Microsoft Edge
 - IE
+- Firefox
 
 ## v2.5.1 [Planned release]
 - Redesign login page
