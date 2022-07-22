@@ -2,6 +2,10 @@
 
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
+## Supported Browsers
+- Microsoft Edge
+- IE
+
 ## v2.5.1 [Planned release]
 - Redesign login page
 - Change color scheme to Orange, Grey and Light grey
