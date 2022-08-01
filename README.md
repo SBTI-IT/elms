@@ -7,7 +7,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 - IE
 - Firefox
 
-## v2.5.1 [Planned release]
+## v2.5.1
 - Redesign login page
 - Change color scheme to Orange, Grey and Light grey
 - Bug fix on issue #39
