@@ -7,22 +7,25 @@ Leave Management System allows employees to apply for a leave based on the numbe
 - IE
 - Firefox
 
+## v2.6
+* Attached POPI Act
+
 ## v2.5.1
-- Redesign login page
-- Change color scheme to Orange, Grey and Light grey
-- Bug fix on issue #39
+* Redesign login page
+* Change color scheme to Orange, Grey and Light grey
+* Bug fix on issue #39
 
 ## v2.3
-- Sends an email notification to Employee after leave application status is changed by Supervisor
-- MS Excel spreadsheet has extra columns showing the From-To days
-- Calculates leave days remaining for Supervisor and Employee users
+* Sends an email notification to Employee after leave application status is changed by Supervisor
+* MS Excel spreadsheet has extra columns showing the From-To days
+* Calculates leave days remaining for Supervisor and Employee users
 
 ## v2.0
 
-- Attach documents to leave applications
-- Sends email notification to supervisor or admin after leave application
-- Export leave applications history to MS Excel sheet
-- Added Supervisor role
+* Attach documents to leave applications
+* Sends email notification to supervisor or admin after leave application
+* Export leave applications history to MS Excel sheet
+* Added Supervisor role
 
 ## v1.0.0-Beta
 A few UI changes have been made to the template
