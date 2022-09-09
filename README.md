@@ -8,7 +8,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 - Firefox
 
 ## v2.6
-* Attached POPI Act
+* Attached POPI Act disclaimer
 
 ## v2.5.1
 * Redesign login page
