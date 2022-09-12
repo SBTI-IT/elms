@@ -6,6 +6,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 - Microsoft Edge
 - IE
 - Firefox
+- Chrome
 
 ## v2.6
 * Attached POPI Act disclaimer
