@@ -1,4 +1,4 @@
-# SoftstartBTI Employee Leave Management System
+# SoftstartBTI Leave Management System
 
 Leave Management System allows employees to apply for a leave based on the number of leave days they have accumulated. 
 
