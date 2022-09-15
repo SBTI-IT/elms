@@ -13,49 +13,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 ## v2.6
 * Attached POPI Act disclaimer
 
-## v2.5.1
-* Redesign login page
-* Change color scheme to Orange, Grey and Light grey
-* Bug fix on issue #39
+## Links
 
-## v2.3
-* Sends an email notification to Employee after leave application status is changed by Supervisor
-* MS Excel spreadsheet has extra columns showing the From-To days
-* Calculates leave days remaining for Supervisor and Employee users
-
-## v2.0
-
-* Attach documents to leave applications
-* Sends email notification to supervisor or admin after leave application
-* Export leave applications history to MS Excel sheet
-* Added Supervisor role
-
-## v1.0.0-Beta
-A few UI changes have been made to the template
-
-### Login form
-
-![_index php](https://user-images.githubusercontent.com/48829302/175241247-64775d1f-a4ee-415e-b77e-0fb5f3c6fa80.png)
-
-
-Admin, Supervisor and Employee login pages have been merged into a single login page.
-
-### Leave Management
-
-![admin_leavemanagement php](https://user-images.githubusercontent.com/48829302/170838634-54faa4e0-bd2a-46ef-86dd-4a0d3fa45c86.png)
-
-All the Leave Management categories have been merged into a single page, the categories can be filtered through using the search input on the top-right of the table.
-
-## v0.9.0-Alpha
-The system allows the supervisor to manage the categories of the system:
-
-### Leave
-* viewing, accepting or rejecting an employee’s leave application 
-
-### Employee
-* adding and removing an employee
-
-### Departments
-* adding and removing departments
-
-The employee(user) is able to apply for a leave. 
+[Latest release] https://github.com/SBTI-IT/elms/releases
+[Documentation] 
