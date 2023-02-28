@@ -13,6 +13,10 @@ Leave Management System allows employees to apply for a leave based on the numbe
 ## v2.6
 * Attached POPI Act disclaimer
 
+## On the pipeline
+* Mobile application with AI integrations
+* Calendar and events integrations
+
 ## Links
 
 * [Latest release](https://github.com/SBTI-IT/elms/releases)
