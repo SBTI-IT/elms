@@ -16,6 +16,7 @@ Leave Management System allows employees to apply for a leave based on the numbe
 ## On the pipeline
 * Mobile application with AI integrations
 * Calendar and events integrations
+* Some UI changes
 
 ## Links
 
