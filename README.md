@@ -14,9 +14,9 @@ Leave Management System allows employees to apply for a leave based on the numbe
 * Attached POPI Act disclaimer
 
 ## On the pipeline
-* Mobile application with AI integrations
-* Calendar and events integrations
-* Some UI changes
+* Mobile application
+* Localized calendar and events integrations
+* Few UI changes on the web application
 
 ## Links
 
