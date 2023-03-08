@@ -23,6 +23,6 @@ Leave Management System allows employees to apply for a leave based on the numbe
 * [Latest release](https://github.com/SBTI-IT/elms/releases)
 * [Documentation](https://github.com/SBTI-IT/elms/wiki)
 
-## Android app
+## Download LMS android app
 
 ![google-play-badge](https://user-images.githubusercontent.com/48829302/223803242-1f0097a4-0667-4800-ab02-7c18681886ff.png)
